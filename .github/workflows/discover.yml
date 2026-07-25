@@ -1,0 +1,37 @@
+name: Cineplex Discovery (Phase 1)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install headless browser
+        run: playwright install --with-deps chromium
+
+      - name: Run discovery script
+        env:
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_APP_PASSWORD: ${{ secrets.SENDER_APP_PASSWORD }}
+          RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
+        run: python discover.py
+
+      - name: Upload full results as a backup file
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: discovery-results
+          path: discovery_output.json
