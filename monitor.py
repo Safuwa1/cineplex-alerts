@@ -1,19 +1,24 @@
 """
-Cineplex Alert System - Final monitor
-----------------------------------------
+Cineplex Alert System - Final monitor (multi-subscriber version)
+--------------------------------------------------------------------
 Runs on a schedule (see .github/workflows/monitor.yml). Each run:
   1. Logs into cineplexbd.com's API the same way the real website does.
   2. Fetches the current movie list.
   3. Fetches showtime dates for every currently-running movie.
   4. Compares everything against the last saved state (state.json).
-  5. Emails the user if a new movie appeared, or new ticket dates opened.
+  5. Emails every subscriber (from the signup Google Sheet, plus the
+     owner's RECEIVER_EMAIL) if a new movie appeared, or new ticket
+     dates opened. Recipients never see each other's addresses.
   6. Saves the new state so next run can compare against it.
 """
 
 import asyncio
+import csv
+import io
 import json
 import os
 import smtplib
+import urllib.request
 from datetime import datetime, timezone
 from email.mime.text import MIMEText
 
@@ -22,6 +27,9 @@ from playwright.async_api import async_playwright
 HOME_URL = "https://www.cineplexbd.com/"
 API_BASE = "https://cineplex-web-api.cineplexbd.com/api/v1"
 STATE_FILE = "state.json"
+
+# The published CSV link for the signup page's Google Sheet.
+SUBSCRIBERS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTeWzI3wdsJvW_m8ofLzSOLJ9Ck8DXtemyGiwGeVAcD6vEm9cD1ErMNMWEXK2orijP4rbgJGIZ6If0-/pub?output=csv"
 
 new_movie_alerts = []
 new_date_alerts = []
@@ -39,6 +47,40 @@ def load_state():
 def save_state(state):
     with open(STATE_FILE, "w", encoding="utf-8") as f:
         json.dump(state, f, indent=2, ensure_ascii=False)
+
+
+def get_subscriber_emails():
+    """Fetch signup emails from the published Google Sheet CSV."""
+    emails = set()
+    try:
+        req = urllib.request.Request(
+            SUBSCRIBERS_CSV_URL, headers={"User-Agent": "Mozilla/5.0"}
+        )
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            content = resp.read().decode("utf-8", errors="ignore")
+        rows = list(csv.reader(io.StringIO(content)))
+        if not rows:
+            return emails
+        header = [h.strip().lower() for h in rows[0]]
+        email_col = next((i for i, h in enumerate(header) if "email" in h), None)
+        if email_col is None and len(header) > 1:
+            email_col = 1  # fallback: assume 2nd column (after Timestamp)
+        for row in rows[1:]:
+            if email_col is not None and email_col < len(row):
+                val = row[email_col].strip()
+                if "@" in val and "." in val.split("@")[-1]:
+                    emails.add(val)
+    except Exception as exc:  # noqa: BLE001
+        warnings.append(f"Could not fetch subscriber list: {exc}")
+    return emails
+
+
+def get_all_recipients():
+    recipients = get_subscriber_emails()
+    owner_email = os.environ.get("RECEIVER_EMAIL", "").strip()
+    if owner_email:
+        recipients.add(owner_email)
+    return sorted(recipients)
 
 
 async def api_call(page, token, path):
@@ -163,16 +205,24 @@ async def run_monitor():
 def send_email(subject: str, body: str):
     sender = os.environ["SENDER_EMAIL"]
     password = os.environ["SENDER_APP_PASSWORD"]
-    receiver = os.environ["RECEIVER_EMAIL"]
+    recipients = get_all_recipients()
+
+    if not recipients:
+        print("No recipients found (no subscribers and no RECEIVER_EMAIL) - skipping send.")
+        return
 
     msg = MIMEText(body, "plain", "utf-8")
     msg["Subject"] = subject
     msg["From"] = sender
-    msg["To"] = receiver
+    # Recipients are only listed in the SMTP envelope below, never in a
+    # visible header, so subscribers can't see each other's addresses.
+    msg["To"] = sender
 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
         server.login(sender, password)
-        server.sendmail(sender, [receiver], msg.as_string())
+        server.sendmail(sender, recipients, msg.as_string())
+
+    print(f"Email sent to {len(recipients)} recipient(s).")
 
 
 def main():
