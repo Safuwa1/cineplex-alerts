@@ -1,9 +1,11 @@
 """
-Cineplex Alert System - Phase 5c discovery: seat data via guest login
----------------------------------------------------------------------------
-Uses the safe GUEST LOGIN flow (no real account, no CAPTCHA) on the
-ticket API, then explores the ticket.cineplexbd.com/home page and tries
-educated-guess API calls to find movie/showtime/seat-plan endpoints.
+Cineplex Alert System - Phase 5d discovery: capture real request headers
+------------------------------------------------------------------------------
+The ticket API requires "appsource" and "device-key" fields. Instead of
+guessing, this script clicks through the REAL site UI (guest login ->
+pick a location -> browse) and logs every outgoing request to
+cineplex-ticket-api.cineplexbd.com (headers + body), so we can see the
+exact values the real frontend sends.
 """
 
 import asyncio
@@ -17,9 +19,9 @@ from urllib.parse import urlparse
 from playwright.async_api import async_playwright
 
 LOGIN_URL = "https://ticket.cineplexbd.com/login"
-TICKET_API_BASE = "https://cineplex-ticket-api.cineplexbd.com/api/v1"
 
-captured = []
+request_log = []
+response_log = []
 notes = []
 
 
@@ -28,50 +30,50 @@ def log(note):
     print(note)
 
 
+def handle_request(request):
+    try:
+        host = urlparse(request.url).hostname or ""
+        if "cineplex-ticket-api.cineplexbd.com" not in host:
+            return
+        request_log.append(
+            {
+                "url": request.url,
+                "method": request.method,
+                "headers": dict(request.headers),
+                "post_data": request.post_data,
+            }
+        )
+    except Exception as exc:  # noqa: BLE001
+        request_log.append({"error": str(exc)})
+
+
 async def handle_response(response):
     try:
-        req = response.request
-        url = response.url
-        host = urlparse(url).hostname or ""
-        if "cineplexbd.com" not in host:
+        host = urlparse(response.url).hostname or ""
+        if "cineplex-ticket-api.cineplexbd.com" not in host:
             return
         content_type = response.headers.get("content-type", "")
         if "json" not in content_type.lower():
             return
-        path = urlparse(url).path
-        if any(k in path for k in ["/guest-login", "/get-location"]):
-            return  # already known, skip to save space
         body = await response.text()
-        captured.append(
-            {
-                "source": "passive-capture",
-                "url": url,
-                "method": req.method,
-                "status": response.status,
-                "body_preview": body[:2500],
-            }
-        )
+        response_log.append({"url": response.url, "status": response.status, "body_preview": body[:1500]})
     except Exception as exc:  # noqa: BLE001
-        captured.append({"url": response.url, "error": str(exc)})
+        response_log.append({"error": str(exc)})
 
 
-async def api_call(page, token, path, body=None):
-    return await page.evaluate(
-        """async ({base, path, token, body}) => {
-            const res = await fetch(base + path, {
-                method: 'POST',
-                headers: {
-                    'Authorization': 'Bearer ' + token,
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: body ? JSON.stringify(body) : undefined,
-            });
-            const text = await res.text();
-            return {status: res.status, body: text};
-        }""",
-        {"base": TICKET_API_BASE, "path": path, "token": token, "body": body},
-    )
+async def try_click(page, texts, label, timeout=4000):
+    for text in texts:
+        try:
+            loc = page.get_by_text(text, exact=False).first
+            await loc.wait_for(timeout=timeout)
+            await loc.click(timeout=timeout)
+            log(f"[{label}] clicked element matching text '{text}'")
+            await page.wait_for_timeout(3000)
+            return True
+        except Exception:  # noqa: BLE001
+            continue
+    log(f"[{label}] could not find/click any of: {texts}")
+    return False
 
 
 async def run():
@@ -83,21 +85,8 @@ async def run():
                 "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
             )
         )
+        page.on("request", handle_request)
         page.on("response", lambda r: asyncio.create_task(handle_response(r)))
-
-        token = None
-
-        async def capture_token(response):
-            nonlocal token
-            if "/guest-login" in response.url and response.status == 200:
-                try:
-                    data = json.loads(await response.text())
-                    if data.get("status") == "success":
-                        token = data.get("data", {}).get("token")
-                except Exception:  # noqa: BLE001
-                    pass
-
-        page.on("response", lambda r: asyncio.create_task(capture_token(r)))
 
         await page.goto(LOGIN_URL, wait_until="networkidle", timeout=45000)
         await page.wait_for_timeout(3000)
@@ -108,59 +97,28 @@ async def run():
         await page.wait_for_load_state("networkidle", timeout=20000)
         log(f"Logged in as guest. Now at: {page.url}")
 
-        if not token:
-            log("Did not capture a guest token - aborting further API tests.")
-            await browser.close()
-            return
+        await try_click(page, ["Sony Square", "Sony"], "select-location")
+        await page.wait_for_load_state("networkidle", timeout=15000)
+        await page.wait_for_timeout(2000)
 
-        log(f"Captured guest ticket-api token (first 20 chars): {token[:20]}...")
+        await try_click(page, ["PURCHASE TICKET", "Purchase Ticket"], "purchase-ticket-button")
+        await page.wait_for_load_state("networkidle", timeout=15000)
+        await page.wait_for_timeout(2000)
 
-        # Inspect the home page for navigation elements (location/movie pickers).
-        elements = await page.eval_on_selector_all(
-            "a, button, select, option",
-            """els => els.slice(0, 150).map(e => ({
-                tag: e.tagName,
-                text: (e.innerText || e.value || '').trim().slice(0, 50),
-                href: e.href || null
-            })).filter(e => e.text || e.href)"""
-        )
-        captured.append({"source": "home-page-elements", "elements": elements})
-        log(f"Collected {len(elements)} nav-ish elements from /home.")
+        await try_click(page, ["The Odyssey", "Odyssey"], "select-movie")
+        await page.wait_for_load_state("networkidle", timeout=15000)
+        await page.wait_for_timeout(2000)
 
-        # Educated guesses for movie-list / showtime / seat-plan endpoints.
-        guesses = [
-            ("/get-movie-list", {}),
-            ("/movie-list", {}),
-            ("/get-movies", {"location_id": 4}),
-            ("/get-showtime", {"location_id": 4}),
-            ("/get-schedule", {"location_id": 4}),
-            ("/get-schedule-list", {"location_id": 4}),
-            ("/get-seat-plan", {"schedule_id": 129663}),
-            ("/seat-plan", {"schedule_id": 129663}),
-            ("/get-seats", {"schedule_id": 129663}),
-            ("/get-hall-seat", {"schedule_id": 129663}),
-        ]
-        for path, body in guesses:
-            try:
-                r = await api_call(page, token, path, body=body)
-                captured.append(
-                    {
-                        "source": f"guess {path}",
-                        "body_sent": body,
-                        "status": r["status"],
-                        "body_preview": r["body"][:800],
-                    }
-                )
-            except Exception as exc:  # noqa: BLE001
-                captured.append({"source": f"guess {path}", "error": str(exc)})
-
+        log(f"Final URL: {page.url}")
+        await page.wait_for_timeout(2000)
         await browser.close()
 
 
 def build_report():
     return (
         "NOTES:\n" + "\n".join(f"- {n}" for n in notes)
-        + "\n\nCAPTURED:\n" + json.dumps(captured, indent=2, ensure_ascii=False)
+        + "\n\nREQUESTS SENT TO cineplex-ticket-api:\n" + json.dumps(request_log, indent=2, ensure_ascii=False)
+        + "\n\nRESPONSES:\n" + json.dumps(response_log, indent=2, ensure_ascii=False)
     )
 
 
@@ -186,7 +144,7 @@ def main():
     email_body = report[:18000]
     if len(report) > 18000:
         email_body += "\n\n...[truncated, full version is the workflow artifact]"
-    send_email(f"[Cineplex Alert Setup] Guest seat discovery ({ts})", email_body)
+    send_email(f"[Cineplex Alert Setup] Request headers discovery ({ts})", email_body)
     print("done")
 
 
