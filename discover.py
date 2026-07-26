@@ -1,10 +1,10 @@
 """
-Cineplex Alert System - Phase 5e discovery: seat data via programId
+Cineplex Alert System - Phase 5f discovery: click all the way to seats
 ------------------------------------------------------------------------
-Full chain now known: guest-login -> get-location -> get-showdate ->
-get-shows (gives programId per showtime). This tries to find the seat
-endpoint using that real programId, with the correct headers
-(appsource, device-key, authorization) captured from the real session.
+Clicks through the REAL UI: guest login -> Sony Square -> Purchase
+Ticket -> The Odyssey -> a specific showtime button -> (hopefully) the
+seat layout screen. Logs every request+response to cineplex-ticket-api
+along the way so we can see the real seat endpoint, whatever it's named.
 """
 
 import asyncio
@@ -18,11 +18,10 @@ from urllib.parse import urlparse
 from playwright.async_api import async_playwright
 
 LOGIN_URL = "https://ticket.cineplexbd.com/login"
-TICKET_API_BASE = "https://cineplex-ticket-api.cineplexbd.com/api/v1"
 
-captured = []
+request_log = []
+response_log = []
 notes = []
-session_info = {"token": None, "device_key": None}
 
 
 def log(note):
@@ -35,38 +34,29 @@ def handle_request(request):
         host = urlparse(request.url).hostname or ""
         if "cineplex-ticket-api.cineplexbd.com" not in host:
             return
-        headers = request.headers
-        if not session_info["device_key"] and headers.get("device-key"):
-            session_info["device_key"] = headers.get("device-key")
-    except Exception:  # noqa: BLE001
-        pass
+        request_log.append(
+            {
+                "url": request.url,
+                "method": request.method,
+                "post_data": request.post_data,
+            }
+        )
+    except Exception as exc:  # noqa: BLE001
+        request_log.append({"error": str(exc)})
 
 
-async def api_call(page, path, body=None):
-    return await page.evaluate(
-        """async ({base, path, token, deviceKey, body}) => {
-            const res = await fetch(base + path, {
-                method: 'POST',
-                headers: {
-                    'Authorization': 'Bearer ' + token,
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'appsource': 'web',
-                    'device-key': deviceKey,
-                },
-                body: body ? JSON.stringify(body) : undefined,
-            });
-            const text = await res.text();
-            return {status: res.status, body: text};
-        }""",
-        {
-            "base": TICKET_API_BASE,
-            "path": path,
-            "token": session_info["token"],
-            "deviceKey": session_info["device_key"],
-            "body": body,
-        },
-    )
+async def handle_response(response):
+    try:
+        host = urlparse(response.url).hostname or ""
+        if "cineplex-ticket-api.cineplexbd.com" not in host:
+            return
+        content_type = response.headers.get("content-type", "")
+        if "json" not in content_type.lower():
+            return
+        body = await response.text()
+        response_log.append({"url": response.url, "status": response.status, "body_preview": body[:2500]})
+    except Exception as exc:  # noqa: BLE001
+        response_log.append({"error": str(exc)})
 
 
 async def try_click(page, texts, label, timeout=4000):
@@ -77,6 +67,7 @@ async def try_click(page, texts, label, timeout=4000):
             await loc.click(timeout=timeout)
             log(f"[{label}] clicked element matching text '{text}'")
             await page.wait_for_timeout(3000)
+            await page.wait_for_load_state("networkidle", timeout=15000)
             return True
         except Exception:  # noqa: BLE001
             continue
@@ -94,17 +85,7 @@ async def run():
             )
         )
         page.on("request", handle_request)
-
-        async def capture_token(response):
-            if "/guest-login" in response.url and response.status == 200:
-                try:
-                    data = json.loads(await response.text())
-                    if data.get("status") == "success":
-                        session_info["token"] = data.get("data", {}).get("token")
-                except Exception:  # noqa: BLE001
-                    pass
-
-        page.on("response", lambda r: asyncio.create_task(capture_token(r)))
+        page.on("response", lambda r: asyncio.create_task(handle_response(r)))
 
         await page.goto(LOGIN_URL, wait_until="networkidle", timeout=45000)
         await page.wait_for_timeout(3000)
@@ -113,73 +94,38 @@ async def run():
         await guest_btn.click(timeout=8000)
         await page.wait_for_timeout(3000)
         await page.wait_for_load_state("networkidle", timeout=20000)
-        log(f"Logged in as guest. token={'yes' if session_info['token'] else 'NO'}, "
-            f"device_key={'yes' if session_info['device_key'] else 'NO'}")
+        log(f"Logged in as guest. Now at: {page.url}")
 
         await try_click(page, ["Sony Square", "Sony"], "select-location")
-        await page.wait_for_load_state("networkidle", timeout=15000)
         await try_click(page, ["PURCHASE TICKET", "Purchase Ticket"], "purchase-ticket-button")
-        await page.wait_for_load_state("networkidle", timeout=15000)
+        await try_click(page, ["The Odyssey", "Odyssey"], "select-movie")
 
-        if not session_info["token"] or not session_info["device_key"]:
-            log("Missing token or device_key - cannot make direct API calls.")
-            await browser.close()
-            return
+        # Try to click a showtime button - several possible text formats.
+        clicked_showtime = await try_click(
+            page,
+            ["07:00 PM", "7:00 PM", "19:00", "07:00", "7:00", "500", "৳500"],
+            "select-showtime",
+        )
 
-        # Re-confirm showtimes for The Odyssey to get a fresh, real programId.
-        shows_result = await api_call(page, "/get-shows", {"location": 4, "movieId": 1711, "showDate": "2026-07-27"})
-        captured.append({"source": "get-shows (fresh)", "status": shows_result["status"], "body": shows_result["body"][:2000]})
+        if not clicked_showtime:
+            # Dump visible clickable text so we can see what the showtime buttons actually say.
+            visible_texts = await page.eval_on_selector_all(
+                "button, a, div[role=button], span",
+                """els => els.slice(0, 200).map(e => (e.innerText || '').trim()).filter(t => t && t.length < 30)"""
+            )
+            request_log.append({"note": "visible short texts on page after selecting movie", "texts": visible_texts})
+            log(f"Dumped {len(visible_texts)} visible short text snippets for manual inspection.")
 
-        program_id = None
-        try:
-            shows_data = json.loads(shows_result["body"])
-            for hall in shows_data.get("data", []):
-                for st in hall.get("showTimes", []):
-                    if st.get("showTime", "").startswith("19"):
-                        program_id = st.get("programId")
-                        log(f"Using programId={program_id} for the 7 PM show.")
-                        break
-        except Exception as exc:  # noqa: BLE001
-            log(f"Could not parse get-shows response: {exc}")
-
-        if not program_id:
-            log("Could not find a programId to test with.")
-            await browser.close()
-            return
-
-        guesses = [
-            ("/get-seat-plan", {"programId": program_id}),
-            ("/get-seats", {"programId": program_id}),
-            ("/seat-plan", {"programId": program_id}),
-            ("/get-seat-layout", {"programId": program_id}),
-            ("/get-hall-layout", {"programId": program_id}),
-            ("/get-available-seats", {"programId": program_id}),
-            ("/get-seat-status", {"programId": program_id}),
-            ("/get-booking-seats", {"programId": program_id}),
-            ("/seat-availability", {"programId": program_id}),
-            ("/get-seatmap", {"programId": program_id}),
-        ]
-        for path, body in guesses:
-            try:
-                r = await api_call(page, path, body)
-                captured.append(
-                    {
-                        "source": f"guess {path}",
-                        "body_sent": body,
-                        "status": r["status"],
-                        "body_preview": r["body"][:1500],
-                    }
-                )
-            except Exception as exc:  # noqa: BLE001
-                captured.append({"source": f"guess {path}", "error": str(exc)})
-
+        log(f"Final URL: {page.url}")
+        await page.wait_for_timeout(3000)
         await browser.close()
 
 
 def build_report():
     return (
         "NOTES:\n" + "\n".join(f"- {n}" for n in notes)
-        + "\n\nCAPTURED:\n" + json.dumps(captured, indent=2, ensure_ascii=False)
+        + "\n\nREQUESTS:\n" + json.dumps(request_log, indent=2, ensure_ascii=False)
+        + "\n\nRESPONSES:\n" + json.dumps(response_log, indent=2, ensure_ascii=False)
     )
 
 
@@ -205,7 +151,7 @@ def main():
     email_body = report[:18000]
     if len(report) > 18000:
         email_body += "\n\n...[truncated, full version is the workflow artifact]"
-    send_email(f"[Cineplex Alert Setup] Seat endpoint discovery ({ts})", email_body)
+    send_email(f"[Cineplex Alert Setup] Click-to-seats discovery ({ts})", email_body)
     print("done")
 
 
