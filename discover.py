@@ -74,6 +74,13 @@ async def snapshot(page, label):
         snapshots.append({"stage": label, "error": str(exc)})
 
 
+async def safe_wait_idle(page, timeout=15000, label=""):
+    try:
+        await page.wait_for_load_state("networkidle", timeout=timeout)
+    except Exception:  # noqa: BLE001
+        log(f"[{label}] networkidle wait timed out - continuing anyway (page likely still fine).")
+
+
 async def try_click(page, texts, label, timeout=4000):
     for text in texts:
         try:
@@ -82,7 +89,7 @@ async def try_click(page, texts, label, timeout=4000):
             await loc.click(timeout=timeout)
             log(f"[{label}] clicked element matching text '{text}'")
             await page.wait_for_timeout(2500)
-            await page.wait_for_load_state("networkidle", timeout=15000)
+            await safe_wait_idle(page, 15000, label)
             return True
         except Exception:  # noqa: BLE001
             continue
@@ -102,13 +109,16 @@ async def run():
         page.on("request", handle_request)
         page.on("response", lambda r: asyncio.create_task(handle_response(r)))
 
-        await page.goto(LOGIN_URL, wait_until="networkidle", timeout=45000)
+        try:
+            await page.goto(LOGIN_URL, wait_until="networkidle", timeout=45000)
+        except Exception:  # noqa: BLE001
+            log("Initial page load networkidle timed out - continuing anyway.")
         await page.wait_for_timeout(3000)
 
         guest_btn = page.get_by_text("GUEST LOGIN", exact=False).first
         await guest_btn.click(timeout=8000)
         await page.wait_for_timeout(3000)
-        await page.wait_for_load_state("networkidle", timeout=20000)
+        await safe_wait_idle(page, 20000, "guest-login")
         log("Logged in as guest.")
         await snapshot(page, "after-guest-login")
 
@@ -124,6 +134,7 @@ async def run():
         await try_click(page, ["07:00 PM", "7:00 PM", "19:00", "07:00", "7:00"], "select-showtime")
         await snapshot(page, "after-select-showtime")
 
+        # Try common "next step" buttons after picking a showtime.
         await try_click(
             page,
             ["Continue", "Proceed", "Next", "Book Now", "Select Seat", "Confirm", "BOOK"],
