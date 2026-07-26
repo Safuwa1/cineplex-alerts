@@ -33,17 +33,6 @@
         "2026-07-29"
       ]
     },
-    "479": {
-      "title": "Supergirl (3D)",
-      "category": "running",
-      "slug": "supergirl-3d",
-      "dates": [
-        "2026-07-26",
-        "2026-07-27",
-        "2026-07-28",
-        "2026-07-29"
-      ]
-    },
     "480": {
       "title": "The Odyssey",
       "category": "running",
@@ -70,6 +59,17 @@
       "title": "Time Hoppers",
       "category": "running",
       "slug": "time-hoppers",
+      "dates": [
+        "2026-07-26",
+        "2026-07-27",
+        "2026-07-28",
+        "2026-07-29"
+      ]
+    },
+    "479": {
+      "title": "Supergirl (3D)",
+      "category": "running",
+      "slug": "supergirl-3d",
       "dates": [
         "2026-07-26",
         "2026-07-27",
@@ -120,5 +120,5 @@
       "dates": []
     }
   },
-  "last_checked": "2026-07-26T05:27:32.005218+00:00"
+  "last_checked": "2026-07-26T10:56:43.992304+00:00"
 }
