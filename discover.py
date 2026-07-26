@@ -1,10 +1,9 @@
 """
-Cineplex Alert System - Phase 5h discovery: full text dump past "Select Seat"
+Cineplex Alert System - Phase 5i discovery: click the real seat-type option
 ---------------------------------------------------------------------------------
-After clicking "Select Seat" nothing visible changed in our filtered element
-list - likely a ticket-quantity modal opened that our selector missed. This
-dumps the FULL visible page text (unfiltered) at each stage, and tries a
-few likely next steps (quantity number, then Continue/Confirm again).
+"Select Seat" turned out to be a heading, not a button - the actual next
+click is the seat TYPE option itself (e.g. "Premium"), which sits right
+under that heading. This also tries a "+" quantity stepper afterward.
 """
 
 import asyncio
@@ -117,17 +116,20 @@ async def run():
         await try_click(page, ["07:00 PM", "7:00 PM"], "select-showtime")
         await dump_text(page, "after-select-showtime")
 
-        await try_click(page, ["Select Seat"], "click-select-seat", wait_after=4000)
-        await dump_text(page, "after-select-seat-click")
+        # "Select Seat" was a heading, not a button. The real next click is
+        # the seat TYPE option itself, e.g. "Premium".
+        await try_click(page, ["Premium"], "click-seat-type", wait_after=4000)
+        await dump_text(page, "after-seat-type-click")
 
-        # Speculative next steps: pick a ticket quantity, then confirm again.
-        await try_click(page, ["1"], "pick-quantity-1", wait_after=2500)
-        await dump_text(page, "after-quantity-click")
+        # Try to increase ticket quantity via a "+" stepper, if present.
+        for i in range(2):
+            await try_click(page, ["+"], f"increment-quantity-{i}", wait_after=1500)
+        await dump_text(page, "after-quantity-stepper")
 
         await try_click(
             page,
-            ["Continue", "Proceed", "Next", "Confirm", "Select Seat"],
-            "confirm-after-quantity",
+            ["Continue", "Proceed", "Next", "Confirm"],
+            "confirm-after-seat-type",
             wait_after=4000,
         )
         await dump_text(page, "after-second-confirm")
