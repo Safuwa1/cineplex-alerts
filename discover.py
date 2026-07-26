@@ -1,10 +1,9 @@
 """
-Cineplex Alert System - Phase 5 discovery: inspect the real login page
---------------------------------------------------------------------------
-No credentials are used here. This just loads ticket.cineplexbd.com/login
-and reports what input fields exist (email? phone? password? OTP?) and
-what API call the page makes when it loads, so we can plan a safe
-"log in once, reuse the token" approach instead of repeated logins.
+Cineplex Alert System - Phase 5b discovery: try GUEST LOGIN
+------------------------------------------------------------------
+Tests whether clicking "GUEST LOGIN" on ticket.cineplexbd.com/login
+lets us proceed into the booking flow (and reach seat data) WITHOUT
+needing a real account or solving reCAPTCHA. No credentials involved.
 """
 
 import asyncio
@@ -44,7 +43,7 @@ async def handle_response(response):
                 "url": url,
                 "method": req.method,
                 "status": response.status,
-                "body_preview": body[:1500],
+                "body_preview": body[:2000],
             }
         )
     except Exception as exc:  # noqa: BLE001
@@ -63,31 +62,29 @@ async def run():
         page.on("response", lambda r: asyncio.create_task(handle_response(r)))
 
         await page.goto(LOGIN_URL, wait_until="networkidle", timeout=45000)
-        await page.wait_for_timeout(4000)
+        await page.wait_for_timeout(3000)
         log(f"Loaded {LOGIN_URL}")
 
-        # Inspect every input/button on the page without submitting anything.
-        fields = await page.eval_on_selector_all(
-            "input, button, textarea",
-            """els => els.map(e => ({
-                tag: e.tagName,
-                type: e.type || null,
-                name: e.name || null,
-                id: e.id || null,
-                placeholder: e.placeholder || null,
-                text: (e.innerText || e.value || '').trim().slice(0, 40)
-            }))"""
-        )
-        captured.append({"source": "login-page-form-fields", "fields": fields})
-        log(f"Found {len(fields)} input/button/textarea elements on the login page.")
+        try:
+            guest_btn = page.get_by_text("GUEST LOGIN", exact=False).first
+            await guest_btn.click(timeout=8000)
+            log("Clicked GUEST LOGIN.")
+            await page.wait_for_timeout(4000)
+            await page.wait_for_load_state("networkidle", timeout=20000)
+            log(f"After clicking GUEST LOGIN, page is now at: {page.url}")
 
-        # Also grab any visible headings/labels for context.
-        texts = await page.eval_on_selector_all(
-            "h1, h2, h3, label, p",
-            "els => els.map(e => e.innerText.trim()).filter(t => t && t.length < 100)"
-        )
-        captured.append({"source": "login-page-text", "text_snippets": texts[:30]})
+            # Check for any visible error text (e.g. recaptcha failure messages).
+            body_text = await page.inner_text("body")
+            lowered = body_text.lower()
+            if "recaptcha" in lowered or "captcha" in lowered:
+                log("Page text mentions 'captcha' somewhere - noting for review.")
+            if "error" in lowered or "invalid" in lowered:
+                log("Page text mentions 'error'/'invalid' somewhere - noting for review.")
 
+        except Exception as exc:  # noqa: BLE001
+            log(f"Clicking GUEST LOGIN failed: {exc}")
+
+        await page.wait_for_timeout(3000)
         await browser.close()
 
 
@@ -117,7 +114,7 @@ def main():
     with open("discovery_output.json", "w", encoding="utf-8") as f:
         f.write(report)
     ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    send_email(f"[Cineplex Alert Setup] Login page inspection ({ts})", report[:18000])
+    send_email(f"[Cineplex Alert Setup] Guest login test ({ts})", report[:18000])
     print("done")
 
 
