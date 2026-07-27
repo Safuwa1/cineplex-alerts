@@ -1,9 +1,9 @@
 """
-Cineplex Alert System - Phase 5j discovery: extract real quantity-control HTML
+Cineplex Alert System - Phase 5k discovery: quantity-control HTML (v2)
 ---------------------------------------------------------------------------------
-"+" text-matching is too ambiguous (matched a phone number last time). This
-extracts the ACTUAL HTML markup around the ticket-quantity control instead
-of guessing, so the next round can target it precisely with a real selector.
+Previous attempt searched for exact leaf text '0 Tickets', which turned out
+to be split across separate elements. This searches from the 'Ticket
+Quantity' label's own text instead, which should be more reliable.
 """
 
 import asyncio
@@ -123,11 +123,17 @@ async def run():
             snippet = await page.evaluate(
                 """() => {
                     const all = Array.from(document.querySelectorAll('*'));
-                    const target = all.find(e => e.children.length === 0 && e.textContent.trim() === '0 Tickets');
-                    if (!target) return 'NOT FOUND: no leaf element with exact text \\'0 Tickets\\'';
-                    let el = target;
-                    for (let i = 0; i < 5 && el.parentElement; i++) el = el.parentElement;
-                    return el.outerHTML.slice(0, 4000);
+                    const candidates = all.filter(e => {
+                        const ownText = Array.from(e.childNodes)
+                            .filter(n => n.nodeType === 3)
+                            .map(n => n.textContent.trim())
+                            .join('');
+                        return ownText === 'Ticket Quantity';
+                    });
+                    if (!candidates.length) return 'NOT FOUND: no element with own-text \\'Ticket Quantity\\'';
+                    let el = candidates[0];
+                    for (let i = 0; i < 6 && el.parentElement; i++) el = el.parentElement;
+                    return el.outerHTML.slice(0, 5000);
                 }"""
             )
             text_dumps.append({"stage": "quantity-control-html", "html": snippet})
