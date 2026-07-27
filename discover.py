@@ -1,9 +1,9 @@
 """
-Cineplex Alert System - Phase 5i discovery: click the real seat-type option
+Cineplex Alert System - Phase 5j discovery: extract real quantity-control HTML
 ---------------------------------------------------------------------------------
-"Select Seat" turned out to be a heading, not a button - the actual next
-click is the seat TYPE option itself (e.g. "Premium"), which sits right
-under that heading. This also tries a "+" quantity stepper afterward.
+"+" text-matching is too ambiguous (matched a phone number last time). This
+extracts the ACTUAL HTML markup around the ticket-quantity control instead
+of guessing, so the next round can target it precisely with a real selector.
 """
 
 import asyncio
@@ -116,23 +116,24 @@ async def run():
         await try_click(page, ["07:00 PM", "7:00 PM"], "select-showtime")
         await dump_text(page, "after-select-showtime")
 
-        # "Select Seat" was a heading, not a button. The real next click is
-        # the seat TYPE option itself, e.g. "Premium".
         await try_click(page, ["Premium"], "click-seat-type", wait_after=4000)
         await dump_text(page, "after-seat-type-click")
 
-        # Try to increase ticket quantity via a "+" stepper, if present.
-        for i in range(2):
-            await try_click(page, ["+"], f"increment-quantity-{i}", wait_after=1500)
-        await dump_text(page, "after-quantity-stepper")
-
-        await try_click(
-            page,
-            ["Continue", "Proceed", "Next", "Confirm"],
-            "confirm-after-seat-type",
-            wait_after=4000,
-        )
-        await dump_text(page, "after-second-confirm")
+        try:
+            snippet = await page.evaluate(
+                """() => {
+                    const all = Array.from(document.querySelectorAll('*'));
+                    const target = all.find(e => e.children.length === 0 && e.textContent.trim() === '0 Tickets');
+                    if (!target) return 'NOT FOUND: no leaf element with exact text \\'0 Tickets\\'';
+                    let el = target;
+                    for (let i = 0; i < 5 && el.parentElement; i++) el = el.parentElement;
+                    return el.outerHTML.slice(0, 4000);
+                }"""
+            )
+            text_dumps.append({"stage": "quantity-control-html", "html": snippet})
+            log("Captured HTML snippet around the quantity control.")
+        except Exception as exc:  # noqa: BLE001
+            log(f"Could not extract quantity control HTML: {exc}")
 
         log(f"Final URL: {page.url}")
         await page.wait_for_timeout(2000)
