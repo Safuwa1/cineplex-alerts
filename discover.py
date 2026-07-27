@@ -1,10 +1,10 @@
 """
-Cineplex Alert System - Phase 5m discovery: dump ALL button/quantity HTML
+Cineplex Alert System - Phase 5n discovery: click the real '+' icon precisely
 ---------------------------------------------------------------------------------
-Instead of guessing at text, this grabs the real outerHTML of every button
-(and anything with a class hinting at quantity/counter/stepper) on the page
-at once, so the quantity control can be identified precisely - no more
-trial-and-error clicking.
+Found the container: .ticket_booking_left_item.ticket_qty holds the quantity
+icons as <img> elements (SVG icons, not text). This targets that container
+directly - clicking the LAST icon in it (typically '+') - and also dumps
+its full untruncated HTML for verification.
 """
 
 import asyncio
@@ -121,14 +121,28 @@ async def run():
         await dump_text(page, "after-seat-type-click")
 
         try:
-            buttons_html = await page.eval_on_selector_all(
-                "button, [class*='qty'], [class*='quantity'], [class*='counter'], [class*='stepper'], [class*='plus'], [class*='minus'], [class*='increment'], [class*='decrement']",
-                """els => els.slice(0, 60).map(e => e.outerHTML.slice(0, 400))"""
+            qty_html = await page.eval_on_selector(
+                ".ticket_booking_left_item.ticket_qty",
+                "el => el ? el.outerHTML.slice(0, 3500) : 'NOT FOUND'"
             )
-            text_dumps.append({"stage": "all-buttons-and-likely-quantity-elements", "items": buttons_html})
-            log(f"Captured {len(buttons_html)} button/quantity-like elements' HTML.")
+            text_dumps.append({"stage": "ticket_qty_full_html", "html": qty_html})
+            log("Captured full ticket_qty container HTML.")
         except Exception as exc:  # noqa: BLE001
-            log(f"Could not extract button HTML: {exc}")
+            log(f"Could not get ticket_qty HTML: {exc}")
+
+        try:
+            icons = page.locator(".ticket_booking_left_item.ticket_qty img")
+            count = await icons.count()
+            log(f"Found {count} icon(s) inside the ticket_qty container.")
+            if count >= 2:
+                await icons.last.click(timeout=5000)
+                log("Clicked the LAST icon inside ticket_qty (assumed '+').")
+                await page.wait_for_timeout(3000)
+                await safe_wait_idle(page, 10000, "click-plus-icon")
+        except Exception as exc:  # noqa: BLE001
+            log(f"Could not click quantity icon: {exc}")
+
+        await dump_text(page, "after-plus-icon-click")
 
         log(f"Final URL: {page.url}")
         await page.wait_for_timeout(2000)
