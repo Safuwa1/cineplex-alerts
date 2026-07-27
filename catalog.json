@@ -1,0 +1,42 @@
+{
+  "generated_at": "2026-07-27T07:00:00Z",
+  "locations": [
+    {
+      "id": 4,
+      "title": "Sony Square, Mirpur",
+      "movies": [
+        {
+          "movieId": 1711,
+          "title": "The Odyssey",
+          "dates": [
+            {
+              "date": "2026-07-27",
+              "displayDate": "27 Jul",
+              "shows": [
+                {"programId": 22552, "time": "11:20:00", "displayTime": "11:20 AM", "hall": "Hall 1", "price": 450},
+                {"programId": 22557, "time": "15:15:00", "displayTime": "3:15 PM", "hall": "Hall 1", "price": 500},
+                {"programId": 22558, "time": "19:00:00", "displayTime": "7:00 PM", "hall": "Hall 1", "price": 500}
+              ]
+            }
+          ]
+        },
+        {
+          "movieId": 1705,
+          "title": "Evil Dead Burn (18+)",
+          "dates": [
+            {
+              "date": "2026-07-27",
+              "displayDate": "27 Jul",
+              "shows": [
+                {"programId": 22573, "time": "11:30:00", "displayTime": "11:30 AM", "hall": "Hall 2", "price": 450},
+                {"programId": 22574, "time": "14:00:00", "displayTime": "2:00 PM", "hall": "Hall 2", "price": 450},
+                {"programId": 22581, "time": "16:30:00", "displayTime": "4:30 PM", "hall": "Hall 2", "price": 500},
+                {"programId": 22582, "time": "19:30:00", "displayTime": "7:30 PM", "hall": "Hall 2", "price": 500}
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
