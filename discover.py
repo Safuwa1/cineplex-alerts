@@ -1,9 +1,10 @@
 """
-Cineplex Alert System - Phase 5k discovery: quantity-control HTML (v2)
+Cineplex Alert System - Phase 5m discovery: dump ALL button/quantity HTML
 ---------------------------------------------------------------------------------
-Previous attempt searched for exact leaf text '0 Tickets', which turned out
-to be split across separate elements. This searches from the 'Ticket
-Quantity' label's own text instead, which should be more reliable.
+Instead of guessing at text, this grabs the real outerHTML of every button
+(and anything with a class hinting at quantity/counter/stepper) on the page
+at once, so the quantity control can be identified precisely - no more
+trial-and-error clicking.
 """
 
 import asyncio
@@ -120,26 +121,14 @@ async def run():
         await dump_text(page, "after-seat-type-click")
 
         try:
-            snippet = await page.evaluate(
-                """() => {
-                    const all = Array.from(document.querySelectorAll('*'));
-                    const candidates = all.filter(e => {
-                        const ownText = Array.from(e.childNodes)
-                            .filter(n => n.nodeType === 3)
-                            .map(n => n.textContent.trim())
-                            .join('');
-                        return ownText === 'Ticket Quantity';
-                    });
-                    if (!candidates.length) return 'NOT FOUND: no element with own-text \\'Ticket Quantity\\'';
-                    let el = candidates[0];
-                    for (let i = 0; i < 6 && el.parentElement; i++) el = el.parentElement;
-                    return el.outerHTML.slice(0, 5000);
-                }"""
+            buttons_html = await page.eval_on_selector_all(
+                "button, [class*='qty'], [class*='quantity'], [class*='counter'], [class*='stepper'], [class*='plus'], [class*='minus'], [class*='increment'], [class*='decrement']",
+                """els => els.slice(0, 60).map(e => e.outerHTML.slice(0, 400))"""
             )
-            text_dumps.append({"stage": "quantity-control-html", "html": snippet})
-            log("Captured HTML snippet around the quantity control.")
+            text_dumps.append({"stage": "all-buttons-and-likely-quantity-elements", "items": buttons_html})
+            log(f"Captured {len(buttons_html)} button/quantity-like elements' HTML.")
         except Exception as exc:  # noqa: BLE001
-            log(f"Could not extract quantity control HTML: {exc}")
+            log(f"Could not extract button HTML: {exc}")
 
         log(f"Final URL: {page.url}")
         await page.wait_for_timeout(2000)
