@@ -1,42 +1,10 @@
 {
-  "generated_at": "2026-07-28T02:41:15.976065+00:00",
+  "generated_at": "2026-07-28T11:28:13.789714+00:00",
   "locations": [
     {
       "id": 1,
       "title": "Bashundhara Shopping Mall, Panthapath",
       "movies": [
-        {
-          "movieId": 1687,
-          "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
-          "dates": [
-            {
-              "date": "2026-07-28",
-              "displayDate": "28 Jul",
-              "shows": [
-                {
-                  "programId": 129684,
-                  "time": "14:15:00",
-                  "displayTime": "2:15 PM",
-                  "hall": "Hall 6",
-                  "price": 500
-                }
-              ]
-            },
-            {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
-              "shows": [
-                {
-                  "programId": 129689,
-                  "time": "20:05:00",
-                  "displayTime": "8:05 PM",
-                  "hall": "Hall 6",
-                  "price": 600
-                }
-              ]
-            }
-          ]
-        },
         {
           "movieId": 1705,
           "title": "Evil Dead Burn (18+)",
@@ -45,27 +13,6 @@
               "date": "2026-07-28",
               "displayDate": "28 Jul",
               "shows": [
-                {
-                  "programId": 129584,
-                  "time": "11:20:00",
-                  "displayTime": "11:20 AM",
-                  "hall": "Hall 1",
-                  "price": 400
-                },
-                {
-                  "programId": 129585,
-                  "time": "13:50:00",
-                  "displayTime": "1:50 PM",
-                  "hall": "Hall 1",
-                  "price": 400
-                },
-                {
-                  "programId": 129592,
-                  "time": "17:00:00",
-                  "displayTime": "5:00 PM",
-                  "hall": "Hall 1",
-                  "price": 500
-                },
                 {
                   "programId": 129593,
                   "time": "19:30:00",
@@ -119,38 +66,6 @@
           ]
         },
         {
-          "movieId": 1710,
-          "title": "Supergirl (3D)",
-          "dates": [
-            {
-              "date": "2026-07-28",
-              "displayDate": "28 Jul",
-              "shows": [
-                {
-                  "programId": 129600,
-                  "time": "13:35:00",
-                  "displayTime": "1:35 PM",
-                  "hall": "Hall 2",
-                  "price": 400
-                }
-              ]
-            },
-            {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
-              "shows": [
-                {
-                  "programId": 129601,
-                  "time": "13:35:00",
-                  "displayTime": "1:35 PM",
-                  "hall": "Hall 2",
-                  "price": 400
-                }
-              ]
-            }
-          ]
-        },
-        {
           "movieId": 1711,
           "title": "The Odyssey",
           "dates": [
@@ -159,13 +74,6 @@
               "displayDate": "28 Jul",
               "shows": [
                 {
-                  "programId": 129632,
-                  "time": "13:00:00",
-                  "displayTime": "1:00 PM",
-                  "hall": "Hall 3",
-                  "price": 400
-                },
-                {
                   "programId": 129636,
                   "time": "18:30:00",
                   "displayTime": "6:30 PM",
@@ -173,39 +81,11 @@
                   "price": 500
                 },
                 {
-                  "programId": 129658,
-                  "time": "11:30:00",
-                  "displayTime": "11:30 AM",
-                  "hall": "Hall 5",
-                  "price": 650
-                },
-                {
-                  "programId": 129662,
-                  "time": "15:00:00",
-                  "displayTime": "3:00 PM",
-                  "hall": "Hall 5",
-                  "price": 850
-                },
-                {
                   "programId": 129663,
                   "time": "19:00:00",
                   "displayTime": "7:00 PM",
                   "hall": "Hall 5",
                   "price": 850
-                },
-                {
-                  "programId": 129672,
-                  "time": "10:50:00",
-                  "displayTime": "10:50 AM",
-                  "hall": "Hall 6",
-                  "price": 500
-                },
-                {
-                  "programId": 129676,
-                  "time": "16:40:00",
-                  "displayTime": "4:40 PM",
-                  "hall": "Hall 6",
-                  "price": 600
                 }
               ]
             },
@@ -253,45 +133,6 @@
           ]
         },
         {
-          "movieId": 1712,
-          "title": "Moana",
-          "dates": [
-            {
-              "date": "2026-07-28",
-              "displayDate": "28 Jul",
-              "shows": [
-                {
-                  "programId": 129612,
-                  "time": "11:00:00",
-                  "displayTime": "11:00 AM",
-                  "hall": "Hall 2",
-                  "price": 400
-                },
-                {
-                  "programId": 129606,
-                  "time": "17:50:00",
-                  "displayTime": "5:50 PM",
-                  "hall": "Hall 2",
-                  "price": 500
-                }
-              ]
-            },
-            {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
-              "shows": [
-                {
-                  "programId": 129607,
-                  "time": "17:50:00",
-                  "displayTime": "5:50 PM",
-                  "hall": "Hall 2",
-                  "price": 500
-                }
-              ]
-            }
-          ]
-        },
-        {
           "movieId": 1713,
           "title": "Passenger",
           "dates": [
@@ -299,13 +140,6 @@
               "date": "2026-07-28",
               "displayDate": "28 Jul",
               "shows": [
-                {
-                  "programId": 129622,
-                  "time": "15:50:00",
-                  "displayTime": "3:50 PM",
-                  "hall": "Hall 2",
-                  "price": 500
-                },
                 {
                   "programId": 129623,
                   "time": "20:15:00",
@@ -338,29 +172,66 @@
           ]
         },
         {
-          "movieId": 1714,
-          "title": "Time Hoppers",
+          "movieId": 1687,
+          "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
           "dates": [
             {
-              "date": "2026-07-28",
-              "displayDate": "28 Jul",
+              "date": "2026-07-29",
+              "displayDate": "29 Jul",
               "shows": [
                 {
-                  "programId": 129644,
-                  "time": "11:10:00",
-                  "displayTime": "11:10 AM",
-                  "hall": "Hall 3",
-                  "price": 400
-                },
+                  "programId": 129689,
+                  "time": "20:05:00",
+                  "displayTime": "8:05 PM",
+                  "hall": "Hall 6",
+                  "price": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "movieId": 1710,
+          "title": "Supergirl (3D)",
+          "dates": [
+            {
+              "date": "2026-07-29",
+              "displayDate": "29 Jul",
+              "shows": [
                 {
-                  "programId": 129648,
-                  "time": "16:30:00",
-                  "displayTime": "4:30 PM",
-                  "hall": "Hall 3",
+                  "programId": 129601,
+                  "time": "13:35:00",
+                  "displayTime": "1:35 PM",
+                  "hall": "Hall 2",
+                  "price": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "movieId": 1712,
+          "title": "Moana",
+          "dates": [
+            {
+              "date": "2026-07-29",
+              "displayDate": "29 Jul",
+              "shows": [
+                {
+                  "programId": 129607,
+                  "time": "17:50:00",
+                  "displayTime": "5:50 PM",
+                  "hall": "Hall 2",
                   "price": 500
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "movieId": 1714,
+          "title": "Time Hoppers",
+          "dates": [
             {
               "date": "2026-07-29",
               "displayDate": "29 Jul",
@@ -423,20 +294,6 @@
               "displayDate": "28 Jul",
               "shows": [
                 {
-                  "programId": 29861,
-                  "time": "11:20:00",
-                  "displayTime": "11:20 AM",
-                  "hall": "Hall 1",
-                  "price": 400
-                },
-                {
-                  "programId": 29862,
-                  "time": "14:00:00",
-                  "displayTime": "2:00 PM",
-                  "hall": "Hall 1",
-                  "price": 400
-                },
-                {
                   "programId": 29867,
                   "time": "19:30:00",
                   "displayTime": "7:30 PM",
@@ -483,32 +340,11 @@
               "displayDate": "28 Jul",
               "shows": [
                 {
-                  "programId": 29883,
-                  "time": "11:30:00",
-                  "displayTime": "11:30 AM",
-                  "hall": "Hall 2",
-                  "price": 500
-                },
-                {
-                  "programId": 29889,
-                  "time": "15:00:00",
-                  "displayTime": "3:00 PM",
-                  "hall": "Hall 2",
-                  "price": 600
-                },
-                {
                   "programId": 29890,
                   "time": "19:00:00",
                   "displayTime": "7:00 PM",
                   "hall": "Hall 2",
                   "price": 600
-                },
-                {
-                  "programId": 29897,
-                  "time": "16:15:00",
-                  "displayTime": "4:15 PM",
-                  "hall": "Hall 3",
-                  "price": 450
                 }
               ]
             },
@@ -553,26 +389,6 @@
           "title": "Moana",
           "dates": [
             {
-              "date": "2026-07-28",
-              "displayDate": "28 Jul",
-              "shows": [
-                {
-                  "programId": 29913,
-                  "time": "11:10:00",
-                  "displayTime": "11:10 AM",
-                  "hall": "Hall 3",
-                  "price": 400
-                },
-                {
-                  "programId": 29914,
-                  "time": "13:45:00",
-                  "displayTime": "1:45 PM",
-                  "hall": "Hall 3",
-                  "price": 400
-                }
-              ]
-            },
-            {
               "date": "2026-07-29",
               "displayDate": "29 Jul",
               "shows": [
@@ -599,19 +415,6 @@
           "title": "Passenger",
           "dates": [
             {
-              "date": "2026-07-28",
-              "displayDate": "28 Jul",
-              "shows": [
-                {
-                  "programId": 29873,
-                  "time": "16:30:00",
-                  "displayTime": "4:30 PM",
-                  "hall": "Hall 1",
-                  "price": 450
-                }
-              ]
-            },
-            {
               "date": "2026-07-29",
               "displayDate": "29 Jul",
               "shows": [
@@ -633,38 +436,6 @@
       "title": "Star Cineplex, SKS Tower, Mohakhali",
       "movies": [
         {
-          "movieId": 1687,
-          "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
-          "dates": [
-            {
-              "date": "2026-07-28",
-              "displayDate": "28 Jul",
-              "shows": [
-                {
-                  "programId": 26959,
-                  "time": "16:40:00",
-                  "displayTime": "4:40 PM",
-                  "hall": "Hall 2",
-                  "price": 600
-                }
-              ]
-            },
-            {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
-              "shows": [
-                {
-                  "programId": 26960,
-                  "time": "16:40:00",
-                  "displayTime": "4:40 PM",
-                  "hall": "Hall 2",
-                  "price": 600
-                }
-              ]
-            }
-          ]
-        },
-        {
           "movieId": 1705,
           "title": "Evil Dead Burn (18+)",
           "dates": [
@@ -672,13 +443,6 @@
               "date": "2026-07-28",
               "displayDate": "28 Jul",
               "shows": [
-                {
-                  "programId": 26925,
-                  "time": "13:00:00",
-                  "displayTime": "1:00 PM",
-                  "hall": "Hall 1",
-                  "price": 400
-                },
                 {
                   "programId": 26929,
                   "time": "19:30:00",
@@ -719,39 +483,11 @@
               "displayDate": "28 Jul",
               "shows": [
                 {
-                  "programId": 26941,
-                  "time": "16:00:00",
-                  "displayTime": "4:00 PM",
-                  "hall": "Hall 1",
-                  "price": 500
-                },
-                {
-                  "programId": 26949,
-                  "time": "13:00:00",
-                  "displayTime": "1:00 PM",
-                  "hall": "Hall 2",
-                  "price": 500
-                },
-                {
                   "programId": 26953,
                   "time": "19:00:00",
                   "displayTime": "7:00 PM",
                   "hall": "Hall 2",
                   "price": 600
-                },
-                {
-                  "programId": 26975,
-                  "time": "11:30:00",
-                  "displayTime": "11:30 AM",
-                  "hall": "Hall 3",
-                  "price": 1200
-                },
-                {
-                  "programId": 26981,
-                  "time": "15:00:00",
-                  "displayTime": "3:00 PM",
-                  "hall": "Hall 3",
-                  "price": 1500
                 },
                 {
                   "programId": 26982,
@@ -813,22 +549,28 @@
           ]
         },
         {
+          "movieId": 1687,
+          "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
+          "dates": [
+            {
+              "date": "2026-07-29",
+              "displayDate": "29 Jul",
+              "shows": [
+                {
+                  "programId": 26960,
+                  "time": "16:40:00",
+                  "displayTime": "4:40 PM",
+                  "hall": "Hall 2",
+                  "price": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
           "movieId": 1713,
           "title": "Passenger",
           "dates": [
-            {
-              "date": "2026-07-28",
-              "displayDate": "28 Jul",
-              "shows": [
-                {
-                  "programId": 26965,
-                  "time": "11:00:00",
-                  "displayTime": "11:00 AM",
-                  "hall": "Hall 2",
-                  "price": 500
-                }
-              ]
-            },
             {
               "date": "2026-07-29",
               "displayDate": "29 Jul",
@@ -848,19 +590,6 @@
           "movieId": 1714,
           "title": "Time Hoppers",
           "dates": [
-            {
-              "date": "2026-07-28",
-              "displayDate": "28 Jul",
-              "shows": [
-                {
-                  "programId": 26935,
-                  "time": "11:15:00",
-                  "displayTime": "11:15 AM",
-                  "hall": "Hall 1",
-                  "price": 400
-                }
-              ]
-            },
             {
               "date": "2026-07-29",
               "displayDate": "29 Jul",
@@ -923,27 +652,6 @@
               "displayDate": "28 Jul",
               "shows": [
                 {
-                  "programId": 22575,
-                  "time": "11:30:00",
-                  "displayTime": "11:30 AM",
-                  "hall": "Hall 2",
-                  "price": 450
-                },
-                {
-                  "programId": 22576,
-                  "time": "14:00:00",
-                  "displayTime": "2:00 PM",
-                  "hall": "Hall 2",
-                  "price": 450
-                },
-                {
-                  "programId": 22583,
-                  "time": "16:30:00",
-                  "displayTime": "4:30 PM",
-                  "hall": "Hall 2",
-                  "price": 500
-                },
-                {
                   "programId": 22584,
                   "time": "19:30:00",
                   "displayTime": "7:30 PM",
@@ -997,20 +705,6 @@
               "displayDate": "28 Jul",
               "shows": [
                 {
-                  "programId": 22553,
-                  "time": "11:20:00",
-                  "displayTime": "11:20 AM",
-                  "hall": "Hall 1",
-                  "price": 450
-                },
-                {
-                  "programId": 22559,
-                  "time": "15:15:00",
-                  "displayTime": "3:15 PM",
-                  "hall": "Hall 1",
-                  "price": 500
-                },
-                {
                   "programId": 22560,
                   "time": "19:00:00",
                   "displayTime": "7:00 PM",
@@ -1053,19 +747,6 @@
           "title": "Moana",
           "dates": [
             {
-              "date": "2026-07-28",
-              "displayDate": "28 Jul",
-              "shows": [
-                {
-                  "programId": 22591,
-                  "time": "11:00:00",
-                  "displayTime": "11:00 AM",
-                  "hall": "Hall 3",
-                  "price": 450
-                }
-              ]
-            },
-            {
               "date": "2026-07-29",
               "displayDate": "29 Jul",
               "shows": [
@@ -1084,26 +765,6 @@
           "movieId": 1713,
           "title": "Passenger",
           "dates": [
-            {
-              "date": "2026-07-28",
-              "displayDate": "28 Jul",
-              "shows": [
-                {
-                  "programId": 22599,
-                  "time": "13:45:00",
-                  "displayTime": "1:45 PM",
-                  "hall": "Hall 3",
-                  "price": 450
-                },
-                {
-                  "programId": 22603,
-                  "time": "17:40:00",
-                  "displayTime": "5:40 PM",
-                  "hall": "Hall 3",
-                  "price": 500
-                }
-              ]
-            },
             {
               "date": "2026-07-29",
               "displayDate": "29 Jul",
@@ -1130,19 +791,6 @@
           "movieId": 1714,
           "title": "Time Hoppers",
           "dates": [
-            {
-              "date": "2026-07-28",
-              "displayDate": "28 Jul",
-              "shows": [
-                {
-                  "programId": 22609,
-                  "time": "15:50:00",
-                  "displayTime": "3:50 PM",
-                  "hall": "Hall 3",
-                  "price": 500
-                }
-              ]
-            },
             {
               "date": "2026-07-29",
               "displayDate": "29 Jul",
@@ -1172,20 +820,6 @@
               "date": "2026-07-28",
               "displayDate": "28 Jul",
               "shows": [
-                {
-                  "programId": 4827,
-                  "time": "11:30:00",
-                  "displayTime": "11:30 AM",
-                  "hall": "Hall 1",
-                  "price": 350
-                },
-                {
-                  "programId": 4833,
-                  "time": "15:00:00",
-                  "displayTime": "3:00 PM",
-                  "hall": "Hall 1",
-                  "price": 400
-                },
                 {
                   "programId": 4834,
                   "time": "18:45:00",
@@ -1231,38 +865,6 @@
       "title": "Bali Arcade, Chattogram",
       "movies": [
         {
-          "movieId": 1687,
-          "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
-          "dates": [
-            {
-              "date": "2026-07-28",
-              "displayDate": "28 Jul",
-              "shows": [
-                {
-                  "programId": 16655,
-                  "time": "16:45:00",
-                  "displayTime": "4:45 PM",
-                  "hall": "Hall 1",
-                  "price": 450
-                }
-              ]
-            },
-            {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
-              "shows": [
-                {
-                  "programId": 16656,
-                  "time": "16:45:00",
-                  "displayTime": "4:45 PM",
-                  "hall": "Hall 1",
-                  "price": 450
-                }
-              ]
-            }
-          ]
-        },
-        {
           "movieId": 1705,
           "title": "Evil Dead Burn (18+)",
           "dates": [
@@ -1270,27 +872,6 @@
               "date": "2026-07-28",
               "displayDate": "28 Jul",
               "shows": [
-                {
-                  "programId": 16687,
-                  "time": "11:15:00",
-                  "displayTime": "11:15 AM",
-                  "hall": "Hall 3",
-                  "price": 400
-                },
-                {
-                  "programId": 16688,
-                  "time": "13:45:00",
-                  "displayTime": "1:45 PM",
-                  "hall": "Hall 3",
-                  "price": 400
-                },
-                {
-                  "programId": 16695,
-                  "time": "16:15:00",
-                  "displayTime": "4:15 PM",
-                  "hall": "Hall 3",
-                  "price": 450
-                },
                 {
                   "programId": 16696,
                   "time": "19:30:00",
@@ -1345,20 +926,6 @@
               "displayDate": "28 Jul",
               "shows": [
                 {
-                  "programId": 16665,
-                  "time": "11:30:00",
-                  "displayTime": "11:30 AM",
-                  "hall": "Hall 2",
-                  "price": 400
-                },
-                {
-                  "programId": 16671,
-                  "time": "15:00:00",
-                  "displayTime": "3:00 PM",
-                  "hall": "Hall 2",
-                  "price": 450
-                },
-                {
                   "programId": 16672,
                   "time": "19:00:00",
                   "displayTime": "7:00 PM",
@@ -1405,13 +972,6 @@
               "displayDate": "28 Jul",
               "shows": [
                 {
-                  "programId": 16633,
-                  "time": "12:50:00",
-                  "displayTime": "12:50 PM",
-                  "hall": "Hall 1",
-                  "price": 400
-                },
-                {
                   "programId": 16637,
                   "time": "19:15:00",
                   "displayTime": "7:15 PM",
@@ -1443,29 +1003,28 @@
           ]
         },
         {
+          "movieId": 1687,
+          "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
+          "dates": [
+            {
+              "date": "2026-07-29",
+              "displayDate": "29 Jul",
+              "shows": [
+                {
+                  "programId": 16656,
+                  "time": "16:45:00",
+                  "displayTime": "4:45 PM",
+                  "hall": "Hall 1",
+                  "price": 450
+                }
+              ]
+            }
+          ]
+        },
+        {
           "movieId": 1714,
           "title": "Time Hoppers",
           "dates": [
-            {
-              "date": "2026-07-28",
-              "displayDate": "28 Jul",
-              "shows": [
-                {
-                  "programId": 16645,
-                  "time": "11:00:00",
-                  "displayTime": "11:00 AM",
-                  "hall": "Hall 1",
-                  "price": 400
-                },
-                {
-                  "programId": 16649,
-                  "time": "14:50:00",
-                  "displayTime": "2:50 PM",
-                  "hall": "Hall 1",
-                  "price": 400
-                }
-              ]
-            },
             {
               "date": "2026-07-29",
               "displayDate": "29 Jul",
@@ -1495,38 +1054,6 @@
       "title": "Centrepoint, Uttara",
       "movies": [
         {
-          "movieId": 1687,
-          "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
-          "dates": [
-            {
-              "date": "2026-07-28",
-              "displayDate": "28 Jul",
-              "shows": [
-                {
-                  "programId": 7752,
-                  "time": "14:20:00",
-                  "displayTime": "2:20 PM",
-                  "hall": "Hall 1",
-                  "price": 450
-                }
-              ]
-            },
-            {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
-              "shows": [
-                {
-                  "programId": 7753,
-                  "time": "14:20:00",
-                  "displayTime": "2:20 PM",
-                  "hall": "Hall 1",
-                  "price": 450
-                }
-              ]
-            }
-          ]
-        },
-        {
           "movieId": 1705,
           "title": "Evil Dead Burn (18+)",
           "dates": [
@@ -1534,27 +1061,6 @@
               "date": "2026-07-28",
               "displayDate": "28 Jul",
               "shows": [
-                {
-                  "programId": 7775,
-                  "time": "11:00:00",
-                  "displayTime": "11:00 AM",
-                  "hall": "Hall 2 (Royal)",
-                  "price": 1400
-                },
-                {
-                  "programId": 7779,
-                  "time": "16:50:00",
-                  "displayTime": "4:50 PM",
-                  "hall": "Hall 2 (Royal)",
-                  "price": 1800
-                },
-                {
-                  "programId": 7822,
-                  "time": "13:10:00",
-                  "displayTime": "1:10 PM",
-                  "hall": "Hall 4",
-                  "price": 450
-                },
                 {
                   "programId": 7826,
                   "time": "19:30:00",
@@ -1609,46 +1115,11 @@
               "displayDate": "28 Jul",
               "shows": [
                 {
-                  "programId": 7741,
-                  "time": "10:50:00",
-                  "displayTime": "10:50 AM",
-                  "hall": "Hall 1",
-                  "price": 450
-                },
-                {
-                  "programId": 7745,
-                  "time": "16:45:00",
-                  "displayTime": "4:45 PM",
-                  "hall": "Hall 1",
-                  "price": 550
-                },
-                {
-                  "programId": 7763,
-                  "time": "13:25:00",
-                  "displayTime": "1:25 PM",
-                  "hall": "Hall 2 (Royal)",
-                  "price": 1400
-                },
-                {
                   "programId": 7767,
                   "time": "19:15:00",
                   "displayTime": "7:15 PM",
                   "hall": "Hall 2 (Royal)",
                   "price": 1800
-                },
-                {
-                  "programId": 7789,
-                  "time": "11:30:00",
-                  "displayTime": "11:30 AM",
-                  "hall": "Hall 3 (VIP)",
-                  "price": 900
-                },
-                {
-                  "programId": 7795,
-                  "time": "15:00:00",
-                  "displayTime": "3:00 PM",
-                  "hall": "Hall 3 (VIP)",
-                  "price": 1200
                 },
                 {
                   "programId": 7796,
@@ -1723,20 +1194,6 @@
                   "displayTime": "8:10 PM",
                   "hall": "Hall 1",
                   "price": 550
-                },
-                {
-                  "programId": 7811,
-                  "time": "11:10:00",
-                  "displayTime": "11:10 AM",
-                  "hall": "Hall 4",
-                  "price": 450
-                },
-                {
-                  "programId": 7815,
-                  "time": "17:30:00",
-                  "displayTime": "5:30 PM",
-                  "hall": "Hall 4",
-                  "price": 550
                 }
               ]
             },
@@ -1763,22 +1220,28 @@
           ]
         },
         {
+          "movieId": 1687,
+          "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
+          "dates": [
+            {
+              "date": "2026-07-29",
+              "displayDate": "29 Jul",
+              "shows": [
+                {
+                  "programId": 7753,
+                  "time": "14:20:00",
+                  "displayTime": "2:20 PM",
+                  "hall": "Hall 1",
+                  "price": 450
+                }
+              ]
+            }
+          ]
+        },
+        {
           "movieId": 1714,
           "title": "Time Hoppers",
           "dates": [
-            {
-              "date": "2026-07-28",
-              "displayDate": "28 Jul",
-              "shows": [
-                {
-                  "programId": 7803,
-                  "time": "15:40:00",
-                  "displayTime": "3:40 PM",
-                  "hall": "Hall 4",
-                  "price": 550
-                }
-              ]
-            },
             {
               "date": "2026-07-29",
               "displayDate": "29 Jul",
@@ -1808,27 +1271,6 @@
               "date": "2026-07-28",
               "displayDate": "28 Jul",
               "shows": [
-                {
-                  "programId": 1314,
-                  "time": "11:15:00",
-                  "displayTime": "11:15 AM",
-                  "hall": "Hall 2",
-                  "price": 300
-                },
-                {
-                  "programId": 1315,
-                  "time": "14:00:00",
-                  "displayTime": "2:00 PM",
-                  "hall": "Hall 2",
-                  "price": 300
-                },
-                {
-                  "programId": 1322,
-                  "time": "16:30:00",
-                  "displayTime": "4:30 PM",
-                  "hall": "Hall 2",
-                  "price": 400
-                },
                 {
                   "programId": 1323,
                   "time": "19:15:00",
@@ -1883,20 +1325,6 @@
               "displayDate": "28 Jul",
               "shows": [
                 {
-                  "programId": 1292,
-                  "time": "11:30:00",
-                  "displayTime": "11:30 AM",
-                  "hall": "Hall 1",
-                  "price": 300
-                },
-                {
-                  "programId": 1298,
-                  "time": "15:00:00",
-                  "displayTime": "3:00 PM",
-                  "hall": "Hall 1",
-                  "price": 400
-                },
-                {
                   "programId": 1299,
                   "time": "18:45:00",
                   "displayTime": "6:45 PM",
@@ -1935,52 +1363,6 @@
           ]
         },
         {
-          "movieId": 1712,
-          "title": "Moana",
-          "dates": [
-            {
-              "date": "2026-07-28",
-              "displayDate": "28 Jul",
-              "shows": [
-                {
-                  "programId": 1344,
-                  "time": "11:00:00",
-                  "displayTime": "11:00 AM",
-                  "hall": "Hall 3",
-                  "price": 300
-                },
-                {
-                  "programId": 1348,
-                  "time": "15:20:00",
-                  "displayTime": "3:20 PM",
-                  "hall": "Hall 3",
-                  "price": 400
-                }
-              ]
-            },
-            {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
-              "shows": [
-                {
-                  "programId": 1345,
-                  "time": "11:00:00",
-                  "displayTime": "11:00 AM",
-                  "hall": "Hall 3",
-                  "price": 300
-                },
-                {
-                  "programId": 1349,
-                  "time": "15:20:00",
-                  "displayTime": "3:20 PM",
-                  "hall": "Hall 3",
-                  "price": 400
-                }
-              ]
-            }
-          ]
-        },
-        {
           "movieId": 1713,
           "title": "Passenger",
           "dates": [
@@ -1988,13 +1370,6 @@
               "date": "2026-07-28",
               "displayDate": "28 Jul",
               "shows": [
-                {
-                  "programId": 1332,
-                  "time": "13:20:00",
-                  "displayTime": "1:20 PM",
-                  "hall": "Hall 3",
-                  "price": 300
-                },
                 {
                   "programId": 1336,
                   "time": "19:45:00",
@@ -2027,22 +1402,35 @@
           ]
         },
         {
-          "movieId": 1714,
-          "title": "Time Hoppers",
+          "movieId": 1712,
+          "title": "Moana",
           "dates": [
             {
-              "date": "2026-07-28",
-              "displayDate": "28 Jul",
+              "date": "2026-07-29",
+              "displayDate": "29 Jul",
               "shows": [
                 {
-                  "programId": 1354,
-                  "time": "17:50:00",
-                  "displayTime": "5:50 PM",
+                  "programId": 1345,
+                  "time": "11:00:00",
+                  "displayTime": "11:00 AM",
+                  "hall": "Hall 3",
+                  "price": 300
+                },
+                {
+                  "programId": 1349,
+                  "time": "15:20:00",
+                  "displayTime": "3:20 PM",
                   "hall": "Hall 3",
                   "price": 400
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "movieId": 1714,
+          "title": "Time Hoppers",
+          "dates": [
             {
               "date": "2026-07-29",
               "displayDate": "29 Jul",
@@ -2065,38 +1453,6 @@
       "title": "Finlay Square, Chattogram",
       "movies": [
         {
-          "movieId": 1687,
-          "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
-          "dates": [
-            {
-              "date": "2026-07-28",
-              "displayDate": "28 Jul",
-              "shows": [
-                {
-                  "programId": 1036,
-                  "time": "17:00:00",
-                  "displayTime": "5:00 PM",
-                  "hall": "Hall 2",
-                  "price": 1200
-                }
-              ]
-            },
-            {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
-              "shows": [
-                {
-                  "programId": 1037,
-                  "time": "17:00:00",
-                  "displayTime": "5:00 PM",
-                  "hall": "Hall 2",
-                  "price": 1200
-                }
-              ]
-            }
-          ]
-        },
-        {
           "movieId": 1705,
           "title": "Evil Dead Burn (18+)",
           "dates": [
@@ -2104,13 +1460,6 @@
               "date": "2026-07-28",
               "displayDate": "28 Jul",
               "shows": [
-                {
-                  "programId": 1002,
-                  "time": "14:25:00",
-                  "displayTime": "2:25 PM",
-                  "hall": "Hall 1",
-                  "price": 350
-                },
                 {
                   "programId": 1006,
                   "time": "20:10:00",
@@ -2150,27 +1499,6 @@
               "date": "2026-07-28",
               "displayDate": "28 Jul",
               "shows": [
-                {
-                  "programId": 1014,
-                  "time": "11:00:00",
-                  "displayTime": "11:00 AM",
-                  "hall": "Hall 1",
-                  "price": 350
-                },
-                {
-                  "programId": 1018,
-                  "time": "16:50:00",
-                  "displayTime": "4:50 PM",
-                  "hall": "Hall 1",
-                  "price": 400
-                },
-                {
-                  "programId": 1026,
-                  "time": "13:40:00",
-                  "displayTime": "1:40 PM",
-                  "hall": "Hall 2",
-                  "price": 1000
-                },
                 {
                   "programId": 1030,
                   "time": "19:15:00",
@@ -2217,22 +1545,28 @@
           ]
         },
         {
+          "movieId": 1687,
+          "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
+          "dates": [
+            {
+              "date": "2026-07-29",
+              "displayDate": "29 Jul",
+              "shows": [
+                {
+                  "programId": 1037,
+                  "time": "17:00:00",
+                  "displayTime": "5:00 PM",
+                  "hall": "Hall 2",
+                  "price": 1200
+                }
+              ]
+            }
+          ]
+        },
+        {
           "movieId": 1713,
           "title": "Passenger",
           "dates": [
-            {
-              "date": "2026-07-28",
-              "displayDate": "28 Jul",
-              "shows": [
-                {
-                  "programId": 1042,
-                  "time": "11:10:00",
-                  "displayTime": "11:10 AM",
-                  "hall": "Hall 2",
-                  "price": 1000
-                }
-              ]
-            },
             {
               "date": "2026-07-29",
               "displayDate": "29 Jul",
