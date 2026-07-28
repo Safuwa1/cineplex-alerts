@@ -27,6 +27,15 @@
         "2026-07-29"
       ]
     },
+    "479": {
+      "title": "Supergirl (3D)",
+      "category": "running",
+      "slug": "supergirl-3d",
+      "dates": [
+        "2026-07-28",
+        "2026-07-29"
+      ]
+    },
     "480": {
       "title": "The Odyssey",
       "category": "running",
@@ -49,15 +58,6 @@
       "title": "Time Hoppers",
       "category": "running",
       "slug": "time-hoppers",
-      "dates": [
-        "2026-07-28",
-        "2026-07-29"
-      ]
-    },
-    "479": {
-      "title": "Supergirl (3D)",
-      "category": "running",
-      "slug": "supergirl-3d",
       "dates": [
         "2026-07-28",
         "2026-07-29"
@@ -110,9 +110,15 @@
       "category": "upcoming",
       "slug": "spider-man-brand-new-day-2d",
       "dates": []
+    },
+    "487": {
+      "title": "Shekor",
+      "category": "upcoming",
+      "slug": "shekor",
+      "dates": []
     }
   },
-  "last_checked": "2026-07-28T11:30:17.409666+00:00",
+  "last_checked": "2026-07-28T17:08:06.094104+00:00",
   "seats": {
     "4:22557": {
       "available": [
@@ -731,8 +737,109 @@
         "S20"
       ],
       "total": 263,
-      "checked_at": "2026-07-28T11:30:17.357849+00:00",
+      "checked_at": "2026-07-28T17:08:06.041892+00:00",
       "summary": "Evil Dead Burn (18+) | Shimanto Shambhar, Dhanmondi 2 | 28 Jul 2:00 PM"
+    },
+    "1:129636": {
+      "available": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08",
+        "A09",
+        "A10",
+        "A11",
+        "A12",
+        "A13",
+        "A14",
+        "A15",
+        "A16",
+        "A17",
+        "A18",
+        "A19",
+        "A20",
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "B06",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12",
+        "B13",
+        "B14",
+        "B15",
+        "B16",
+        "B17",
+        "B18",
+        "B19",
+        "B20",
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C18",
+        "C19",
+        "C20",
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D15",
+        "D18",
+        "D19",
+        "D20",
+        "F01",
+        "F02",
+        "F03",
+        "F04",
+        "F07",
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "H01",
+        "H02",
+        "H03",
+        "H04",
+        "J01",
+        "J02",
+        "J03",
+        "J04",
+        "J18",
+        "J19",
+        "J20",
+        "K18",
+        "K19",
+        "K20",
+        "L01",
+        "L02",
+        "L05",
+        "M01",
+        "M02",
+        "M03",
+        "M04",
+        "M17",
+        "M18",
+        "M19",
+        "M20",
+        "N18",
+        "N19",
+        "N20",
+        "N21",
+        "N22"
+      ],
+      "total": 248,
+      "checked_at": "2026-07-28T17:08:04.558084+00:00",
+      "summary": "The Odyssey | Bashundhara Shopping Mall, Panthapath | 28 Jul 6:30 PM"
     }
   }
 }
