@@ -11,7 +11,7 @@ permissions:
 jobs:
   monitor:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 25
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -34,10 +34,10 @@ jobs:
           RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
         run: python monitor.py
 
-      - name: Save updated state back to the repository
+      - name: Save updated state and catalog back to the repository
         run: |
           git config user.name "cineplex-alert-bot"
           git config user.email "actions@github.com"
-          git add state.json
-          git commit -m "Update tracked state" || echo "Nothing new to commit"
+          git add state.json catalog.json
+          git commit -m "Update tracked state and catalog" || echo "Nothing new to commit"
           git push
