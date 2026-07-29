@@ -1,4 +1,4 @@
-       <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -550,5 +550,26 @@
       successTimer = setTimeout(() => { if (submitting) showSuccess(); }, 3500);
     });
 
-    iframe.addEventListener('load', () 
-      
+    iframe.addEventListener('load', () => {
+      if (submitting) showSuccess();
+    });
+
+    resetLink.addEventListener('click', () => {
+      form.reset();
+      setOptions(movieSelect, [], 'Choose a location first');
+      movieSelect.disabled = true;
+      setOptions(dateSelect, [], 'Choose a movie first');
+      dateSelect.disabled = true;
+      setOptions(showSelect, [], 'Choose a date first');
+      showSelect.disabled = true;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Watch This Show';
+      successState.classList.remove('show');
+      formWrap.classList.remove('hide');
+    });
+
+    loadCatalog();
+  </script>
+
+</body>
+</html>
