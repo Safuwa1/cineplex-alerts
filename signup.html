@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+       <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -193,10 +193,9 @@
   .ticket-bottom.hide { display: none; }
 
   .stamp {
-    width: 62px; height: 62px; margin: 4px auto 16px; border-radius: 50%;
-    border: 3px solid var(--red); color: var(--red);
+    width: 64px; height: 64px; margin: 4px auto 16px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 28px; transform: rotate(-8deg);
+    transform: rotate(-8deg);
   }
   .success h2 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 26px; color: var(--ink); margin: 0 0 8px; }
   .success p { font-size: 13.5px; color: var(--ink-muted); max-width: 280px; margin: 0 auto 18px; line-height: 1.5; }
@@ -204,7 +203,113 @@
 
   .footer-note { text-align: center; font-size: 11.5px; color: var(--muted); margin-top: 24px; }
 
-  @media (prefers-reduced-motion: reduce) { .marquee span { animation: none; } }
+  /* ---- entrance + ambient motion ---- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .eyebrow, .marquee, h1, .lede, .footer-note {
+    opacity: 0;
+    animation: fadeUp 0.7s cubic-bezier(.2,.7,.2,1) both;
+  }
+  .eyebrow { animation-delay: 0.05s; }
+  .marquee { animation-delay: 0.15s; }
+  h1 { animation-delay: 0.22s; }
+  .lede { animation-delay: 0.32s; }
+  .footer-note { animation-delay: 0.6s; }
+
+  .ticket {
+    opacity: 0;
+    animation:
+      fadeUp 0.7s cubic-bezier(.2,.7,.2,1) 0.42s both,
+      floatTicket 6s ease-in-out 1.12s infinite;
+  }
+
+  @keyframes floatTicket {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-7px); }
+  }
+
+  @keyframes shimmerText {
+    0% { background-position: -120% 0; }
+    100% { background-position: 220% 0; }
+  }
+  .catalog-status:not(.error) {
+    background: linear-gradient(90deg, var(--ink-muted) 40%, var(--gold) 50%, var(--ink-muted) 60%);
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmerText 2.2s linear infinite;
+  }
+
+  /* button shine sweep */
+  button#submitBtn { position: relative; overflow: hidden; }
+  button#submitBtn::after {
+    content: "";
+    position: absolute;
+    top: 0; left: -60%;
+    width: 40%; height: 100%;
+    background: linear-gradient(115deg, transparent, rgba(255,255,255,0.22), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.65s ease;
+    pointer-events: none;
+  }
+  button#submitBtn:hover:not(:disabled)::after { left: 130%; }
+
+  /* select gets a brief gold pulse the moment it becomes usable */
+  @keyframes enablePulse {
+    0% { box-shadow: 0 0 0 0 rgba(232,178,77,0.55); }
+    100% { box-shadow: 0 0 0 8px rgba(232,178,77,0); }
+  }
+  select.just-enabled { animation: enablePulse 0.7s ease-out; }
+
+  /* success stamp: draw-in check + confetti burst */
+  .stamp svg { width: 64px; height: 64px; overflow: visible; }
+  .stamp-circle {
+    fill: none; stroke: var(--red); stroke-width: 3;
+    stroke-dasharray: 145; stroke-dashoffset: 145;
+  }
+  .stamp-check {
+    fill: none; stroke: var(--red); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round;
+    stroke-dasharray: 40; stroke-dashoffset: 40;
+  }
+  .success.show .stamp-circle { animation: drawCircle 0.5s ease-out forwards; }
+  .success.show .stamp-check { animation: drawCheck 0.35s ease-out 0.45s forwards; }
+  @keyframes drawCircle { to { stroke-dashoffset: 0; } }
+  @keyframes drawCheck { to { stroke-dashoffset: 0; } }
+
+  .confetti { position: relative; width: 0; height: 0; margin: 0 auto; }
+  .confetti span {
+    position: absolute; top: 0; left: 0;
+    width: 6px; height: 6px; border-radius: 2px;
+    background: var(--gold);
+    opacity: 0;
+  }
+  .confetti span:nth-child(odd) { background: var(--red); }
+  .success.show .confetti span { animation: confettiBurst 0.7s ease-out 0.5s both; }
+  .confetti span:nth-child(1) { --a: -60deg; }
+  .confetti span:nth-child(2) { --a: -30deg; }
+  .confetti span:nth-child(3) { --a: -8deg; }
+  .confetti span:nth-child(4) { --a: 8deg; }
+  .confetti span:nth-child(5) { --a: 30deg; }
+  .confetti span:nth-child(6) { --a: 60deg; }
+  .confetti span:nth-child(7) { --a: 200deg; }
+  .confetti span:nth-child(8) { --a: 160deg; }
+  @keyframes confettiBurst {
+    0% { opacity: 1; transform: rotate(var(--a)) translateX(0) scale(1); }
+    100% { opacity: 0; transform: rotate(var(--a)) translateX(46px) scale(0.4); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee span { animation: none; }
+    .eyebrow, .marquee, h1, .lede, .ticket, .footer-note { animation: none; opacity: 1; }
+    .catalog-status:not(.error) { animation: none; -webkit-background-clip: initial; background-clip: initial; color: var(--ink-muted); }
+    button#submitBtn::after { display: none; }
+    select.just-enabled { animation: none; }
+    .stamp-circle, .stamp-check { stroke-dashoffset: 0; animation: none; }
+    .confetti span { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -267,7 +372,16 @@
       </div>
 
       <div class="success" id="successState">
-        <div class="stamp">✓</div>
+        <div class="stamp">
+          <svg viewBox="0 0 52 52" aria-hidden="true">
+            <circle class="stamp-circle" cx="26" cy="26" r="23"></circle>
+            <path class="stamp-check" d="M15 27l7 7 15-15"></path>
+          </svg>
+          <div class="confetti">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </div>
         <h2>You're on the list</h2>
         <p>Watch your inbox — we'll email you the second something opens up for your show.</p>
         <a id="resetLink">Watch another show</a>
@@ -304,6 +418,13 @@
       });
     }
 
+    function pulseEnable(select) {
+      select.classList.remove('just-enabled');
+      void select.offsetWidth; // restart animation if triggered again quickly
+      select.classList.add('just-enabled');
+      setTimeout(() => select.classList.remove('just-enabled'), 700);
+    }
+
     async function loadCatalog() {
       try {
         const res = await fetch('./catalog.json', { cache: 'no-store' });
@@ -317,6 +438,7 @@
           'Choose a location…'
         );
         locationSelect.disabled = false;
+        pulseEnable(locationSelect);
         catalogStatus.style.display = 'none';
       } catch (e) {
         catalogStatus.textContent = 'Could not load current showtimes. Please try again shortly.';
@@ -341,6 +463,7 @@
       if (loc) {
         setOptions(movieSelect, loc.movies.map(m => ({ value: m.movieId, label: m.title })), 'Choose a movie…');
         movieSelect.disabled = false;
+        pulseEnable(movieSelect);
       } else {
         setOptions(movieSelect, [], 'Choose a location first');
         movieSelect.disabled = true;
@@ -358,6 +481,7 @@
       if (movie) {
         setOptions(dateSelect, movie.dates.map(d => ({ value: d.date, label: d.displayDate })), 'Choose a date…');
         dateSelect.disabled = false;
+        pulseEnable(dateSelect);
       } else {
         setOptions(dateSelect, [], 'Choose a movie first');
         dateSelect.disabled = true;
@@ -381,6 +505,7 @@
           'Choose a showtime…'
         );
         showSelect.disabled = false;
+        pulseEnable(showSelect);
       } else {
         setOptions(showSelect, [], 'Choose a date first');
         showSelect.disabled = true;
@@ -425,26 +550,5 @@
       successTimer = setTimeout(() => { if (submitting) showSuccess(); }, 3500);
     });
 
-    iframe.addEventListener('load', () => {
-      if (submitting) showSuccess();
-    });
-
-    resetLink.addEventListener('click', () => {
-      form.reset();
-      setOptions(movieSelect, [], 'Choose a location first');
-      movieSelect.disabled = true;
-      setOptions(dateSelect, [], 'Choose a movie first');
-      dateSelect.disabled = true;
-      setOptions(showSelect, [], 'Choose a date first');
-      showSelect.disabled = true;
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Watch This Show';
-      successState.classList.remove('show');
-      formWrap.classList.remove('hide');
-    });
-
-    loadCatalog();
-  </script>
-
-</body>
-</html>
+    iframe.addEventListener('load', () 
+      
