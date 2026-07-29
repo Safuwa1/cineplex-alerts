@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-29T00:13:32.576855+00:00",
+  "generated_at": "2026-07-29T16:06:10.751008+00:00",
   "locations": [
     {
       "id": 1,
@@ -10,15 +10,109 @@
           "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
           "dates": [
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
               "shows": [
                 {
-                  "programId": 129689,
-                  "time": "20:05:00",
-                  "displayTime": "8:05 PM",
+                  "programId": 129902,
+                  "time": "14:11:00",
+                  "displayTime": "2:11 PM",
                   "hall": "Hall 6",
                   "price": 600
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
+                {
+                  "programId": 129900,
+                  "time": "14:10:00",
+                  "displayTime": "2:10 PM",
+                  "hall": "Hall 6",
+                  "price": 750
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "movieId": 1688,
+          "title": "Spider-Man: Brand New Day",
+          "dates": [
+            {
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
+              "shows": [
+                {
+                  "programId": 129908,
+                  "time": "10:55:00",
+                  "displayTime": "10:55 AM",
+                  "hall": "Hall 1",
+                  "price": 400
+                },
+                {
+                  "programId": 129835,
+                  "time": "16:15:00",
+                  "displayTime": "4:15 PM",
+                  "hall": "Hall 1",
+                  "price": 550
+                },
+                {
+                  "programId": 129836,
+                  "time": "19:15:00",
+                  "displayTime": "7:15 PM",
+                  "hall": "Hall 1",
+                  "price": 550
+                },
+                {
+                  "programId": 129842,
+                  "time": "10:50:00",
+                  "displayTime": "10:50 AM",
+                  "hall": "Hall 3",
+                  "price": 400
+                },
+                {
+                  "programId": 129843,
+                  "time": "13:50:00",
+                  "displayTime": "1:50 PM",
+                  "hall": "Hall 3",
+                  "price": 400
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
+                {
+                  "programId": 129707,
+                  "time": "16:15:00",
+                  "displayTime": "4:15 PM",
+                  "hall": "Hall 1",
+                  "price": 550
+                },
+                {
+                  "programId": 129708,
+                  "time": "19:15:00",
+                  "displayTime": "7:15 PM",
+                  "hall": "Hall 1",
+                  "price": 550
+                },
+                {
+                  "programId": 129756,
+                  "time": "10:50:00",
+                  "displayTime": "10:50 AM",
+                  "hall": "Hall 3",
+                  "price": 550
+                },
+                {
+                  "programId": 129757,
+                  "time": "13:50:00",
+                  "displayTime": "1:50 PM",
+                  "hall": "Hall 3",
+                  "price": 550
                 }
               ]
             }
@@ -29,55 +123,28 @@
           "title": "Evil Dead Burn (18+)",
           "dates": [
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
               "shows": [
                 {
-                  "programId": 129587,
-                  "time": "13:50:00",
-                  "displayTime": "1:50 PM",
-                  "hall": "Hall 1",
-                  "price": 400
-                },
-                {
-                  "programId": 129594,
-                  "time": "17:00:00",
-                  "displayTime": "5:00 PM",
-                  "hall": "Hall 1",
-                  "price": 500
-                },
-                {
-                  "programId": 129595,
-                  "time": "19:30:00",
-                  "displayTime": "7:30 PM",
-                  "hall": "Hall 1",
-                  "price": 500
-                },
-                {
-                  "programId": 129692,
-                  "time": "20:00:00",
-                  "displayTime": "8:00 PM",
-                  "hall": "Hall 6",
-                  "price": 600
+                  "programId": 129841,
+                  "time": "17:20:00",
+                  "displayTime": "5:20 PM",
+                  "hall": "Hall 2",
+                  "price": 550
                 }
               ]
-            }
-          ]
-        },
-        {
-          "movieId": 1710,
-          "title": "Supergirl (3D)",
-          "dates": [
+            },
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
               "shows": [
                 {
-                  "programId": 129601,
-                  "time": "13:35:00",
-                  "displayTime": "1:35 PM",
+                  "programId": 129749,
+                  "time": "17:20:00",
+                  "displayTime": "5:20 PM",
                   "hall": "Hall 2",
-                  "price": 400
+                  "price": 550
                 }
               ]
             }
@@ -88,43 +155,56 @@
           "title": "The Odyssey",
           "dates": [
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
               "shows": [
                 {
-                  "programId": 129633,
-                  "time": "13:00:00",
-                  "displayTime": "1:00 PM",
-                  "hall": "Hall 3",
-                  "price": 400
+                  "programId": 129846,
+                  "time": "11:30:00",
+                  "displayTime": "11:30 AM",
+                  "hall": "Hall 5",
+                  "price": 650
                 },
                 {
-                  "programId": 129637,
-                  "time": "18:30:00",
-                  "displayTime": "6:30 PM",
-                  "hall": "Hall 3",
-                  "price": 500
-                },
-                {
-                  "programId": 129664,
+                  "programId": 129847,
                   "time": "15:00:00",
                   "displayTime": "3:00 PM",
                   "hall": "Hall 5",
                   "price": 850
                 },
                 {
-                  "programId": 129665,
+                  "programId": 129848,
                   "time": "19:00:00",
                   "displayTime": "7:00 PM",
                   "hall": "Hall 5",
                   "price": 850
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
+                {
+                  "programId": 129784,
+                  "time": "11:30:00",
+                  "displayTime": "11:30 AM",
+                  "hall": "Hall 5",
+                  "price": 850
                 },
                 {
-                  "programId": 129677,
-                  "time": "16:40:00",
-                  "displayTime": "4:40 PM",
-                  "hall": "Hall 6",
-                  "price": 600
+                  "programId": 129785,
+                  "time": "15:00:00",
+                  "displayTime": "3:00 PM",
+                  "hall": "Hall 5",
+                  "price": 850
+                },
+                {
+                  "programId": 129786,
+                  "time": "19:00:00",
+                  "displayTime": "7:00 PM",
+                  "hall": "Hall 5",
+                  "price": 850
                 }
               ]
             }
@@ -135,15 +215,28 @@
           "title": "Moana",
           "dates": [
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
               "shows": [
                 {
-                  "programId": 129607,
-                  "time": "17:50:00",
-                  "displayTime": "5:50 PM",
-                  "hall": "Hall 2",
-                  "price": 500
+                  "programId": 129834,
+                  "time": "13:45:00",
+                  "displayTime": "1:45 PM",
+                  "hall": "Hall 1",
+                  "price": 550
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
+                {
+                  "programId": 129694,
+                  "time": "13:45:00",
+                  "displayTime": "1:45 PM",
+                  "hall": "Hall 1",
+                  "price": 550
                 }
               ]
             }
@@ -154,41 +247,127 @@
           "title": "Passenger",
           "dates": [
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
               "shows": [
                 {
-                  "programId": 129624,
-                  "time": "15:50:00",
-                  "displayTime": "3:50 PM",
+                  "programId": 129839,
+                  "time": "15:20:00",
+                  "displayTime": "3:20 PM",
                   "hall": "Hall 2",
-                  "price": 500
-                },
+                  "price": 550
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
                 {
-                  "programId": 129625,
-                  "time": "20:15:00",
-                  "displayTime": "8:15 PM",
+                  "programId": 129735,
+                  "time": "15:20:00",
+                  "displayTime": "3:20 PM",
                   "hall": "Hall 2",
-                  "price": 500
+                  "price": 550
                 }
               ]
             }
           ]
         },
         {
-          "movieId": 1714,
-          "title": "Time Hoppers",
+          "movieId": 1716,
+          "title": "Spider-Man: Brand New Day (2D)",
           "dates": [
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
               "shows": [
                 {
-                  "programId": 129649,
+                  "programId": 129909,
+                  "time": "11:45:00",
+                  "displayTime": "11:45 AM",
+                  "hall": "Hall 2",
+                  "price": 400
+                },
+                {
+                  "programId": 129880,
+                  "time": "11:11:00",
+                  "displayTime": "11:11 AM",
+                  "hall": "Hall 6",
+                  "price": 600
+                },
+                {
+                  "programId": 129850,
                   "time": "16:30:00",
                   "displayTime": "4:30 PM",
-                  "hall": "Hall 3",
-                  "price": 500
+                  "hall": "Hall 6",
+                  "price": 750
+                },
+                {
+                  "programId": 129851,
+                  "time": "19:30:00",
+                  "displayTime": "7:30 PM",
+                  "hall": "Hall 6",
+                  "price": 750
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
+                {
+                  "programId": 129881,
+                  "time": "11:11:00",
+                  "displayTime": "11:11 AM",
+                  "hall": "Hall 6",
+                  "price": 750
+                },
+                {
+                  "programId": 129806,
+                  "time": "16:30:00",
+                  "displayTime": "4:30 PM",
+                  "hall": "Hall 6",
+                  "price": 750
+                },
+                {
+                  "programId": 129807,
+                  "time": "19:30:00",
+                  "displayTime": "7:30 PM",
+                  "hall": "Hall 6",
+                  "price": 750
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "movieId": 1717,
+          "title": "Shekor",
+          "dates": [
+            {
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
+              "shows": [
+                {
+                  "programId": 129838,
+                  "time": "19:50:00",
+                  "displayTime": "7:50 PM",
+                  "hall": "Hall 2",
+                  "price": 550
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
+                {
+                  "programId": 129722,
+                  "time": "19:50:00",
+                  "displayTime": "7:50 PM",
+                  "hall": "Hall 2",
+                  "price": 550
                 }
               ]
             }
@@ -201,118 +380,60 @@
       "title": "Shimanto Shambhar, Dhanmondi 2",
       "movies": [
         {
-          "movieId": 1687,
-          "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
-          "dates": [
-            {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
-              "shows": [
-                {
-                  "programId": 29904,
-                  "time": "19:45:00",
-                  "displayTime": "7:45 PM",
-                  "hall": "Hall 3",
-                  "price": 450
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "movieId": 1705,
-          "title": "Evil Dead Burn (18+)",
-          "dates": [
-            {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
-              "shows": [
-                {
-                  "programId": 29863,
-                  "time": "11:20:00",
-                  "displayTime": "11:20 AM",
-                  "hall": "Hall 1",
-                  "price": 400
-                },
-                {
-                  "programId": 29864,
-                  "time": "14:00:00",
-                  "displayTime": "2:00 PM",
-                  "hall": "Hall 1",
-                  "price": 400
-                },
-                {
-                  "programId": 29868,
-                  "time": "19:30:00",
-                  "displayTime": "7:30 PM",
-                  "hall": "Hall 1",
-                  "price": 450
-                }
-              ]
-            }
-          ]
-        },
-        {
           "movieId": 1711,
           "title": "The Odyssey",
           "dates": [
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
               "shows": [
                 {
-                  "programId": 29884,
+                  "programId": 29987,
                   "time": "11:30:00",
                   "displayTime": "11:30 AM",
-                  "hall": "Hall 2",
+                  "hall": "Hall 3",
+                  "price": 400
+                },
+                {
+                  "programId": 29993,
+                  "time": "15:00:00",
+                  "displayTime": "3:00 PM",
+                  "hall": "Hall 3",
                   "price": 500
                 },
                 {
-                  "programId": 29891,
-                  "time": "15:00:00",
-                  "displayTime": "3:00 PM",
-                  "hall": "Hall 2",
-                  "price": 600
-                },
-                {
-                  "programId": 29892,
+                  "programId": 29994,
                   "time": "19:00:00",
                   "displayTime": "7:00 PM",
-                  "hall": "Hall 2",
-                  "price": 600
-                },
-                {
-                  "programId": 29898,
-                  "time": "16:15:00",
-                  "displayTime": "4:15 PM",
                   "hall": "Hall 3",
-                  "price": 450
+                  "price": 500
                 }
               ]
-            }
-          ]
-        },
-        {
-          "movieId": 1712,
-          "title": "Moana",
-          "dates": [
+            },
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
               "shows": [
                 {
-                  "programId": 29915,
-                  "time": "11:10:00",
-                  "displayTime": "11:10 AM",
+                  "programId": 29981,
+                  "time": "11:30:00",
+                  "displayTime": "11:30 AM",
                   "hall": "Hall 3",
-                  "price": 400
+                  "price": 500
                 },
                 {
-                  "programId": 29916,
-                  "time": "13:45:00",
-                  "displayTime": "1:45 PM",
+                  "programId": 29982,
+                  "time": "15:00:00",
+                  "displayTime": "3:00 PM",
                   "hall": "Hall 3",
-                  "price": 400
+                  "price": 500
+                },
+                {
+                  "programId": 29983,
+                  "time": "19:00:00",
+                  "displayTime": "7:00 PM",
+                  "hall": "Hall 3",
+                  "price": 500
                 }
               ]
             }
@@ -323,15 +444,124 @@
           "title": "Passenger",
           "dates": [
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
               "shows": [
                 {
-                  "programId": 29874,
-                  "time": "16:30:00",
-                  "displayTime": "4:30 PM",
+                  "programId": 29927,
+                  "time": "11:15:00",
+                  "displayTime": "11:15 AM",
                   "hall": "Hall 1",
-                  "price": 450
+                  "price": 400
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "movieId": 1716,
+          "title": "Spider-Man: Brand New Day (2D)",
+          "dates": [
+            {
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
+              "shows": [
+                {
+                  "programId": 30017,
+                  "time": "13:01:00",
+                  "displayTime": "1:01 PM",
+                  "hall": "Hall 1",
+                  "price": 400
+                },
+                {
+                  "programId": 29937,
+                  "time": "16:15:00",
+                  "displayTime": "4:15 PM",
+                  "hall": "Hall 1",
+                  "price": 500
+                },
+                {
+                  "programId": 29938,
+                  "time": "19:15:00",
+                  "displayTime": "7:15 PM",
+                  "hall": "Hall 1",
+                  "price": 500
+                },
+                {
+                  "programId": 29957,
+                  "time": "10:50:00",
+                  "displayTime": "10:50 AM",
+                  "hall": "Hall 2",
+                  "price": 500
+                },
+                {
+                  "programId": 29958,
+                  "time": "13:50:00",
+                  "displayTime": "1:50 PM",
+                  "hall": "Hall 2",
+                  "price": 500
+                },
+                {
+                  "programId": 29969,
+                  "time": "16:45:00",
+                  "displayTime": "4:45 PM",
+                  "hall": "Hall 2",
+                  "price": 650
+                },
+                {
+                  "programId": 29970,
+                  "time": "19:45:00",
+                  "displayTime": "7:45 PM",
+                  "hall": "Hall 2",
+                  "price": 650
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
+                {
+                  "programId": 29933,
+                  "time": "16:15:00",
+                  "displayTime": "4:15 PM",
+                  "hall": "Hall 1",
+                  "price": 500
+                },
+                {
+                  "programId": 29934,
+                  "time": "19:15:00",
+                  "displayTime": "7:15 PM",
+                  "hall": "Hall 1",
+                  "price": 500
+                },
+                {
+                  "programId": 29949,
+                  "time": "10:50:00",
+                  "displayTime": "10:50 AM",
+                  "hall": "Hall 2",
+                  "price": 650
+                },
+                {
+                  "programId": 29950,
+                  "time": "13:50:00",
+                  "displayTime": "1:50 PM",
+                  "hall": "Hall 2",
+                  "price": 650
+                },
+                {
+                  "programId": 29951,
+                  "time": "16:45:00",
+                  "displayTime": "4:45 PM",
+                  "hall": "Hall 2",
+                  "price": 650
+                },
+                {
+                  "programId": 29952,
+                  "time": "19:45:00",
+                  "displayTime": "7:45 PM",
+                  "hall": "Hall 2",
+                  "price": 650
                 }
               ]
             }
@@ -344,137 +574,134 @@
       "title": "Star Cineplex, SKS Tower, Mohakhali",
       "movies": [
         {
-          "movieId": 1687,
-          "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
-          "dates": [
-            {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
-              "shows": [
-                {
-                  "programId": 26960,
-                  "time": "16:40:00",
-                  "displayTime": "4:40 PM",
-                  "hall": "Hall 2",
-                  "price": 600
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "movieId": 1705,
-          "title": "Evil Dead Burn (18+)",
-          "dates": [
-            {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
-              "shows": [
-                {
-                  "programId": 26926,
-                  "time": "13:00:00",
-                  "displayTime": "1:00 PM",
-                  "hall": "Hall 1",
-                  "price": 400
-                },
-                {
-                  "programId": 26930,
-                  "time": "19:30:00",
-                  "displayTime": "7:30 PM",
-                  "hall": "Hall 1",
-                  "price": 500
-                }
-              ]
-            }
-          ]
-        },
-        {
           "movieId": 1711,
           "title": "The Odyssey",
           "dates": [
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
               "shows": [
                 {
-                  "programId": 26942,
-                  "time": "16:00:00",
-                  "displayTime": "4:00 PM",
-                  "hall": "Hall 1",
-                  "price": 500
-                },
-                {
-                  "programId": 26950,
-                  "time": "13:00:00",
-                  "displayTime": "1:00 PM",
-                  "hall": "Hall 2",
-                  "price": 500
-                },
-                {
-                  "programId": 26954,
-                  "time": "19:00:00",
-                  "displayTime": "7:00 PM",
-                  "hall": "Hall 2",
-                  "price": 600
-                },
-                {
-                  "programId": 26976,
+                  "programId": 27023,
                   "time": "11:30:00",
                   "displayTime": "11:30 AM",
+                  "hall": "Hall 2",
+                  "price": 500
+                },
+                {
+                  "programId": 27029,
+                  "time": "15:15:00",
+                  "displayTime": "3:15 PM",
+                  "hall": "Hall 2",
+                  "price": 650
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
+                {
+                  "programId": 27017,
+                  "time": "11:30:00",
+                  "displayTime": "11:30 AM",
+                  "hall": "Hall 2",
+                  "price": 650
+                },
+                {
+                  "programId": 27021,
+                  "time": "18:45:00",
+                  "displayTime": "6:45 PM",
+                  "hall": "Hall 2",
+                  "price": 650
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "movieId": 1716,
+          "title": "Spider-Man: Brand New Day (2D)",
+          "dates": [
+            {
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
+              "shows": [
+                {
+                  "programId": 26993,
+                  "time": "10:50:00",
+                  "displayTime": "10:50 AM",
+                  "hall": "Hall 1",
+                  "price": 400
+                },
+                {
+                  "programId": 26994,
+                  "time": "13:50:00",
+                  "displayTime": "1:50 PM",
+                  "hall": "Hall 1",
+                  "price": 400
+                },
+                {
+                  "programId": 27005,
+                  "time": "16:45:00",
+                  "displayTime": "4:45 PM",
+                  "hall": "Hall 1",
+                  "price": 550
+                },
+                {
+                  "programId": 27006,
+                  "time": "19:45:00",
+                  "displayTime": "7:45 PM",
+                  "hall": "Hall 1",
+                  "price": 550
+                },
+                {
+                  "programId": 27049,
+                  "time": "11:00:00",
+                  "displayTime": "11:00 AM",
                   "hall": "Hall 3",
                   "price": 1200
                 },
                 {
-                  "programId": 26983,
-                  "time": "15:00:00",
-                  "displayTime": "3:00 PM",
+                  "programId": 27061,
+                  "time": "16:50:00",
+                  "displayTime": "4:50 PM",
                   "hall": "Hall 3",
-                  "price": 1500
+                  "price": 1600
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
+                {
+                  "programId": 26985,
+                  "time": "10:50:00",
+                  "displayTime": "10:50 AM",
+                  "hall": "Hall 1",
+                  "price": 550
                 },
                 {
-                  "programId": 26984,
-                  "time": "18:30:00",
-                  "displayTime": "6:30 PM",
-                  "hall": "Hall 3",
-                  "price": 1500
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "movieId": 1713,
-          "title": "Passenger",
-          "dates": [
-            {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
-              "shows": [
+                  "programId": 26988,
+                  "time": "19:45:00",
+                  "displayTime": "7:45 PM",
+                  "hall": "Hall 1",
+                  "price": 550
+                },
                 {
-                  "programId": 26966,
+                  "programId": 27041,
                   "time": "11:00:00",
                   "displayTime": "11:00 AM",
-                  "hall": "Hall 2",
-                  "price": 500
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "movieId": 1714,
-          "title": "Time Hoppers",
-          "dates": [
-            {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
-              "shows": [
+                  "hall": "Hall 3",
+                  "price": 1600
+                },
                 {
-                  "programId": 26936,
-                  "time": "11:15:00",
-                  "displayTime": "11:15 AM",
-                  "hall": "Hall 1",
-                  "price": 400
+                  "programId": 27042,
+                  "time": "13:55:00",
+                  "displayTime": "1:55 PM",
+                  "hall": "Hall 3",
+                  "price": 1600
                 }
               ]
             }
@@ -487,156 +714,208 @@
       "title": "Sony Square, Mirpur",
       "movies": [
         {
-          "movieId": 1687,
-          "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
-          "dates": [
-            {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
-              "shows": [
-                {
-                  "programId": 22616,
-                  "time": "19:45:00",
-                  "displayTime": "7:45 PM",
-                  "hall": "Hall 3",
-                  "price": 500
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "movieId": 1705,
-          "title": "Evil Dead Burn (18+)",
-          "dates": [
-            {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
-              "shows": [
-                {
-                  "programId": 22577,
-                  "time": "11:30:00",
-                  "displayTime": "11:30 AM",
-                  "hall": "Hall 2",
-                  "price": 450
-                },
-                {
-                  "programId": 22578,
-                  "time": "14:00:00",
-                  "displayTime": "2:00 PM",
-                  "hall": "Hall 2",
-                  "price": 450
-                },
-                {
-                  "programId": 22585,
-                  "time": "16:30:00",
-                  "displayTime": "4:30 PM",
-                  "hall": "Hall 2",
-                  "price": 500
-                },
-                {
-                  "programId": 22586,
-                  "time": "19:30:00",
-                  "displayTime": "7:30 PM",
-                  "hall": "Hall 2",
-                  "price": 500
-                }
-              ]
-            }
-          ]
-        },
-        {
           "movieId": 1711,
           "title": "The Odyssey",
           "dates": [
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
               "shows": [
                 {
-                  "programId": 22554,
-                  "time": "11:20:00",
-                  "displayTime": "11:20 AM",
-                  "hall": "Hall 1",
-                  "price": 450
-                },
-                {
-                  "programId": 22561,
+                  "programId": 22661,
                   "time": "15:15:00",
                   "displayTime": "3:15 PM",
-                  "hall": "Hall 1",
-                  "price": 500
+                  "hall": "Hall 2",
+                  "price": 550
                 },
                 {
-                  "programId": 22562,
+                  "programId": 22662,
                   "time": "19:00:00",
                   "displayTime": "7:00 PM",
-                  "hall": "Hall 1",
-                  "price": 500
+                  "hall": "Hall 2",
+                  "price": 550
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
+                {
+                  "programId": 22650,
+                  "time": "15:15:00",
+                  "displayTime": "3:15 PM",
+                  "hall": "Hall 2",
+                  "price": 550
+                },
+                {
+                  "programId": 22651,
+                  "time": "19:00:00",
+                  "displayTime": "7:00 PM",
+                  "hall": "Hall 2",
+                  "price": 550
                 }
               ]
             }
           ]
         },
         {
-          "movieId": 1712,
-          "title": "Moana",
+          "movieId": 1716,
+          "title": "Spider-Man: Brand New Day (2D)",
           "dates": [
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
               "shows": [
                 {
-                  "programId": 22592,
+                  "programId": 22625,
+                  "time": "10:45:00",
+                  "displayTime": "10:45 AM",
+                  "hall": "Hall 1",
+                  "price": 450
+                },
+                {
+                  "programId": 22626,
+                  "time": "13:45:00",
+                  "displayTime": "1:45 PM",
+                  "hall": "Hall 1",
+                  "price": 450
+                },
+                {
+                  "programId": 22637,
+                  "time": "16:50:00",
+                  "displayTime": "4:50 PM",
+                  "hall": "Hall 1",
+                  "price": 550
+                },
+                {
+                  "programId": 22638,
+                  "time": "20:00:00",
+                  "displayTime": "8:00 PM",
+                  "hall": "Hall 1",
+                  "price": 550
+                },
+                {
+                  "programId": 22716,
+                  "time": "11:40:00",
+                  "displayTime": "11:40 AM",
+                  "hall": "Hall 2",
+                  "price": 450
+                },
+                {
+                  "programId": 22693,
                   "time": "11:00:00",
                   "displayTime": "11:00 AM",
                   "hall": "Hall 3",
                   "price": 450
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "movieId": 1713,
-          "title": "Passenger",
-          "dates": [
-            {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
-              "shows": [
+                },
                 {
-                  "programId": 22600,
-                  "time": "13:45:00",
-                  "displayTime": "1:45 PM",
+                  "programId": 22718,
+                  "time": "13:50:00",
+                  "displayTime": "1:50 PM",
                   "hall": "Hall 3",
                   "price": 450
                 },
                 {
-                  "programId": 22604,
-                  "time": "17:40:00",
-                  "displayTime": "5:40 PM",
+                  "programId": 22699,
+                  "time": "19:15:00",
+                  "displayTime": "7:15 PM",
                   "hall": "Hall 3",
-                  "price": 500
+                  "price": 550
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
+                {
+                  "programId": 22617,
+                  "time": "10:45:00",
+                  "displayTime": "10:45 AM",
+                  "hall": "Hall 1",
+                  "price": 550
+                },
+                {
+                  "programId": 22618,
+                  "time": "13:45:00",
+                  "displayTime": "1:45 PM",
+                  "hall": "Hall 1",
+                  "price": 550
+                },
+                {
+                  "programId": 22619,
+                  "time": "16:50:00",
+                  "displayTime": "4:50 PM",
+                  "hall": "Hall 1",
+                  "price": 550
+                },
+                {
+                  "programId": 22620,
+                  "time": "20:00:00",
+                  "displayTime": "8:00 PM",
+                  "hall": "Hall 1",
+                  "price": 550
+                },
+                {
+                  "programId": 22717,
+                  "time": "11:40:00",
+                  "displayTime": "11:40 AM",
+                  "hall": "Hall 2",
+                  "price": 550
+                },
+                {
+                  "programId": 22689,
+                  "time": "11:00:00",
+                  "displayTime": "11:00 AM",
+                  "hall": "Hall 3",
+                  "price": 550
+                },
+                {
+                  "programId": 22719,
+                  "time": "13:50:00",
+                  "displayTime": "1:50 PM",
+                  "hall": "Hall 3",
+                  "price": 550
+                },
+                {
+                  "programId": 22690,
+                  "time": "19:15:00",
+                  "displayTime": "7:15 PM",
+                  "hall": "Hall 3",
+                  "price": 550
                 }
               ]
             }
           ]
         },
         {
-          "movieId": 1714,
-          "title": "Time Hoppers",
+          "movieId": 1717,
+          "title": "Shekor",
           "dates": [
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
               "shows": [
                 {
-                  "programId": 22610,
-                  "time": "15:50:00",
-                  "displayTime": "3:50 PM",
+                  "programId": 22673,
+                  "time": "16:30:00",
+                  "displayTime": "4:30 PM",
                   "hall": "Hall 3",
-                  "price": 500
+                  "price": 550
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
+                {
+                  "programId": 22674,
+                  "time": "16:30:00",
+                  "displayTime": "4:30 PM",
+                  "hall": "Hall 3",
+                  "price": 550
                 }
               ]
             }
@@ -649,33 +928,74 @@
       "title": "Bangladesh Military Museum, Bijoy Shoroni",
       "movies": [
         {
-          "movieId": 1711,
-          "title": "The Odyssey",
+          "movieId": 1716,
+          "title": "Spider-Man: Brand New Day (2D)",
           "dates": [
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
               "shows": [
                 {
-                  "programId": 4828,
-                  "time": "11:30:00",
-                  "displayTime": "11:30 AM",
+                  "programId": 4845,
+                  "time": "10:50:00",
+                  "displayTime": "10:50 AM",
                   "hall": "Hall 1",
                   "price": 350
                 },
                 {
-                  "programId": 4835,
-                  "time": "15:00:00",
-                  "displayTime": "3:00 PM",
+                  "programId": 4846,
+                  "time": "13:50:00",
+                  "displayTime": "1:50 PM",
                   "hall": "Hall 1",
-                  "price": 400
+                  "price": 350
                 },
                 {
-                  "programId": 4836,
-                  "time": "18:45:00",
-                  "displayTime": "6:45 PM",
+                  "programId": 4857,
+                  "time": "16:45:00",
+                  "displayTime": "4:45 PM",
                   "hall": "Hall 1",
-                  "price": 400
+                  "price": 450
+                },
+                {
+                  "programId": 4858,
+                  "time": "19:45:00",
+                  "displayTime": "7:45 PM",
+                  "hall": "Hall 1",
+                  "price": 450
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
+                {
+                  "programId": 4837,
+                  "time": "10:50:00",
+                  "displayTime": "10:50 AM",
+                  "hall": "Hall 1",
+                  "price": 450
+                },
+                {
+                  "programId": 4838,
+                  "time": "13:50:00",
+                  "displayTime": "1:50 PM",
+                  "hall": "Hall 1",
+                  "price": 450
+                },
+                {
+                  "programId": 4839,
+                  "time": "16:45:00",
+                  "displayTime": "4:45 PM",
+                  "hall": "Hall 1",
+                  "price": 450
+                },
+                {
+                  "programId": 4840,
+                  "time": "19:45:00",
+                  "displayTime": "7:45 PM",
+                  "hall": "Hall 1",
+                  "price": 450
                 }
               ]
             }
@@ -688,144 +1008,162 @@
       "title": "Bali Arcade, Chattogram",
       "movies": [
         {
-          "movieId": 1687,
-          "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
-          "dates": [
-            {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
-              "shows": [
-                {
-                  "programId": 16656,
-                  "time": "16:45:00",
-                  "displayTime": "4:45 PM",
-                  "hall": "Hall 1",
-                  "price": 450
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "movieId": 1705,
-          "title": "Evil Dead Burn (18+)",
-          "dates": [
-            {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
-              "shows": [
-                {
-                  "programId": 16689,
-                  "time": "11:15:00",
-                  "displayTime": "11:15 AM",
-                  "hall": "Hall 3",
-                  "price": 400
-                },
-                {
-                  "programId": 16690,
-                  "time": "13:45:00",
-                  "displayTime": "1:45 PM",
-                  "hall": "Hall 3",
-                  "price": 400
-                },
-                {
-                  "programId": 16697,
-                  "time": "16:15:00",
-                  "displayTime": "4:15 PM",
-                  "hall": "Hall 3",
-                  "price": 450
-                },
-                {
-                  "programId": 16698,
-                  "time": "19:30:00",
-                  "displayTime": "7:30 PM",
-                  "hall": "Hall 3",
-                  "price": 450
-                }
-              ]
-            }
-          ]
-        },
-        {
           "movieId": 1711,
           "title": "The Odyssey",
           "dates": [
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
               "shows": [
                 {
-                  "programId": 16666,
-                  "time": "11:30:00",
-                  "displayTime": "11:30 AM",
-                  "hall": "Hall 2",
-                  "price": 400
-                },
-                {
-                  "programId": 16673,
-                  "time": "15:00:00",
-                  "displayTime": "3:00 PM",
-                  "hall": "Hall 2",
-                  "price": 450
-                },
-                {
-                  "programId": 16674,
+                  "programId": 16776,
                   "time": "19:00:00",
                   "displayTime": "7:00 PM",
-                  "hall": "Hall 2",
-                  "price": 450
+                  "hall": "Hall 3",
+                  "price": 500
                 }
               ]
-            }
-          ]
-        },
-        {
-          "movieId": 1713,
-          "title": "Passenger",
-          "dates": [
+            },
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
               "shows": [
                 {
-                  "programId": 16634,
-                  "time": "12:50:00",
-                  "displayTime": "12:50 PM",
-                  "hall": "Hall 1",
-                  "price": 400
+                  "programId": 16764,
+                  "time": "15:00:00",
+                  "displayTime": "3:00 PM",
+                  "hall": "Hall 3",
+                  "price": 500
                 },
                 {
-                  "programId": 16638,
-                  "time": "19:15:00",
-                  "displayTime": "7:15 PM",
-                  "hall": "Hall 1",
-                  "price": 450
+                  "programId": 16765,
+                  "time": "19:00:00",
+                  "displayTime": "7:00 PM",
+                  "hall": "Hall 3",
+                  "price": 500
                 }
               ]
             }
           ]
         },
         {
-          "movieId": 1714,
-          "title": "Time Hoppers",
+          "movieId": 1716,
+          "title": "Spider-Man: Brand New Day (2D)",
           "dates": [
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
               "shows": [
                 {
-                  "programId": 16646,
+                  "programId": 16707,
                   "time": "11:00:00",
                   "displayTime": "11:00 AM",
                   "hall": "Hall 1",
                   "price": 400
                 },
                 {
-                  "programId": 16650,
-                  "time": "14:50:00",
-                  "displayTime": "2:50 PM",
+                  "programId": 16708,
+                  "time": "14:00:00",
+                  "displayTime": "2:00 PM",
                   "hall": "Hall 1",
                   "price": 400
+                },
+                {
+                  "programId": 16719,
+                  "time": "17:00:00",
+                  "displayTime": "5:00 PM",
+                  "hall": "Hall 1",
+                  "price": 500
+                },
+                {
+                  "programId": 16720,
+                  "time": "20:00:00",
+                  "displayTime": "8:00 PM",
+                  "hall": "Hall 1",
+                  "price": 500
+                },
+                {
+                  "programId": 16739,
+                  "time": "10:50:00",
+                  "displayTime": "10:50 AM",
+                  "hall": "Hall 2",
+                  "price": 400
+                },
+                {
+                  "programId": 16740,
+                  "time": "13:50:00",
+                  "displayTime": "1:50 PM",
+                  "hall": "Hall 2",
+                  "price": 400
+                },
+                {
+                  "programId": 16751,
+                  "time": "16:45:00",
+                  "displayTime": "4:45 PM",
+                  "hall": "Hall 2",
+                  "price": 500
+                },
+                {
+                  "programId": 16800,
+                  "time": "11:31:00",
+                  "displayTime": "11:31 AM",
+                  "hall": "Hall 3",
+                  "price": 400
+                },
+                {
+                  "programId": 16799,
+                  "time": "15:01:00",
+                  "displayTime": "3:01 PM",
+                  "hall": "Hall 3",
+                  "price": 500
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
+                {
+                  "programId": 16699,
+                  "time": "11:00:00",
+                  "displayTime": "11:00 AM",
+                  "hall": "Hall 1",
+                  "price": 500
+                },
+                {
+                  "programId": 16700,
+                  "time": "14:00:00",
+                  "displayTime": "2:00 PM",
+                  "hall": "Hall 1",
+                  "price": 500
+                },
+                {
+                  "programId": 16702,
+                  "time": "20:00:00",
+                  "displayTime": "8:00 PM",
+                  "hall": "Hall 1",
+                  "price": 500
+                },
+                {
+                  "programId": 16731,
+                  "time": "10:50:00",
+                  "displayTime": "10:50 AM",
+                  "hall": "Hall 2",
+                  "price": 500
+                },
+                {
+                  "programId": 16732,
+                  "time": "13:50:00",
+                  "displayTime": "1:50 PM",
+                  "hall": "Hall 2",
+                  "price": 500
+                },
+                {
+                  "programId": 16801,
+                  "time": "11:31:00",
+                  "displayTime": "11:31 AM",
+                  "hall": "Hall 3",
+                  "price": 500
                 }
               ]
             }
@@ -838,19 +1176,74 @@
       "title": "Centrepoint, Uttara",
       "movies": [
         {
-          "movieId": 1687,
-          "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
+          "movieId": 1688,
+          "title": "Spider-Man: Brand New Day",
           "dates": [
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
               "shows": [
                 {
-                  "programId": 7753,
-                  "time": "14:20:00",
-                  "displayTime": "2:20 PM",
+                  "programId": 7838,
+                  "time": "10:45:00",
+                  "displayTime": "10:45 AM",
                   "hall": "Hall 1",
-                  "price": 450
+                  "price": 550
+                },
+                {
+                  "programId": 7839,
+                  "time": "13:45:00",
+                  "displayTime": "1:45 PM",
+                  "hall": "Hall 1",
+                  "price": 550
+                },
+                {
+                  "programId": 7850,
+                  "time": "16:50:00",
+                  "displayTime": "4:50 PM",
+                  "hall": "Hall 1",
+                  "price": 650
+                },
+                {
+                  "programId": 7851,
+                  "time": "20:00:00",
+                  "displayTime": "8:00 PM",
+                  "hall": "Hall 1",
+                  "price": 650
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
+                {
+                  "programId": 7830,
+                  "time": "10:45:00",
+                  "displayTime": "10:45 AM",
+                  "hall": "Hall 1",
+                  "price": 650
+                },
+                {
+                  "programId": 7831,
+                  "time": "13:45:00",
+                  "displayTime": "1:45 PM",
+                  "hall": "Hall 1",
+                  "price": 650
+                },
+                {
+                  "programId": 7832,
+                  "time": "16:50:00",
+                  "displayTime": "4:50 PM",
+                  "hall": "Hall 1",
+                  "price": 650
+                },
+                {
+                  "programId": 7833,
+                  "time": "20:00:00",
+                  "displayTime": "8:00 PM",
+                  "hall": "Hall 1",
+                  "price": 650
                 }
               ]
             }
@@ -861,36 +1254,28 @@
           "title": "Evil Dead Burn (18+)",
           "dates": [
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
               "shows": [
                 {
-                  "programId": 7776,
-                  "time": "11:00:00",
-                  "displayTime": "11:00 AM",
-                  "hall": "Hall 2 (Royal)",
-                  "price": 1400
-                },
+                  "programId": 7912,
+                  "time": "14:05:00",
+                  "displayTime": "2:05 PM",
+                  "hall": "Hall 3 (VIP)",
+                  "price": 900
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
                 {
-                  "programId": 7780,
-                  "time": "16:50:00",
-                  "displayTime": "4:50 PM",
-                  "hall": "Hall 2 (Royal)",
-                  "price": 1800
-                },
-                {
-                  "programId": 7823,
-                  "time": "13:10:00",
-                  "displayTime": "1:10 PM",
-                  "hall": "Hall 4",
-                  "price": 450
-                },
-                {
-                  "programId": 7827,
-                  "time": "19:30:00",
-                  "displayTime": "7:30 PM",
-                  "hall": "Hall 4",
-                  "price": 550
+                  "programId": 7910,
+                  "time": "14:05:00",
+                  "displayTime": "2:05 PM",
+                  "hall": "Hall 3 (VIP)",
+                  "price": 1200
                 }
               ]
             }
@@ -901,95 +1286,144 @@
           "title": "The Odyssey",
           "dates": [
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
               "shows": [
                 {
-                  "programId": 7742,
-                  "time": "10:50:00",
-                  "displayTime": "10:50 AM",
-                  "hall": "Hall 1",
-                  "price": 450
-                },
-                {
-                  "programId": 7764,
-                  "time": "13:25:00",
-                  "displayTime": "1:25 PM",
-                  "hall": "Hall 2 (Royal)",
-                  "price": 1400
-                },
-                {
-                  "programId": 7768,
-                  "time": "19:15:00",
-                  "displayTime": "7:15 PM",
+                  "programId": 7863,
+                  "time": "18:30:00",
+                  "displayTime": "6:30 PM",
                   "hall": "Hall 2 (Royal)",
                   "price": 1800
                 },
                 {
-                  "programId": 7790,
+                  "programId": 7924,
                   "time": "11:30:00",
                   "displayTime": "11:30 AM",
+                  "hall": "Hall 4",
+                  "price": 550
+                },
+                {
+                  "programId": 7930,
+                  "time": "15:30:00",
+                  "displayTime": "3:30 PM",
+                  "hall": "Hall 4",
+                  "price": 650
+                },
+                {
+                  "programId": 7931,
+                  "time": "19:00:00",
+                  "displayTime": "7:00 PM",
+                  "hall": "Hall 4",
+                  "price": 650
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
+                {
+                  "programId": 7864,
+                  "time": "15:00:00",
+                  "displayTime": "3:00 PM",
+                  "hall": "Hall 2 (Royal)",
+                  "price": 1800
+                },
+                {
+                  "programId": 7865,
+                  "time": "18:30:00",
+                  "displayTime": "6:30 PM",
+                  "hall": "Hall 2 (Royal)",
+                  "price": 1800
+                },
+                {
+                  "programId": 7918,
+                  "time": "11:30:00",
+                  "displayTime": "11:30 AM",
+                  "hall": "Hall 4",
+                  "price": 650
+                },
+                {
+                  "programId": 7919,
+                  "time": "15:30:00",
+                  "displayTime": "3:30 PM",
+                  "hall": "Hall 4",
+                  "price": 650
+                },
+                {
+                  "programId": 7920,
+                  "time": "19:00:00",
+                  "displayTime": "7:00 PM",
+                  "hall": "Hall 4",
+                  "price": 650
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "movieId": 1716,
+          "title": "Spider-Man: Brand New Day (2D)",
+          "dates": [
+            {
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
+              "shows": [
+                {
+                  "programId": 7880,
+                  "time": "11:15:00",
+                  "displayTime": "11:15 AM",
+                  "hall": "Hall 2 (Royal)",
+                  "price": 1400
+                },
+                {
+                  "programId": 7892,
+                  "time": "11:10:00",
+                  "displayTime": "11:10 AM",
                   "hall": "Hall 3 (VIP)",
                   "price": 900
                 },
                 {
-                  "programId": 7797,
-                  "time": "15:00:00",
-                  "displayTime": "3:00 PM",
+                  "programId": 7898,
+                  "time": "16:30:00",
+                  "displayTime": "4:30 PM",
                   "hall": "Hall 3 (VIP)",
                   "price": 1200
                 },
                 {
-                  "programId": 7798,
-                  "time": "18:45:00",
-                  "displayTime": "6:45 PM",
+                  "programId": 7899,
+                  "time": "19:30:00",
+                  "displayTime": "7:30 PM",
                   "hall": "Hall 3 (VIP)",
                   "price": 1200
                 }
               ]
-            }
-          ]
-        },
-        {
-          "movieId": 1713,
-          "title": "Passenger",
-          "dates": [
+            },
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
               "shows": [
                 {
-                  "programId": 7812,
+                  "programId": 7878,
+                  "time": "11:15:00",
+                  "displayTime": "11:15 AM",
+                  "hall": "Hall 2 (Royal)",
+                  "price": 1800
+                },
+                {
+                  "programId": 7886,
                   "time": "11:10:00",
                   "displayTime": "11:10 AM",
-                  "hall": "Hall 4",
-                  "price": 450
+                  "hall": "Hall 3 (VIP)",
+                  "price": 1200
                 },
                 {
-                  "programId": 7816,
-                  "time": "17:30:00",
-                  "displayTime": "5:30 PM",
-                  "hall": "Hall 4",
-                  "price": 550
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "movieId": 1714,
-          "title": "Time Hoppers",
-          "dates": [
-            {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
-              "shows": [
-                {
-                  "programId": 7804,
-                  "time": "15:40:00",
-                  "displayTime": "3:40 PM",
-                  "hall": "Hall 4",
-                  "price": 550
+                  "programId": 7887,
+                  "time": "16:30:00",
+                  "displayTime": "4:30 PM",
+                  "hall": "Hall 3 (VIP)",
+                  "price": 1200
                 }
               ]
             }
@@ -1002,40 +1436,92 @@
       "title": "Shimanto Tower, Narayanganj",
       "movies": [
         {
+          "movieId": 1688,
+          "title": "Spider-Man: Brand New Day",
+          "dates": [
+            {
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
+              "shows": [
+                {
+                  "programId": 1394,
+                  "time": "11:30:00",
+                  "displayTime": "11:30 AM",
+                  "hall": "Hall 2",
+                  "price": 300
+                },
+                {
+                  "programId": 1400,
+                  "time": "15:30:00",
+                  "displayTime": "3:30 PM",
+                  "hall": "Hall 2",
+                  "price": 400
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
+                {
+                  "programId": 1388,
+                  "time": "11:30:00",
+                  "displayTime": "11:30 AM",
+                  "hall": "Hall 2",
+                  "price": 500
+                },
+                {
+                  "programId": 1389,
+                  "time": "15:30:00",
+                  "displayTime": "3:30 PM",
+                  "hall": "Hall 2",
+                  "price": 500
+                }
+              ]
+            }
+          ]
+        },
+        {
           "movieId": 1705,
           "title": "Evil Dead Burn (18+)",
           "dates": [
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
               "shows": [
                 {
-                  "programId": 1316,
-                  "time": "11:15:00",
-                  "displayTime": "11:15 AM",
-                  "hall": "Hall 2",
+                  "programId": 1432,
+                  "time": "11:00:00",
+                  "displayTime": "11:00 AM",
+                  "hall": "Hall 3",
                   "price": 300
                 },
                 {
-                  "programId": 1317,
-                  "time": "14:00:00",
-                  "displayTime": "2:00 PM",
-                  "hall": "Hall 2",
-                  "price": 300
+                  "programId": 1438,
+                  "time": "16:40:00",
+                  "displayTime": "4:40 PM",
+                  "hall": "Hall 3",
+                  "price": 400
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
+                {
+                  "programId": 1428,
+                  "time": "11:00:00",
+                  "displayTime": "11:00 AM",
+                  "hall": "Hall 3",
+                  "price": 500
                 },
                 {
-                  "programId": 1324,
-                  "time": "16:30:00",
-                  "displayTime": "4:30 PM",
-                  "hall": "Hall 2",
-                  "price": 400
-                },
-                {
-                  "programId": 1325,
-                  "time": "19:15:00",
-                  "displayTime": "7:15 PM",
-                  "hall": "Hall 2",
-                  "price": 400
+                  "programId": 1429,
+                  "time": "16:40:00",
+                  "displayTime": "4:40 PM",
+                  "hall": "Hall 3",
+                  "price": 500
                 }
               ]
             }
@@ -1046,100 +1532,127 @@
           "title": "The Odyssey",
           "dates": [
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
               "shows": [
                 {
-                  "programId": 1293,
-                  "time": "11:30:00",
-                  "displayTime": "11:30 AM",
-                  "hall": "Hall 1",
-                  "price": 300
-                },
-                {
-                  "programId": 1300,
-                  "time": "15:00:00",
-                  "displayTime": "3:00 PM",
-                  "hall": "Hall 1",
-                  "price": 400
-                },
-                {
-                  "programId": 1301,
-                  "time": "18:45:00",
-                  "displayTime": "6:45 PM",
-                  "hall": "Hall 1",
-                  "price": 400
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "movieId": 1712,
-          "title": "Moana",
-          "dates": [
-            {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
-              "shows": [
-                {
-                  "programId": 1345,
-                  "time": "11:00:00",
-                  "displayTime": "11:00 AM",
-                  "hall": "Hall 3",
-                  "price": 300
-                },
-                {
-                  "programId": 1349,
-                  "time": "15:20:00",
-                  "displayTime": "3:20 PM",
-                  "hall": "Hall 3",
-                  "price": 400
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "movieId": 1713,
-          "title": "Passenger",
-          "dates": [
-            {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
-              "shows": [
-                {
-                  "programId": 1333,
+                  "programId": 1416,
                   "time": "13:20:00",
                   "displayTime": "1:20 PM",
                   "hall": "Hall 3",
                   "price": 300
                 },
                 {
-                  "programId": 1337,
-                  "time": "19:45:00",
-                  "displayTime": "7:45 PM",
+                  "programId": 1422,
+                  "time": "19:00:00",
+                  "displayTime": "7:00 PM",
                   "hall": "Hall 3",
                   "price": 400
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
+                {
+                  "programId": 1412,
+                  "time": "13:20:00",
+                  "displayTime": "1:20 PM",
+                  "hall": "Hall 3",
+                  "price": 500
+                },
+                {
+                  "programId": 1413,
+                  "time": "19:00:00",
+                  "displayTime": "7:00 PM",
+                  "hall": "Hall 3",
+                  "price": 500
                 }
               ]
             }
           ]
         },
         {
-          "movieId": 1714,
-          "title": "Time Hoppers",
+          "movieId": 1716,
+          "title": "Spider-Man: Brand New Day (2D)",
           "dates": [
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
               "shows": [
                 {
-                  "programId": 1355,
-                  "time": "17:50:00",
-                  "displayTime": "5:50 PM",
-                  "hall": "Hall 3",
+                  "programId": 1360,
+                  "time": "13:50:00",
+                  "displayTime": "1:50 PM",
+                  "hall": "Hall 1",
+                  "price": 300
+                },
+                {
+                  "programId": 1461,
+                  "time": "16:51:00",
+                  "displayTime": "4:51 PM",
+                  "hall": "Hall 1",
                   "price": 400
+                },
+                {
+                  "programId": 1366,
+                  "time": "19:30:00",
+                  "displayTime": "7:30 PM",
+                  "hall": "Hall 1",
+                  "price": 400
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
+                {
+                  "programId": 1356,
+                  "time": "13:50:00",
+                  "displayTime": "1:50 PM",
+                  "hall": "Hall 1",
+                  "price": 500
+                },
+                {
+                  "programId": 1357,
+                  "time": "19:30:00",
+                  "displayTime": "7:30 PM",
+                  "hall": "Hall 1",
+                  "price": 500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "movieId": 1717,
+          "title": "Shekor",
+          "dates": [
+            {
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
+              "shows": [
+                {
+                  "programId": 1376,
+                  "time": "11:15:00",
+                  "displayTime": "11:15 AM",
+                  "hall": "Hall 1",
+                  "price": 300
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
+                {
+                  "programId": 1372,
+                  "time": "11:15:00",
+                  "displayTime": "11:15 AM",
+                  "hall": "Hall 1",
+                  "price": 500
                 }
               ]
             }
@@ -1152,17 +1665,58 @@
       "title": "Finlay Square, Chattogram",
       "movies": [
         {
-          "movieId": 1687,
-          "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
+          "movieId": 1711,
+          "title": "The Odyssey",
           "dates": [
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
               "shows": [
                 {
-                  "programId": 1037,
-                  "time": "17:00:00",
-                  "displayTime": "5:00 PM",
+                  "programId": 1082,
+                  "time": "11:30:00",
+                  "displayTime": "11:30 AM",
+                  "hall": "Hall 2",
+                  "price": 1000
+                },
+                {
+                  "programId": 1088,
+                  "time": "15:00:00",
+                  "displayTime": "3:00 PM",
+                  "hall": "Hall 2",
+                  "price": 1200
+                },
+                {
+                  "programId": 1089,
+                  "time": "19:00:00",
+                  "displayTime": "7:00 PM",
+                  "hall": "Hall 2",
+                  "price": 1200
+                }
+              ]
+            },
+            {
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
+              "shows": [
+                {
+                  "programId": 1076,
+                  "time": "11:30:00",
+                  "displayTime": "11:30 AM",
+                  "hall": "Hall 2",
+                  "price": 1200
+                },
+                {
+                  "programId": 1077,
+                  "time": "15:00:00",
+                  "displayTime": "3:00 PM",
+                  "hall": "Hall 2",
+                  "price": 1200
+                },
+                {
+                  "programId": 1078,
+                  "time": "19:00:00",
+                  "displayTime": "7:00 PM",
                   "hall": "Hall 2",
                   "price": 1200
                 }
@@ -1171,85 +1725,74 @@
           ]
         },
         {
-          "movieId": 1705,
-          "title": "Evil Dead Burn (18+)",
+          "movieId": 1716,
+          "title": "Spider-Man: Brand New Day (2D)",
           "dates": [
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-30",
+              "displayDate": "30 Jul",
               "shows": [
                 {
-                  "programId": 1003,
-                  "time": "14:25:00",
-                  "displayTime": "2:25 PM",
-                  "hall": "Hall 1",
-                  "price": 350
-                },
-                {
-                  "programId": 1007,
-                  "time": "20:10:00",
-                  "displayTime": "8:10 PM",
-                  "hall": "Hall 1",
-                  "price": 400
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "movieId": 1711,
-          "title": "The Odyssey",
-          "dates": [
-            {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
-              "shows": [
-                {
-                  "programId": 1015,
+                  "programId": 1052,
                   "time": "11:00:00",
                   "displayTime": "11:00 AM",
                   "hall": "Hall 1",
                   "price": 350
                 },
                 {
-                  "programId": 1019,
-                  "time": "16:50:00",
-                  "displayTime": "4:50 PM",
+                  "programId": 1053,
+                  "time": "14:00:00",
+                  "displayTime": "2:00 PM",
+                  "hall": "Hall 1",
+                  "price": 350
+                },
+                {
+                  "programId": 1064,
+                  "time": "17:00:00",
+                  "displayTime": "5:00 PM",
                   "hall": "Hall 1",
                   "price": 400
                 },
                 {
-                  "programId": 1027,
-                  "time": "13:40:00",
-                  "displayTime": "1:40 PM",
-                  "hall": "Hall 2",
-                  "price": 1000
-                },
-                {
-                  "programId": 1031,
-                  "time": "19:15:00",
-                  "displayTime": "7:15 PM",
-                  "hall": "Hall 2",
-                  "price": 1200
+                  "programId": 1065,
+                  "time": "20:00:00",
+                  "displayTime": "8:00 PM",
+                  "hall": "Hall 1",
+                  "price": 400
                 }
               ]
-            }
-          ]
-        },
-        {
-          "movieId": 1713,
-          "title": "Passenger",
-          "dates": [
+            },
             {
-              "date": "2026-07-29",
-              "displayDate": "29 Jul",
+              "date": "2026-07-31",
+              "displayDate": "31 Jul",
               "shows": [
                 {
-                  "programId": 1043,
-                  "time": "11:10:00",
-                  "displayTime": "11:10 AM",
-                  "hall": "Hall 2",
-                  "price": 1000
+                  "programId": 1044,
+                  "time": "11:00:00",
+                  "displayTime": "11:00 AM",
+                  "hall": "Hall 1",
+                  "price": 400
+                },
+                {
+                  "programId": 1045,
+                  "time": "14:00:00",
+                  "displayTime": "2:00 PM",
+                  "hall": "Hall 1",
+                  "price": 400
+                },
+                {
+                  "programId": 1046,
+                  "time": "17:00:00",
+                  "displayTime": "5:00 PM",
+                  "hall": "Hall 1",
+                  "price": 400
+                },
+                {
+                  "programId": 1047,
+                  "time": "20:00:00",
+                  "displayTime": "8:00 PM",
+                  "hall": "Hall 1",
+                  "price": 400
                 }
               ]
             }

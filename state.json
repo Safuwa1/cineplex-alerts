@@ -45,21 +45,6 @@
         "2026-08-05"
       ]
     },
-    "480": {
-      "title": "The Odyssey",
-      "category": "running",
-      "slug": "the-odyssey",
-      "dates": [
-        "2026-07-29",
-        "2026-07-30",
-        "2026-07-31",
-        "2026-08-01",
-        "2026-08-02",
-        "2026-08-03",
-        "2026-08-04",
-        "2026-08-05"
-      ]
-    },
     "483": {
       "title": "Passenger",
       "category": "running",
@@ -73,14 +58,6 @@
         "2026-08-03",
         "2026-08-04",
         "2026-08-05"
-      ]
-    },
-    "482": {
-      "title": "Time Hoppers",
-      "category": "running",
-      "slug": "time-hoppers",
-      "dates": [
-        "2026-07-29"
       ]
     },
     "487": {
@@ -125,6 +102,29 @@
         "2026-08-05"
       ]
     },
+    "480": {
+      "title": "The Odyssey",
+      "category": "running",
+      "slug": "the-odyssey",
+      "dates": [
+        "2026-07-29",
+        "2026-07-30",
+        "2026-07-31",
+        "2026-08-01",
+        "2026-08-02",
+        "2026-08-03",
+        "2026-08-04",
+        "2026-08-05"
+      ]
+    },
+    "482": {
+      "title": "Time Hoppers",
+      "category": "running",
+      "slug": "time-hoppers",
+      "dates": [
+        "2026-07-29"
+      ]
+    },
     "461": {
       "title": "Insidious: Out of the Further",
       "category": "upcoming",
@@ -162,7 +162,7 @@
       "dates": []
     }
   },
-  "last_checked": "2026-07-29T10:18:51.919965+00:00",
+  "last_checked": "2026-07-29T16:10:56.240455+00:00",
   "seats": {
     "4:22557": {
       "available": [
@@ -485,7 +485,7 @@
         "P9"
       ],
       "total": 408,
-      "checked_at": "2026-07-29T00:15:08.788299+00:00",
+      "checked_at": "2026-07-29T16:10:27.191134+00:00",
       "summary": "The Odyssey | Sony Square, Mirpur | 27 Jul 3:15 PM"
     },
     "1:129663": {
@@ -558,7 +558,7 @@
         "J9"
       ],
       "total": 113,
-      "checked_at": "2026-07-28T21:06:20.216606+00:00",
+      "checked_at": "2026-07-29T16:10:54.479278+00:00",
       "summary": "The Odyssey | Bashundhara Shopping Mall, Panthapath | 28 Jul 7:00 PM"
     },
     "2:29862": {
@@ -773,7 +773,7 @@
         "S20"
       ],
       "total": 263,
-      "checked_at": "2026-07-29T00:15:10.433216+00:00",
+      "checked_at": "2026-07-29T16:10:56.191999+00:00",
       "summary": "Evil Dead Burn (18+) | Shimanto Shambhar, Dhanmondi 2 | 28 Jul 2:00 PM"
     },
     "1:129636": {
@@ -874,7 +874,7 @@
         "N22"
       ],
       "total": 248,
-      "checked_at": "2026-07-28T21:06:19.142951+00:00",
+      "checked_at": "2026-07-29T16:10:40.229692+00:00",
       "summary": "The Odyssey | Bashundhara Shopping Mall, Panthapath | 28 Jul 6:30 PM"
     }
   }
