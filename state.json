@@ -5,7 +5,6 @@
       "category": "running",
       "slug": "billie-eilish-hit-me-hard-and-soft-the-tour-live-in-3d",
       "dates": [
-        "2026-07-30",
         "2026-07-31",
         "2026-08-01",
         "2026-08-02",
@@ -20,7 +19,6 @@
       "category": "running",
       "slug": "evil-dead-burn-18",
       "dates": [
-        "2026-07-30",
         "2026-07-31",
         "2026-08-01",
         "2026-08-02",
@@ -35,7 +33,6 @@
       "category": "running",
       "slug": "moana",
       "dates": [
-        "2026-07-30",
         "2026-07-31",
         "2026-08-01",
         "2026-08-02",
@@ -50,7 +47,6 @@
       "category": "running",
       "slug": "passenger",
       "dates": [
-        "2026-07-30",
         "2026-07-31",
         "2026-08-01",
         "2026-08-02",
@@ -65,7 +61,6 @@
       "category": "running",
       "slug": "shekor",
       "dates": [
-        "2026-07-30",
         "2026-07-31",
         "2026-08-01",
         "2026-08-02",
@@ -80,7 +75,6 @@
       "category": "running",
       "slug": "spider-man-brand-new-day-2d",
       "dates": [
-        "2026-07-30",
         "2026-07-31",
         "2026-08-01",
         "2026-08-02",
@@ -95,7 +89,6 @@
       "category": "running",
       "slug": "spider-man-brand-new-day",
       "dates": [
-        "2026-07-30",
         "2026-07-31",
         "2026-08-01",
         "2026-08-02",
@@ -110,7 +103,6 @@
       "category": "running",
       "slug": "the-odyssey",
       "dates": [
-        "2026-07-30",
         "2026-07-31",
         "2026-08-01",
         "2026-08-02",
@@ -169,7 +161,7 @@
       "dates": []
     }
   },
-  "last_checked": "2026-07-30T17:26:40.575347+00:00",
+  "last_checked": "2026-07-30T20:54:03.089339+00:00",
   "seats": {
     "4:22557": {
       "available": [
