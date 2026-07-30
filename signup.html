@@ -22,22 +22,13 @@
   }
 
   * { box-sizing: border-box; }
-
-  html, body {
-    margin: 0;
-    padding: 0;
-    min-height: 100%;
-    background: var(--bg);
-  }
+  html, body { margin: 0; padding: 0; min-height: 100%; background: var(--bg); }
 
   body {
     font-family: 'Inter', -apple-system, sans-serif;
     color: var(--muted);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 32px 18px;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 100vh; padding: 32px 18px;
     background:
       radial-gradient(ellipse 900px 500px at 50% -10%, rgba(232,178,77,0.10), transparent 60%),
       radial-gradient(ellipse 700px 500px at 85% 90%, rgba(178,58,46,0.10), transparent 60%),
@@ -47,19 +38,13 @@
   .stage { width: 100%; max-width: 440px; }
 
   .eyebrow {
-    text-align: center;
-    font-size: 11px;
-    letter-spacing: 0.28em;
-    font-weight: 600;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 14px;
+    text-align: center; font-size: 11px; letter-spacing: 0.28em; font-weight: 600;
+    color: var(--gold); text-transform: uppercase; margin-bottom: 14px;
   }
 
   .marquee { display: flex; justify-content: center; gap: 10px; margin-bottom: 18px; }
   .marquee span {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--gold-dim);
+    width: 6px; height: 6px; border-radius: 50%; background: var(--gold-dim);
     animation: bulb 2.4s ease-in-out infinite;
   }
   .marquee span:nth-child(2) { animation-delay: 0.2s; }
@@ -74,37 +59,27 @@
   }
 
   h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-weight: 400;
-    text-align: center;
-    color: var(--ticket);
-    font-size: clamp(30px, 6.5vw, 42px);
-    line-height: 1.05;
-    margin: 0 0 12px;
+    font-family: 'Bebas Neue', sans-serif; font-weight: 400; text-align: center;
+    color: var(--ticket); font-size: clamp(28px, 6vw, 40px); line-height: 1.05; margin: 0 0 12px;
   }
   h1 em { font-style: normal; color: var(--gold); }
 
   .lede {
-    text-align: center;
-    font-size: 14.5px;
-    line-height: 1.55;
-    color: var(--muted);
-    max-width: 360px;
-    margin: 0 auto 30px;
+    text-align: center; font-size: 14px; line-height: 1.55; color: var(--muted);
+    max-width: 370px; margin: 0 auto 28px;
   }
 
   .ticket {
-    position: relative;
-    background: var(--ticket);
-    border-radius: var(--radius);
+    position: relative; background: var(--ticket); border-radius: var(--radius);
     box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,0,0,0.04);
-    overflow: hidden;
+    overflow: hidden; opacity: 0;
+    animation: fadeUp 0.7s cubic-bezier(.2,.7,.2,1) 0.42s both,
+               floatTicket 6s ease-in-out 1.12s infinite;
   }
-
-  .ticket-top { padding: 24px 26px 18px; text-align: center; }
-  .ticket-brand { font-family: 'Bebas Neue', sans-serif; font-size: 21px; letter-spacing: 0.06em; color: var(--ink); }
+  .ticket-top { padding: 22px 24px 16px; text-align: center; }
+  .ticket-brand { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.06em; color: var(--ink); }
   .ticket-brand span { color: var(--red); }
-  .ticket-sub { font-size: 11.5px; color: var(--ink-muted); margin-top: 2px; letter-spacing: 0.03em; }
+  .ticket-sub { font-size: 11px; color: var(--ink-muted); margin-top: 2px; letter-spacing: 0.03em; }
 
   .perf { position: relative; height: 0; border-top: 2px dashed var(--ticket-edge); }
   .perf::before, .perf::after {
@@ -123,64 +98,78 @@
     color: var(--ink-muted); font-weight: 600;
   }
 
-  .ticket-bottom { padding: 22px 26px 28px; }
+  .ticket-bottom { padding: 20px 24px 26px; }
 
-  .field { margin-bottom: 14px; }
-  .field:last-of-type { margin-bottom: 0; }
-
-  label {
+  .field { margin-bottom: 16px; }
+  label.field-label {
     display: block; font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--ink-muted); margin-bottom: 6px;
+    text-transform: uppercase; color: var(--ink-muted); margin-bottom: 7px;
   }
+  .field-hint { font-size: 11.5px; color: var(--ink-muted); margin: -4px 0 8px; }
 
   select, input[type="email"] {
-    width: 100%;
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    padding: 12px 14px;
-    border-radius: 12px;
-    border: 1.5px solid rgba(36,26,18,0.18);
-    background: #fffdf6;
-    color: var(--ink);
-    outline: none;
+    width: 100%; font-family: 'Inter', sans-serif; font-size: 15px; padding: 12px 14px;
+    border-radius: 12px; border: 1.5px solid rgba(36,26,18,0.18); background: #fffdf6;
+    color: var(--ink); outline: none;
     transition: border-color 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
-    appearance: none;
-    -webkit-appearance: none;
+    appearance: none; -webkit-appearance: none;
   }
   select {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%236b5f4f' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    padding-right: 34px;
+    background-repeat: no-repeat; background-position: right 14px center; padding-right: 34px;
   }
   select:disabled, input:disabled { opacity: 0.45; cursor: not-allowed; }
-  select:focus, input[type="email"]:focus {
-    border-color: var(--gold);
-    box-shadow: 0 0 0 4px rgba(232,178,77,0.25);
+  select:focus, input[type="email"]:focus { border-color: var(--gold); box-shadow: 0 0 0 4px rgba(232,178,77,0.25); }
+
+  @keyframes enablePulse {
+    0% { box-shadow: 0 0 0 0 rgba(232,178,77,0.55); }
+    100% { box-shadow: 0 0 0 8px rgba(232,178,77,0); }
   }
+  select.just-enabled { animation: enablePulse 0.7s ease-out; }
+
+  .check-list {
+    max-height: 168px; overflow-y: auto;
+    border: 1.5px solid rgba(36,26,18,0.14); border-radius: 12px;
+    background: #fffdf6; padding: 4px;
+  }
+  .check-list.disabled { opacity: 0.45; pointer-events: none; }
+  .check-item {
+    display: flex; align-items: center; gap: 9px;
+    padding: 8px 10px; border-radius: 8px; cursor: pointer;
+    font-size: 14px; color: var(--ink);
+  }
+  .check-item:hover { background: rgba(232,178,77,0.14); }
+  .check-item input { width: 16px; height: 16px; accent-color: var(--red); flex-shrink: 0; }
+  .check-item span { line-height: 1.3; }
+
+  .date-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+  }
+  .date-grid .check-item { border: 1px solid rgba(36,26,18,0.1); }
 
   .catalog-status {
-    font-size: 12.5px;
-    color: var(--ink-muted);
-    text-align: center;
-    padding: 6px 0 4px;
+    font-size: 12.5px; text-align: center; padding: 4px 0 10px;
+    background: linear-gradient(90deg, var(--ink-muted) 40%, var(--gold) 50%, var(--ink-muted) 60%);
+    background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+    animation: shimmerText 2.2s linear infinite;
   }
-  .catalog-status.error { color: var(--red); }
+  .catalog-status.error {
+    color: var(--red); background: none; -webkit-background-clip: initial; background-clip: initial; animation: none;
+  }
+  @keyframes shimmerText { 0% { background-position: -120% 0; } 100% { background-position: 220% 0; } }
 
   button#submitBtn {
-    width: 100%;
-    margin-top: 16px;
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    padding: 15px 16px;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
-    background: var(--ink);
-    color: var(--ticket);
+    width: 100%; margin-top: 6px; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700;
+    padding: 15px 16px; border-radius: 12px; border: none; cursor: pointer;
+    background: var(--ink); color: var(--ticket); position: relative; overflow: hidden;
     transition: transform 0.12s ease, background 0.15s ease, opacity 0.15s ease;
   }
+  button#submitBtn::after {
+    content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
+    background: linear-gradient(115deg, transparent, rgba(255,255,255,0.22), transparent);
+    transform: skewX(-20deg); transition: left 0.65s ease; pointer-events: none;
+  }
+  button#submitBtn:hover:not(:disabled)::after { left: 130%; }
   button#submitBtn:hover:not(:disabled) { background: #35271a; }
   button#submitBtn:active:not(:disabled) { transform: scale(0.98); }
   button#submitBtn:disabled { opacity: 0.45; cursor: not-allowed; }
@@ -192,119 +181,44 @@
   .success.show { display: block; }
   .ticket-bottom.hide { display: none; }
 
-  .stamp {
-    width: 64px; height: 64px; margin: 4px auto 16px;
-    display: flex; align-items: center; justify-content: center;
-    transform: rotate(-8deg);
-  }
-  .success h2 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 26px; color: var(--ink); margin: 0 0 8px; }
-  .success p { font-size: 13.5px; color: var(--ink-muted); max-width: 280px; margin: 0 auto 18px; line-height: 1.5; }
-  .success a { font-size: 12.5px; color: var(--ink-muted); text-decoration: underline; cursor: pointer; }
-
-  .footer-note { text-align: center; font-size: 11.5px; color: var(--muted); margin-top: 24px; }
-
-  /* ---- entrance + ambient motion ---- */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(14px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .eyebrow, .marquee, h1, .lede, .footer-note {
-    opacity: 0;
-    animation: fadeUp 0.7s cubic-bezier(.2,.7,.2,1) both;
-  }
-  .eyebrow { animation-delay: 0.05s; }
-  .marquee { animation-delay: 0.15s; }
-  h1 { animation-delay: 0.22s; }
-  .lede { animation-delay: 0.32s; }
-  .footer-note { animation-delay: 0.6s; }
-
-  .ticket {
-    opacity: 0;
-    animation:
-      fadeUp 0.7s cubic-bezier(.2,.7,.2,1) 0.42s both,
-      floatTicket 6s ease-in-out 1.12s infinite;
-  }
-
-  @keyframes floatTicket {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-7px); }
-  }
-
-  @keyframes shimmerText {
-    0% { background-position: -120% 0; }
-    100% { background-position: 220% 0; }
-  }
-  .catalog-status:not(.error) {
-    background: linear-gradient(90deg, var(--ink-muted) 40%, var(--gold) 50%, var(--ink-muted) 60%);
-    background-size: 250% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: shimmerText 2.2s linear infinite;
-  }
-
-  /* button shine sweep */
-  button#submitBtn { position: relative; overflow: hidden; }
-  button#submitBtn::after {
-    content: "";
-    position: absolute;
-    top: 0; left: -60%;
-    width: 40%; height: 100%;
-    background: linear-gradient(115deg, transparent, rgba(255,255,255,0.22), transparent);
-    transform: skewX(-20deg);
-    transition: left 0.65s ease;
-    pointer-events: none;
-  }
-  button#submitBtn:hover:not(:disabled)::after { left: 130%; }
-
-  /* select gets a brief gold pulse the moment it becomes usable */
-  @keyframes enablePulse {
-    0% { box-shadow: 0 0 0 0 rgba(232,178,77,0.55); }
-    100% { box-shadow: 0 0 0 8px rgba(232,178,77,0); }
-  }
-  select.just-enabled { animation: enablePulse 0.7s ease-out; }
-
-  /* success stamp: draw-in check + confetti burst */
+  .stamp { width: 64px; height: 64px; margin: 4px auto 16px; display: flex; align-items: center; justify-content: center; transform: rotate(-8deg); }
   .stamp svg { width: 64px; height: 64px; overflow: visible; }
-  .stamp-circle {
-    fill: none; stroke: var(--red); stroke-width: 3;
-    stroke-dasharray: 145; stroke-dashoffset: 145;
-  }
-  .stamp-check {
-    fill: none; stroke: var(--red); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round;
-    stroke-dasharray: 40; stroke-dashoffset: 40;
-  }
+  .stamp-circle { fill: none; stroke: var(--red); stroke-width: 3; stroke-dasharray: 145; stroke-dashoffset: 145; }
+  .stamp-check { fill: none; stroke: var(--red); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 40; stroke-dashoffset: 40; }
   .success.show .stamp-circle { animation: drawCircle 0.5s ease-out forwards; }
   .success.show .stamp-check { animation: drawCheck 0.35s ease-out 0.45s forwards; }
   @keyframes drawCircle { to { stroke-dashoffset: 0; } }
   @keyframes drawCheck { to { stroke-dashoffset: 0; } }
 
   .confetti { position: relative; width: 0; height: 0; margin: 0 auto; }
-  .confetti span {
-    position: absolute; top: 0; left: 0;
-    width: 6px; height: 6px; border-radius: 2px;
-    background: var(--gold);
-    opacity: 0;
-  }
+  .confetti span { position: absolute; top: 0; left: 0; width: 6px; height: 6px; border-radius: 2px; background: var(--gold); opacity: 0; }
   .confetti span:nth-child(odd) { background: var(--red); }
   .success.show .confetti span { animation: confettiBurst 0.7s ease-out 0.5s both; }
-  .confetti span:nth-child(1) { --a: -60deg; }
-  .confetti span:nth-child(2) { --a: -30deg; }
-  .confetti span:nth-child(3) { --a: -8deg; }
-  .confetti span:nth-child(4) { --a: 8deg; }
-  .confetti span:nth-child(5) { --a: 30deg; }
-  .confetti span:nth-child(6) { --a: 60deg; }
-  .confetti span:nth-child(7) { --a: 200deg; }
-  .confetti span:nth-child(8) { --a: 160deg; }
+  .confetti span:nth-child(1) { --a: -60deg; } .confetti span:nth-child(2) { --a: -30deg; }
+  .confetti span:nth-child(3) { --a: -8deg; }  .confetti span:nth-child(4) { --a: 8deg; }
+  .confetti span:nth-child(5) { --a: 30deg; }  .confetti span:nth-child(6) { --a: 60deg; }
+  .confetti span:nth-child(7) { --a: 200deg; } .confetti span:nth-child(8) { --a: 160deg; }
   @keyframes confettiBurst {
     0% { opacity: 1; transform: rotate(var(--a)) translateX(0) scale(1); }
     100% { opacity: 0; transform: rotate(var(--a)) translateX(46px) scale(0.4); }
   }
 
+  .success h2 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 26px; color: var(--ink); margin: 0 0 8px; }
+  .success p { font-size: 13.5px; color: var(--ink-muted); max-width: 280px; margin: 0 auto 18px; line-height: 1.5; }
+  .success a { font-size: 12.5px; color: var(--ink-muted); text-decoration: underline; cursor: pointer; }
+
+  .footer-note { text-align: center; font-size: 11.5px; color: var(--muted); margin-top: 24px; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes floatTicket { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+  .eyebrow, .marquee, h1, .lede, .footer-note { opacity: 0; animation: fadeUp 0.7s cubic-bezier(.2,.7,.2,1) both; }
+  .eyebrow { animation-delay: 0.05s; } .marquee { animation-delay: 0.15s; }
+  h1 { animation-delay: 0.22s; } .lede { animation-delay: 0.32s; } .footer-note { animation-delay: 0.6s; }
+
   @media (prefers-reduced-motion: reduce) {
     .marquee span { animation: none; }
     .eyebrow, .marquee, h1, .lede, .ticket, .footer-note { animation: none; opacity: 1; }
-    .catalog-status:not(.error) { animation: none; -webkit-background-clip: initial; background-clip: initial; color: var(--ink-muted); }
+    .catalog-status { animation: none; -webkit-background-clip: initial; background-clip: initial; color: var(--ink-muted); }
     button#submitBtn::after { display: none; }
     select.just-enabled { animation: none; }
     .stamp-circle, .stamp-check { stroke-dashoffset: 0; animation: none; }
@@ -321,18 +235,18 @@
     </div>
 
     <h1>Get the seat<br>before it's <em>gone</em>.</h1>
-    <p class="lede">Pick the exact show you're eyeing — we'll watch it for you and email you the moment seats open up, plus any new releases or ticket drops.</p>
+    <p class="lede">Tell us the movie, location, and dates you're waiting on — we'll email you the instant tickets go on sale, plus any new releases or ticket drops.</p>
 
     <div class="ticket">
       <div class="ticket-top">
         <div class="ticket-brand">CINEPLEX <span>ALERT</span></div>
-        <div class="ticket-sub">New releases · Ticket drops · Seat watch</div>
+        <div class="ticket-sub">New releases · Ticket drops · Personal watch</div>
       </div>
 
       <div class="perf"><span class="perf-label">ADMIT ONE</span></div>
 
       <div class="ticket-bottom" id="formWrap">
-        <div id="catalogStatus" class="catalog-status">Loading current showtimes…</div>
+        <div id="catalogStatus" class="catalog-status">Loading current movies…</div>
 
         <form id="signupForm"
               action="https://docs.google.com/forms/d/e/1FAIpQLSf6inHrWXsmm0rJQ2e26bv7XALpcUdGZYji0Y7ViPgeoko9yw/formResponse"
@@ -340,34 +254,31 @@
               target="hidden_iframe">
 
           <div class="field">
-            <label for="locationSelect">Location</label>
+            <label class="field-label" for="locationSelect">Location</label>
             <select id="locationSelect" disabled><option value="">Loading…</option></select>
           </div>
 
           <div class="field">
-            <label for="movieSelect">Movie</label>
-            <select id="movieSelect" disabled><option value="">Choose a location first</option></select>
+            <label class="field-label">Movies you're waiting on</label>
+            <div class="field-hint">Pick one or more</div>
+            <div class="check-list disabled" id="movieList"></div>
           </div>
 
           <div class="field">
-            <label for="dateSelect">Date</label>
-            <select id="dateSelect" disabled><option value="">Choose a movie first</option></select>
+            <label class="field-label">Dates you expect tickets to open</label>
+            <div class="field-hint">Pick one or more</div>
+            <div class="check-list" id="dateList"><div class="date-grid" id="dateGrid"></div></div>
           </div>
 
           <div class="field">
-            <label for="showSelect">Showtime</label>
-            <select id="showSelect" disabled><option value="">Choose a date first</option></select>
-          </div>
-
-          <div class="field">
-            <label for="email">Your email</label>
+            <label class="field-label" for="email">Your email</label>
             <input type="email" id="email" name="entry.695603563" placeholder="you@example.com" required>
           </div>
 
           <input type="hidden" id="showSelectionHidden" name="entry.522691503" value="">
 
-          <button type="submit" id="submitBtn" disabled>Watch This Show</button>
-          <div class="fineprint">Free. We'll email you about this show's seats, plus new releases &amp; ticket drops.</div>
+          <button type="submit" id="submitBtn" disabled>Watch These Shows</button>
+          <div class="fineprint">Free. We'll email you the moment your picks go on sale, plus new releases &amp; ticket drops.</div>
         </form>
       </div>
 
@@ -383,7 +294,7 @@
           </div>
         </div>
         <h2>You're on the list</h2>
-        <p>Watch your inbox — we'll email you the second something opens up for your show.</p>
+        <p>Watch your inbox — we'll email you the second your picks go on sale.</p>
         <a id="resetLink">Watch another show</a>
       </div>
     </div>
@@ -394,128 +305,103 @@
   <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
   <script>
-    let catalog = null;
+    let optionsData = null;
 
     const locationSelect = document.getElementById('locationSelect');
-    const movieSelect = document.getElementById('movieSelect');
-    const dateSelect = document.getElementById('dateSelect');
-    const showSelect = document.getElementById('showSelect');
+    const movieList = document.getElementById('movieList');
+    const dateGrid = document.getElementById('dateGrid');
+    const emailInput = document.getElementById('email');
     const submitBtn = document.getElementById('submitBtn');
     const catalogStatus = document.getElementById('catalogStatus');
     const showSelectionHidden = document.getElementById('showSelectionHidden');
 
-    function setOptions(select, options, placeholder) {
-      select.innerHTML = '';
-      const ph = document.createElement('option');
-      ph.value = '';
-      ph.textContent = placeholder;
-      select.appendChild(ph);
-      options.forEach(o => {
-        const opt = document.createElement('option');
-        opt.value = o.value;
-        opt.textContent = o.label;
-        select.appendChild(opt);
+    function pulseEnable(el) {
+      el.classList.remove('just-enabled');
+      void el.offsetWidth;
+      el.classList.add('just-enabled');
+      setTimeout(() => el.classList.remove('just-enabled'), 700);
+    }
+
+    function monthDay(offset) {
+      const d = new Date();
+      d.setDate(d.getDate() + offset);
+      const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      const iso = d.toISOString().slice(0, 10);
+      return { iso, label: `${d.getDate()} ${months[d.getMonth()]}` };
+    }
+
+    function buildDateGrid() {
+      dateGrid.innerHTML = '';
+      for (let i = 0; i < 14; i++) {
+        const { iso, label } = monthDay(i);
+        const id = 'date_' + iso;
+        const item = document.createElement('label');
+        item.className = 'check-item';
+        item.innerHTML = `<input type="checkbox" value="${iso}" id="${id}"><span>${label}</span>`;
+        item.querySelector('input').addEventListener('change', updateSubmitState);
+        dateGrid.appendChild(item);
+      }
+    }
+
+    function buildMovieList(movies) {
+      movieList.innerHTML = '';
+      movies.forEach(m => {
+        const item = document.createElement('label');
+        item.className = 'check-item';
+        item.innerHTML = `<input type="checkbox" value="${m.id}" data-title="${m.title.replace(/"/g,'&quot;')}"><span>${m.title}</span>`;
+        item.querySelector('input').addEventListener('change', updateSubmitState);
+        movieList.appendChild(item);
       });
     }
 
-    function pulseEnable(select) {
-      select.classList.remove('just-enabled');
-      void select.offsetWidth; // restart animation if triggered again quickly
-      select.classList.add('just-enabled');
-      setTimeout(() => select.classList.remove('just-enabled'), 700);
+    function getCheckedMovies() {
+      return Array.from(movieList.querySelectorAll('input:checked')).map(i => ({
+        id: parseInt(i.value, 10),
+        title: i.dataset.title,
+      }));
     }
 
-    async function loadCatalog() {
-      try {
-        const res = await fetch('./catalog.json', { cache: 'no-store' });
-        if (!res.ok) throw new Error('fetch failed');
-        catalog = await res.json();
-        if (!catalog.locations || !catalog.locations.length) throw new Error('empty catalog');
+    function getCheckedDates() {
+      return Array.from(dateGrid.querySelectorAll('input:checked')).map(i => i.value);
+    }
 
-        setOptions(
-          locationSelect,
-          catalog.locations.map(l => ({ value: l.id, label: l.title })),
-          'Choose a location…'
-        );
+    function updateSubmitState() {
+      const hasLocation = !!locationSelect.value;
+      const hasMovies = getCheckedMovies().length > 0;
+      const hasDates = getCheckedDates().length > 0;
+      const hasEmail = emailInput.checkValidity() && emailInput.value.trim();
+      submitBtn.disabled = !(hasLocation && hasMovies && hasDates && hasEmail);
+    }
+
+    async function loadOptions() {
+      try {
+        const res = await fetch('./options.json', { cache: 'no-store' });
+        if (!res.ok) throw new Error('fetch failed');
+        optionsData = await res.json();
+        if (!optionsData.locations || !optionsData.locations.length) throw new Error('empty options');
+
+        locationSelect.innerHTML = '<option value="">Choose a location…</option>';
+        optionsData.locations.forEach(l => {
+          const opt = document.createElement('option');
+          opt.value = l.id;
+          opt.textContent = l.title;
+          locationSelect.appendChild(opt);
+        });
         locationSelect.disabled = false;
         pulseEnable(locationSelect);
+
+        buildMovieList(optionsData.movies || []);
+        movieList.classList.remove('disabled');
+
         catalogStatus.style.display = 'none';
       } catch (e) {
-        catalogStatus.textContent = 'Could not load current showtimes. Please try again shortly.';
+        catalogStatus.textContent = 'Could not load the current movie list. Please try again shortly.';
         catalogStatus.classList.add('error');
       }
     }
 
-    function getLocation() {
-      const id = parseInt(locationSelect.value, 10);
-      return catalog.locations.find(l => l.id === id) || null;
-    }
-    function getMovie(loc) {
-      const id = parseInt(movieSelect.value, 10);
-      return (loc && loc.movies.find(m => m.movieId === id)) || null;
-    }
-    function getDateEntry(movie) {
-      return (movie && movie.dates.find(d => d.date === dateSelect.value)) || null;
-    }
-
-    locationSelect.addEventListener('change', () => {
-      const loc = getLocation();
-      if (loc) {
-        setOptions(movieSelect, loc.movies.map(m => ({ value: m.movieId, label: m.title })), 'Choose a movie…');
-        movieSelect.disabled = false;
-        pulseEnable(movieSelect);
-      } else {
-        setOptions(movieSelect, [], 'Choose a location first');
-        movieSelect.disabled = true;
-      }
-      setOptions(dateSelect, [], 'Choose a movie first');
-      dateSelect.disabled = true;
-      setOptions(showSelect, [], 'Choose a date first');
-      showSelect.disabled = true;
-      submitBtn.disabled = true;
-    });
-
-    movieSelect.addEventListener('change', () => {
-      const loc = getLocation();
-      const movie = getMovie(loc);
-      if (movie) {
-        setOptions(dateSelect, movie.dates.map(d => ({ value: d.date, label: d.displayDate })), 'Choose a date…');
-        dateSelect.disabled = false;
-        pulseEnable(dateSelect);
-      } else {
-        setOptions(dateSelect, [], 'Choose a movie first');
-        dateSelect.disabled = true;
-      }
-      setOptions(showSelect, [], 'Choose a date first');
-      showSelect.disabled = true;
-      submitBtn.disabled = true;
-    });
-
-    dateSelect.addEventListener('change', () => {
-      const loc = getLocation();
-      const movie = getMovie(loc);
-      const dateEntry = getDateEntry(movie);
-      if (dateEntry) {
-        setOptions(
-          showSelect,
-          dateEntry.shows.map(s => ({
-            value: s.programId,
-            label: `${s.displayTime} · ${s.hall} · \u09f3${s.price}`
-          })),
-          'Choose a showtime…'
-        );
-        showSelect.disabled = false;
-        pulseEnable(showSelect);
-      } else {
-        setOptions(showSelect, [], 'Choose a date first');
-        showSelect.disabled = true;
-      }
-      submitBtn.disabled = true;
-    });
-
-    showSelect.addEventListener('change', () => {
-      submitBtn.disabled = !showSelect.value;
-    });
+    locationSelect.addEventListener('change', updateSubmitState);
+    emailInput.addEventListener('input', updateSubmitState);
 
     const form = document.getElementById('signupForm');
     const iframe = document.getElementById('hidden_iframe');
@@ -534,15 +420,14 @@
     }
 
     form.addEventListener('submit', () => {
-      const loc = getLocation();
-      const movie = getMovie(loc);
-      const dateEntry = getDateEntry(movie);
-      const show = dateEntry && dateEntry.shows.find(s => String(s.programId) === showSelect.value);
-
-      const summary = (loc && movie && dateEntry && show)
-        ? `LOC${loc.id}|PROG${show.programId}|${movie.title} | ${loc.title} | ${dateEntry.displayDate} ${show.displayTime}`
-        : '';
-      showSelectionHidden.value = summary;
+      const loc = optionsData.locations.find(l => String(l.id) === locationSelect.value);
+      const payload = {
+        loc: loc ? loc.id : null,
+        locTitle: loc ? loc.title : '',
+        movies: getCheckedMovies(),
+        dates: getCheckedDates(),
+      };
+      showSelectionHidden.value = JSON.stringify(payload);
 
       submitting = true;
       submitBtn.disabled = true;
@@ -556,19 +441,16 @@
 
     resetLink.addEventListener('click', () => {
       form.reset();
-      setOptions(movieSelect, [], 'Choose a location first');
-      movieSelect.disabled = true;
-      setOptions(dateSelect, [], 'Choose a movie first');
-      dateSelect.disabled = true;
-      setOptions(showSelect, [], 'Choose a date first');
-      showSelect.disabled = true;
+      movieList.querySelectorAll('input').forEach(i => i.checked = false);
+      dateGrid.querySelectorAll('input').forEach(i => i.checked = false);
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Watch This Show';
+      submitBtn.textContent = 'Watch These Shows';
       successState.classList.remove('show');
       formWrap.classList.remove('hide');
     });
 
-    loadCatalog();
+    buildDateGrid();
+    loadOptions();
   </script>
 
 </body>
