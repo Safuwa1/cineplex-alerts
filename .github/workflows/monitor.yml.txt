@@ -1,0 +1,48 @@
+name: Cineplex Ticket Monitor
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/10 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cineplex-monitor
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install headless browser
+        run: playwright install --with-deps chromium
+
+      - name: Run monitor script
+        env:
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_APP_PASSWORD: ${{ secrets.SENDER_APP_PASSWORD }}
+          RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
+        run: python monitor.py
+
+      - name: Save updated state and options back to the repository
+        run: |
+          git config user.name "cineplex-alert-bot"
+          git config user.email "actions@github.com"
+          git add state.json options.json
+          git commit -m "Update tracked state and options" || echo "Nothing new to commit"
+          git pull --rebase || true
+          git push
