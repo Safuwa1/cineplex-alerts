@@ -1,23 +1,103 @@
 {
-  "generated_at": "2026-07-29T07:00:00Z",
+  "generated_at": "2026-07-30T05:22:57.751551+00:00",
   "locations": [
-    {"id": 1, "title": "Bashundhara City Shopping Mall, Panthapath"},
-    {"id": 2, "title": "Shimanto Shambhar, Dhanmondi 2"},
-    {"id": 3, "title": "Star Cineplex, SKS Tower, Mohakhali"},
-    {"id": 4, "title": "Sony Square, Mirpur"},
-    {"id": 5, "title": "Bangladesh Military Museum, Bijoy Shoroni"},
-    {"id": 6, "title": "Bali Arcade, Chattogram"},
-    {"id": 8, "title": "Centrepoint, Uttara"},
-    {"id": 9, "title": "Shimanto Tower, Narayanganj"},
-    {"id": 10, "title": "Finlay Square, Chattogram"}
+    {
+      "id": 1,
+      "title": "Bashundhara City Shopping Mall, Panthapath"
+    },
+    {
+      "id": 2,
+      "title": "Shimanto Shambhar, Dhanmondi 2"
+    },
+    {
+      "id": 3,
+      "title": "SKS Tower, Mohakhali"
+    },
+    {
+      "id": 4,
+      "title": "Sony Square, Mirpur"
+    },
+    {
+      "id": 5,
+      "title": "Bangladesh Military Museum, Bijoy Shoroni"
+    },
+    {
+      "id": 6,
+      "title": "Bali Arcade, Chattogram"
+    },
+    {
+      "id": 8,
+      "title": "Centrepoint, Uttara"
+    },
+    {
+      "id": 9,
+      "title": "Shimanto Tower, Narayanganj"
+    },
+    {
+      "id": 10,
+      "title": "Finlay Square, Chattogram"
+    }
   ],
   "movies": [
-    {"id": 1711, "title": "The Odyssey"},
-    {"id": 1712, "title": "Moana"},
-    {"id": 1687, "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D"},
-    {"id": 1705, "title": "Evil Dead Burn (18+)"},
-    {"id": 1713, "title": "Passenger"},
-    {"id": 1688, "title": "Spider-Man: Brand New Day"},
-    {"id": 1707, "title": "Avengers: Doomsday"}
+    {
+      "id": 1687,
+      "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D"
+    },
+    {
+      "id": 1705,
+      "title": "Evil Dead Burn (18+)"
+    },
+    {
+      "id": 1712,
+      "title": "Moana"
+    },
+    {
+      "id": 1713,
+      "title": "Passenger"
+    },
+    {
+      "id": 1717,
+      "title": "Shekor"
+    },
+    {
+      "id": 1716,
+      "title": "Spider-Man: Brand New Day (2D)"
+    },
+    {
+      "id": 1688,
+      "title": "Spider-Man: Brand New Day"
+    },
+    {
+      "id": 1711,
+      "title": "The Odyssey"
+    },
+    {
+      "id": 1714,
+      "title": "Time Hoppers"
+    },
+    {
+      "id": 1692,
+      "title": "Insidious: Out of the Further"
+    },
+    {
+      "id": 1694,
+      "title": "Resident Evil"
+    },
+    {
+      "id": 1706,
+      "title": "The End of Oak Street"
+    },
+    {
+      "id": 1707,
+      "title": "Avengers: Doomsday"
+    },
+    {
+      "id": 1708,
+      "title": "Clayface"
+    },
+    {
+      "id": 1709,
+      "title": "Dune III"
+    }
   ]
 }
