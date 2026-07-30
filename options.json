@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-30T12:10:03.434781+00:00",
+  "generated_at": "2026-07-30T17:25:43.859326+00:00",
   "locations": [
     {
       "id": 1,
@@ -40,22 +40,6 @@
   ],
   "movies": [
     {
-      "id": 1717,
-      "title": "Shekor"
-    },
-    {
-      "id": 1716,
-      "title": "Spider-Man: Brand New Day (2D)"
-    },
-    {
-      "id": 1688,
-      "title": "Spider-Man: Brand New Day"
-    },
-    {
-      "id": 1711,
-      "title": "The Odyssey"
-    },
-    {
       "id": 1687,
       "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D"
     },
@@ -70,6 +54,22 @@
     {
       "id": 1713,
       "title": "Passenger"
+    },
+    {
+      "id": 1717,
+      "title": "Shekor"
+    },
+    {
+      "id": 1716,
+      "title": "Spider-Man: Brand New Day (2D)"
+    },
+    {
+      "id": 1688,
+      "title": "Spider-Man: Brand New Day"
+    },
+    {
+      "id": 1711,
+      "title": "The Odyssey"
     },
     {
       "id": 1714,
@@ -98,6 +98,10 @@
     {
       "id": 1709,
       "title": "Dune III"
+    },
+    {
+      "id": 1719,
+      "title": "Minions & Monsters"
     }
   ]
 }
