@@ -4,164 +4,116 @@
       "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
       "category": "running",
       "slug": "billie-eilish-hit-me-hard-and-soft-the-tour-live-in-3d",
-      "dates": [
-        "2026-07-31",
-        "2026-08-01",
-        "2026-08-02",
-        "2026-08-03",
-        "2026-08-04",
-        "2026-08-05",
-        "2026-08-06"
-      ]
+      "movie_id": 1687,
+      "dates_by_location": {}
     },
     "474": {
       "title": "Evil Dead Burn (18+)",
       "category": "running",
       "slug": "evil-dead-burn-18",
-      "dates": [
-        "2026-07-31",
-        "2026-08-01",
-        "2026-08-02",
-        "2026-08-03",
-        "2026-08-04",
-        "2026-08-05",
-        "2026-08-06"
-      ]
+      "movie_id": 1705,
+      "dates_by_location": {}
     },
     "481": {
       "title": "Moana",
       "category": "running",
       "slug": "moana",
-      "dates": [
-        "2026-07-31",
-        "2026-08-01",
-        "2026-08-02",
-        "2026-08-03",
-        "2026-08-04",
-        "2026-08-05",
-        "2026-08-06"
-      ]
+      "movie_id": 1712,
+      "dates_by_location": {}
     },
     "483": {
       "title": "Passenger",
       "category": "running",
       "slug": "passenger",
-      "dates": [
-        "2026-07-31",
-        "2026-08-01",
-        "2026-08-02",
-        "2026-08-03",
-        "2026-08-04",
-        "2026-08-05",
-        "2026-08-06"
-      ]
+      "movie_id": 1713,
+      "dates_by_location": {}
     },
     "487": {
       "title": "Shekor",
       "category": "running",
       "slug": "shekor",
-      "dates": [
-        "2026-07-31",
-        "2026-08-01",
-        "2026-08-02",
-        "2026-08-03",
-        "2026-08-04",
-        "2026-08-05",
-        "2026-08-06"
-      ]
+      "movie_id": 1717,
+      "dates_by_location": {}
     },
     "485": {
       "title": "Spider-Man: Brand New Day (2D)",
       "category": "running",
       "slug": "spider-man-brand-new-day-2d",
-      "dates": [
-        "2026-07-31",
-        "2026-08-01",
-        "2026-08-02",
-        "2026-08-03",
-        "2026-08-04",
-        "2026-08-05",
-        "2026-08-06"
-      ]
+      "movie_id": 1716,
+      "dates_by_location": {}
     },
     "457": {
       "title": "Spider-Man: Brand New Day",
       "category": "running",
       "slug": "spider-man-brand-new-day",
-      "dates": [
-        "2026-07-31",
-        "2026-08-01",
-        "2026-08-02",
-        "2026-08-03",
-        "2026-08-04",
-        "2026-08-05",
-        "2026-08-06"
-      ]
+      "movie_id": 1688,
+      "dates_by_location": {}
     },
     "480": {
       "title": "The Odyssey",
       "category": "running",
       "slug": "the-odyssey",
-      "dates": [
-        "2026-07-31",
-        "2026-08-01",
-        "2026-08-02",
-        "2026-08-03",
-        "2026-08-04",
-        "2026-08-05",
-        "2026-08-06"
-      ]
+      "movie_id": 1711,
+      "dates_by_location": {}
     },
     "482": {
       "title": "Time Hoppers",
       "category": "running",
       "slug": "time-hoppers",
-      "dates": []
+      "movie_id": 1714,
+      "dates_by_location": {}
     },
     "461": {
       "title": "Insidious: Out of the Further",
       "category": "upcoming",
       "slug": "insidious-out-of-the-further",
-      "dates": []
+      "movie_id": 1692,
+      "dates_by_location": {}
     },
     "463": {
       "title": "Resident Evil",
       "category": "upcoming",
       "slug": "resident-evil",
-      "dates": []
+      "movie_id": 1694,
+      "dates_by_location": {}
     },
     "475": {
       "title": "The End of Oak Street",
       "category": "upcoming",
       "slug": "the-end-of-oak-street",
-      "dates": []
+      "movie_id": 1706,
+      "dates_by_location": {}
     },
     "476": {
       "title": "Avengers: Doomsday",
       "category": "upcoming",
       "slug": "avengers-doomsday",
-      "dates": []
+      "movie_id": 1707,
+      "dates_by_location": {}
     },
     "477": {
       "title": "Clayface",
       "category": "upcoming",
       "slug": "clayface",
-      "dates": []
+      "movie_id": 1708,
+      "dates_by_location": {}
     },
     "478": {
       "title": "Dune III",
       "category": "upcoming",
       "slug": "dune-iii",
-      "dates": []
+      "movie_id": 1709,
+      "dates_by_location": {}
     },
     "488": {
       "title": "Minions & Monsters",
       "category": "upcoming",
       "slug": "minions-monsters",
-      "dates": []
+      "movie_id": 1719,
+      "dates_by_location": {}
     }
   },
-  "last_checked": "2026-07-30T20:54:03.089339+00:00",
+  "last_checked": "2026-07-31T05:25:20.755791+00:00",
   "seats": {
     "4:22557": {
       "available": [
