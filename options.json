@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-31T08:09:23.378980+00:00",
+  "generated_at": "2026-07-31T08:12:53.762827+00:00",
   "locations": [
     {
       "id": 1,
@@ -40,10 +40,6 @@
   ],
   "movies": [
     {
-      "id": 1687,
-      "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D"
-    },
-    {
       "id": 1705,
       "title": "Evil Dead Burn (18+)"
     },
@@ -66,6 +62,10 @@
     {
       "id": 1711,
       "title": "The Odyssey"
+    },
+    {
+      "id": 1687,
+      "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D"
     },
     {
       "id": 1712,
