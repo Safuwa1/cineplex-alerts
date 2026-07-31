@@ -46,3 +46,4 @@ jobs:
           git commit -m "Update tracked state and options" || echo "Nothing new to commit"
           git pull --rebase || true
           git push
+          
