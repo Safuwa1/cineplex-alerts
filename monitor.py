@@ -418,6 +418,11 @@ async def ticket_guest_login(page):
             if attempt < max_attempts:
                 await page.wait_for_timeout(3000)
                 continue
+            try:
+                await page.screenshot(path="debug_ticket_login.png", full_page=True)
+                log("Saved debug_ticket_login.png showing the page at final failed attempt.")
+            except Exception:  # noqa: BLE001
+                pass
             warnings.append(f"Could not click GUEST LOGIN after {max_attempts} attempts: {exc}")
             return None, None
 
