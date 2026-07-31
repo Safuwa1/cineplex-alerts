@@ -1,19 +1,24 @@
 """
-Cineplex Alert System - v3: broadcast + per-subscriber ticket-drop watch
------------------------------------------------------------------------------
-Much lighter than the previous seat-tracking version. Each run:
+Cineplex Alert System - v4: per-location date checking (fixes silent misses)
+--------------------------------------------------------------------------------
+Key fix from v3: /movie/{slug}/detail without a location parameter only
+reflects ONE default branch's schedule. This version checks EVERY branch
+separately for every movie, so a ticket drop at ANY location is caught -
+and the alert names which branch it opened at.
 
-  1. Broadcasts to everyone (via cineplex-web-api, no login needed beyond
-     the site's own anonymous session):
-       - a new movie appears (running OR upcoming)
-       - a movie's category changes (e.g. upcoming -> running)
-       - any movie (running OR upcoming) gets new ticket dates
-  2. Refreshes options.json (locations + movies) so the signup page's
-     picker stays current.
-  3. For every (location, movie, date) combination a friend picked on the
-     signup page, checks - via a real guest login on the ticket site - 
-     whether tickets have opened yet. The moment they have, only that
-     friend gets an email, listing exactly what opened.
+Each run:
+  1. Logs into cineplex-web-api (movie browsing).
+  2. Logs into cineplex-ticket-api as a guest (site's own "Guest" option,
+     no real account, no CAPTCHA bypass).
+  3. Uses the ticket API's get-showdate (per location) to find which
+     (location, movie) combinations actually exist - then checks each
+     one's schedule via cineplex-web-api's per-location movie detail.
+  4. Broadcasts: new movies (any category), category changes, and new
+     ticket dates for any movie at any branch.
+  5. For every (location, movie, date) a friend picked on the signup
+     page, checks - via the same ticket-api session - whether tickets
+     have opened. The moment one has, only that friend gets an email.
+  6. Refreshes options.json so the signup page's picker stays current.
 """
 
 import asyncio
@@ -64,6 +69,10 @@ def save_state(state):
         json.dump(state, f, indent=2, ensure_ascii=False)
 
 
+def today_bd():
+    return (datetime.now(timezone.utc) + BD_OFFSET).date()
+
+
 def format_date_display(date_str):
     try:
         d = datetime.strptime(date_str, "%Y-%m-%d")
@@ -72,16 +81,7 @@ def format_date_display(date_str):
         return date_str
 
 
-def today_bd():
-    return (datetime.now(timezone.utc) + BD_OFFSET).date()
-
-
 def parse_show_selection(raw):
-    """The signup page submits a JSON blob like:
-    {"loc": 4, "locTitle": "Sony Square, Mirpur",
-     "movies": [{"id": 1711, "title": "The Odyssey"}],
-     "dates": ["2026-08-01", "2026-08-02"]}
-    """
     if not raw:
         return None
     try:
@@ -91,18 +91,12 @@ def parse_show_selection(raw):
         dates = [d for d in data.get("dates", []) if d]
         if not loc or not movies or not dates:
             return None
-        return {
-            "loc": loc,
-            "locTitle": data.get("locTitle") or f"location {loc}",
-            "movies": movies,
-            "dates": dates,
-        }
+        return {"loc": loc, "locTitle": data.get("locTitle") or f"location {loc}", "movies": movies, "dates": dates}
     except Exception:  # noqa: BLE001
         return None
 
 
 def get_subscribers():
-    """Fetch subscriber rows (email + parsed watch selection) from the Sheet CSV."""
     subs = []
     try:
         req = urllib.request.Request(SUBSCRIBERS_CSV_URL, headers={"User-Agent": "Mozilla/5.0"})
@@ -113,14 +107,13 @@ def get_subscribers():
             return subs
         header = [h.strip().lower() for h in rows[0]]
         email_col = next((i for i, h in enumerate(header) if "email" in h), None)
-        show_col = next((i for i, h in enumerate(header) if "show" in h), None)
+        show_col = next((i for i, h in enumerate(header) if "show" in h or "selection" in h), None)
         for row in rows[1:]:
             email = row[email_col].strip() if email_col is not None and email_col < len(row) else ""
             raw_show = row[show_col].strip() if show_col is not None and show_col < len(row) else ""
             if not email or "@" not in email:
                 continue
-            parsed = parse_show_selection(raw_show)
-            subs.append({"email": email, "selection": parsed})
+            subs.append({"email": email, "selection": parse_show_selection(raw_show)})
     except Exception as exc:  # noqa: BLE001
         warnings.append(f"Could not fetch subscriber list: {exc}")
     return subs
@@ -135,8 +128,6 @@ def get_all_recipients(subscribers):
 
 
 def build_watch_combos(subscribers):
-    """Groups every (location, movieId, date) a subscriber picked, across
-    everyone, so each unique combo is only checked once per run."""
     combos = {}
     today_str = today_bd().isoformat()
     for s in subscribers:
@@ -146,7 +137,7 @@ def build_watch_combos(subscribers):
         for m in sel["movies"]:
             for d in sel["dates"]:
                 if d < today_str:
-                    continue  # don't bother watching dates already in the past
+                    continue
                 key = (sel["loc"], m["id"], d)
                 entry = combos.setdefault(
                     key, {"emails": set(), "movieTitle": m["title"], "locTitle": sel["locTitle"]}
@@ -165,7 +156,7 @@ def send_email(subject: str, body: str, recipients):
     msg = MIMEText(body, "plain", "utf-8")
     msg["Subject"] = subject
     msg["From"] = sender
-    msg["To"] = sender  # recipients live only in the envelope below, hidden from each other
+    msg["To"] = sender
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
         server.login(sender, password)
         server.sendmail(sender, recipients, msg.as_string())
@@ -216,29 +207,42 @@ async def get_web_api_token(page):
     return token_holder["token"]
 
 
-async def check_movies_and_dates(page, token, state):
-    """Broadcast checks: new movies (any category) + new ticket dates for
-    ANY movie that already has showtimes (not just ones tagged 'running' -
-    some movies go on sale before the site marks them as running)."""
-    old_movies = state.get("movies", {})
-    updated_movies = {}
-    is_first_run = not old_movies
-
+async def fetch_movie_list(page, token):
     try:
         list_result = await api_call(page, token, "/movie-list")
         list_data = json.loads(list_result["body"])
         categories = list_data.get("data", {}) or {}
     except Exception as exc:  # noqa: BLE001
         warnings.append(f"Could not fetch movie-list: {exc}")
-        return updated_movies
+        return []
 
     flat_movies = []
     for category, movies in categories.items():
         if isinstance(movies, list):
             for m in movies:
                 flat_movies.append((category, m))
-
     log(f"movie-list: {len(flat_movies)} movie(s) across {len(categories)} categor(y/ies).")
+    return flat_movies
+
+
+async def fetch_locations(page, token):
+    try:
+        loc_result = await api_call(page, token, "/location")
+        loc_data = json.loads(loc_result["body"]).get("data", [])
+        return [
+            {"id": l.get("id"), "title": l.get("location_name") or l.get("short_name")}
+            for l in loc_data
+            if l.get("id")
+        ]
+    except Exception as exc:  # noqa: BLE001
+        warnings.append(f"Could not fetch locations: {exc}")
+        return []
+
+
+def track_new_movies_and_categories(flat_movies, state):
+    old_movies = state.get("movies", {})
+    updated_movies = {}
+    is_first_run = not old_movies
 
     for category, m in flat_movies:
         key = str(m.get("id"))
@@ -255,69 +259,97 @@ async def check_movies_and_dates(page, token, state):
             "title": title,
             "category": category,
             "slug": slug,
-            "dates": old_movies.get(key, {}).get("dates", []),
+            "movie_id": m.get("movie_id"),
+            "dates_by_location": old_movies.get(key, {}).get("dates_by_location", {}),
         }
 
-    # Check EVERY movie's show_time (not just "running" ones) - tickets can
-    # open before the site's own category label catches up.
-    for category, m in flat_movies:
-        key = str(m.get("id"))
-        slug = m.get("slug")
-        title = m.get("title") or "Unknown title"
-        if not slug:
-            continue
+    return updated_movies, is_first_run
 
-        previous_dates = set(updated_movies[key]["dates"])
+
+async def find_relevant_location_movie_pairs(page, ticket_token, device_key, all_locations):
+    """Uses the ticket API's get-showdate (cheap: one call per location) to
+    find which (location, movie_id) combinations actually exist right now,
+    so we don't waste calls checking a movie at a branch that never shows
+    it at all."""
+    pairs = set()
+    for loc in all_locations:
+        loc_id = loc.get("id")
+        if loc_id is None:
+            continue
         try:
-            detail_result = await api_call(page, token, f"/movie/{slug}/detail")
+            result = await ticket_api_call(page, ticket_token, device_key, "/get-showdate", {"location": loc_id})
+            data = json.loads(result["body"]).get("data", [])
+            for entry in data:
+                for movie in entry.get("availableMovies", []):
+                    mid = movie.get("movie_id")
+                    if mid:
+                        pairs.add((loc_id, mid))
+        except Exception as exc:  # noqa: BLE001
+            warnings.append(f"Could not fetch showdate for location {loc_id}: {exc}")
+    return pairs
+
+
+async def check_dates_per_location(page, token, updated_movies, location_movie_pairs, all_locations, is_first_run):
+    """The core fix: check each movie's schedule AT EACH BRANCH separately,
+    instead of relying on a single un-scoped call that only reflects one
+    default branch."""
+    loc_title_by_id = {loc["id"]: loc["title"] for loc in all_locations if loc.get("id") is not None}
+
+    # Build movie_id -> state key + slug + title, from what we just tracked.
+    by_movie_id = {}
+    for key, info in updated_movies.items():
+        if info.get("movie_id"):
+            by_movie_id[info["movie_id"]] = {"key": key, "slug": info.get("slug"), "title": info.get("title")}
+
+    checked = 0
+    for loc_id, movie_id in sorted(location_movie_pairs):
+        info = by_movie_id.get(movie_id)
+        if not info or not info.get("slug"):
+            continue
+        key = info["key"]
+        slug = info["slug"]
+        title = info["title"]
+        loc_title = loc_title_by_id.get(loc_id, f"location {loc_id}")
+        loc_key = str(loc_id)
+
+        dates_by_location = updated_movies[key]["dates_by_location"]
+        previous_dates = set(dates_by_location.get(loc_key, []))
+
+        try:
+            detail_result = await api_call(page, token, f"/movie/{slug}/detail", {"location_id": loc_id})
             detail_data = json.loads(detail_result["body"])
             show_times = detail_data.get("data", {}).get("show_time", []) or []
             current_dates = sorted({s.get("raw_date") for s in show_times if s.get("raw_date")})
         except Exception as exc:  # noqa: BLE001
-            warnings.append(f'Could not fetch showtimes for "{title}": {exc}')
+            warnings.append(f'Could not fetch showtimes for "{title}" at {loc_title}: {exc}')
             current_dates = sorted(previous_dates)
 
+        checked += 1
         fresh_dates = sorted(set(current_dates) - previous_dates)
-        if fresh_dates and not is_first_run:
-            new_date_alerts.append(f'NEW TICKET DATES for "{title}": {", ".join(fresh_dates)}')
+        # Only alert if we've checked this (movie, location) before - avoids
+        # a flood of "new" dates the very first time we ever look at a combo.
+        if fresh_dates and previous_dates and not is_first_run:
+            new_date_alerts.append(
+                f'NEW TICKET DATES for "{title}" at {loc_title}: {", ".join(fresh_dates)}'
+            )
+            log(f"  -> NEW DATES: {title} @ {loc_title}: {fresh_dates}")
 
-        updated_movies[key]["dates"] = current_dates
+        dates_by_location[loc_key] = current_dates
 
-    return updated_movies
+    log(f"Checked {checked} (movie, location) combination(s) for new ticket dates.")
 
 
-async def build_options(page, token):
-    """Lightweight data for the signup page's picker: just locations and
-    movies, reusing the same already-logged-in session. No ticket-site
-    login needed for this part."""
-    options = {"generated_at": datetime.now(timezone.utc).isoformat(), "locations": [], "movies": []}
-
-    try:
-        loc_result = await api_call(page, token, "/location")
-        loc_data = json.loads(loc_result["body"]).get("data", [])
-        options["locations"] = [
-            {"id": l.get("id"), "title": l.get("location_name") or l.get("short_name")}
-            for l in loc_data
-            if l.get("id")
-        ]
-    except Exception as exc:  # noqa: BLE001
-        warnings.append(f"Could not fetch locations for picker: {exc}")
-
-    try:
-        list_result = await api_call(page, token, "/movie-list")
-        list_data = json.loads(list_result["body"]).get("data", {})
-        seen = {}
-        for category, movies in list_data.items():
-            if isinstance(movies, list):
-                for m in movies:
-                    movie_id = m.get("movie_id")  # the id the TICKET api expects
-                    if movie_id and movie_id not in seen:
-                        seen[movie_id] = m.get("title") or m.get("movie_title") or "Unknown"
-        options["movies"] = [{"id": k, "title": v} for k, v in seen.items()]
-    except Exception as exc:  # noqa: BLE001
-        warnings.append(f"Could not fetch movies for picker: {exc}")
-
-    return options
+def build_options(all_locations, flat_movies):
+    seen = {}
+    for category, m in flat_movies:
+        mid = m.get("movie_id")
+        if mid and mid not in seen:
+            seen[mid] = m.get("title") or m.get("movie_title") or "Unknown"
+    return {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "locations": all_locations,
+        "movies": [{"id": k, "title": v} for k, v in seen.items()],
+    }
 
 
 # ------------------------------------------------------ cineplex-ticket-api
@@ -344,8 +376,6 @@ async def ticket_api_call(page, token, device_key, path, body=None):
 
 
 async def ticket_guest_login(page):
-    """Logs in via the site's own 'GUEST LOGIN' button - no real account,
-    no CAPTCHA bypass (the browser just runs the page's own JS normally)."""
     holder = {"token": None, "device_key": None}
 
     def handle_req(request):
@@ -393,18 +423,15 @@ async def ticket_guest_login(page):
 
 
 async def check_ticket_availability(page, token, device_key, combos, state):
-    """For every watched (location, movie, date) combo not yet flagged as
-    open, checks the real booking system. The moment one opens, marks it
-    (so we never alert twice) and queues a message for its subscribers."""
     sent_registry = state.setdefault("ticket_alerts_sent", {})
     alerts_by_email = {}
 
-    log(f"Checking ticket availability for {len(combos)} watched combo(s)...")
+    log(f"Checking ticket availability for {len(combos)} personally-watched combo(s)...")
 
     for (loc, movie_id, date), info in combos.items():
         key = f"{loc}:{movie_id}:{date}"
         if sent_registry.get(key):
-            continue  # already told everyone about this one
+            continue
 
         try:
             result = await ticket_api_call(
@@ -443,7 +470,7 @@ async def run_monitor():
     subscribers = get_subscribers()
     combos = build_watch_combos(subscribers)
 
-    seat_alerts_by_email = {}
+    ticket_alerts_by_email = {}
 
     async with async_playwright() as p:
         browser = await p.chromium.launch()
@@ -455,41 +482,48 @@ async def run_monitor():
         )
 
         web_token = await get_web_api_token(page)
-        if web_token:
-            updated_movies = await check_movies_and_dates(page, web_token, state)
-            state["movies"] = updated_movies or state.get("movies", {})
+        if not web_token:
+            warnings.append("Could not log into cineplex-web-api - skipped this run's broadcast checks.")
+            await browser.close()
+            state["last_checked"] = datetime.now(timezone.utc).isoformat()
+            save_state(state)
+            return subscribers, ticket_alerts_by_email
 
-            options = await build_options(page, web_token)
-            try:
-                with open(OPTIONS_FILE, "w", encoding="utf-8") as f:
-                    json.dump(options, f, indent=2, ensure_ascii=False)
-                log(f"options.json: {len(options['locations'])} location(s), {len(options['movies'])} movie(s).")
-            except Exception as exc:  # noqa: BLE001
-                warnings.append(f"Could not save options.json: {exc}")
-        else:
-            warnings.append("Could not log into cineplex-web-api - skipped broadcast checks and options refresh.")
+        flat_movies = await fetch_movie_list(page, web_token)
+        all_locations = await fetch_locations(page, web_token)
+        updated_movies, is_first_run = track_new_movies_and_categories(flat_movies, state)
 
-        if combos:
-            ticket_token, device_key = await ticket_guest_login(page)
-            if ticket_token and device_key:
-                seat_alerts_by_email = await check_ticket_availability(page, ticket_token, device_key, combos, state)
-            else:
-                warnings.append("Ticket-site guest login failed - skipped ticket-drop checks this run.")
+        ticket_token, device_key = await ticket_guest_login(page)
+        if ticket_token and device_key:
+            pairs = await find_relevant_location_movie_pairs(page, ticket_token, device_key, all_locations)
+            await check_dates_per_location(page, web_token, updated_movies, pairs, all_locations, is_first_run)
+
+            if combos:
+                ticket_alerts_by_email = await check_ticket_availability(page, ticket_token, device_key, combos, state)
         else:
-            log("No one is watching any specific show right now - skipping ticket-drop checks.")
+            warnings.append("Ticket-site guest login failed - skipped per-location date checks and ticket-drop checks this run.")
+
+        state["movies"] = updated_movies
+
+        try:
+            options = build_options(all_locations, flat_movies)
+            with open(OPTIONS_FILE, "w", encoding="utf-8") as f:
+                json.dump(options, f, indent=2, ensure_ascii=False)
+            log(f"options.json: {len(options['locations'])} location(s), {len(options['movies'])} movie(s).")
+        except Exception as exc:  # noqa: BLE001
+            warnings.append(f"Could not save options.json: {exc}")
 
         await browser.close()
 
     state["last_checked"] = datetime.now(timezone.utc).isoformat()
     save_state(state)
 
-    return subscribers, seat_alerts_by_email
+    return subscribers, ticket_alerts_by_email
 
 
 def main():
     subscribers, ticket_alerts_by_email = asyncio.run(run_monitor())
     recipients = get_all_recipients(subscribers)
-    is_first_run = not os.path.exists(STATE_FILE)  # note: state.json already saved by now on disk from this run
 
     broadcast = new_movie_alerts + category_change_alerts + new_date_alerts
     if broadcast:
