@@ -38,6 +38,15 @@ jobs:
           RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
         run: python monitor.py
 
+      - name: Upload debug screenshot (only if one was saved)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-screenshot
+          path: debug_ticket_login.png
+          if-no-files-found: ignore
+          retention-days: 3
+
       - name: Save updated state and options back to the repository
         run: |
           git config user.name "cineplex-alert-bot"
@@ -46,4 +55,3 @@ jobs:
           git commit -m "Update tracked state and options" || echo "Nothing new to commit"
           git pull --rebase || true
           git push
-          
