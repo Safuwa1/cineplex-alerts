@@ -48,6 +48,7 @@ SUBSCRIBERS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTeWzI3wd
 new_movie_alerts = []
 new_date_alerts = []
 category_change_alerts = []
+system_alerts = []
 warnings = []
 
 
@@ -61,7 +62,7 @@ def load_state():
     if os.path.exists(STATE_FILE):
         with open(STATE_FILE, "r", encoding="utf-8") as f:
             return json.load(f)
-    return {"movies": {}, "ticket_alerts_sent": {}}
+    return {"movies": {}, "ticket_alerts_sent": {}, "guest_login_fail_streak": 0}
 
 
 def save_state(state):
@@ -400,26 +401,45 @@ async def ticket_guest_login(page):
     page.on("request", handle_req)
     page.on("response", lambda r: asyncio.create_task(handle_resp(r)))
 
-    try:
-        await page.goto(TICKET_LOGIN_URL, wait_until="networkidle", timeout=45000)
-    except Exception:  # noqa: BLE001
-        log("Ticket login page networkidle timed out - continuing anyway.")
-    await page.wait_for_timeout(2500)
+    max_attempts = 3
+    for attempt in range(1, max_attempts + 1):
+        try:
+            await page.goto(TICKET_LOGIN_URL, wait_until="networkidle", timeout=45000)
+        except Exception:  # noqa: BLE001
+            log(f"Ticket login page networkidle timed out (attempt {attempt}/{max_attempts}) - continuing anyway.")
+        await page.wait_for_timeout(3000)
 
-    try:
-        guest_btn = page.get_by_text("GUEST LOGIN", exact=False).first
-        await guest_btn.click(timeout=8000)
-    except Exception as exc:  # noqa: BLE001
-        warnings.append(f"Could not click GUEST LOGIN: {exc}")
-        return None, None
+        try:
+            guest_btn = page.get_by_text("GUEST LOGIN", exact=False).first
+            await guest_btn.wait_for(state="visible", timeout=20000)
+            await guest_btn.click(timeout=8000)
+        except Exception as exc:  # noqa: BLE001
+            log(f"GUEST LOGIN not clickable on attempt {attempt}/{max_attempts}: {exc}")
+            if attempt < max_attempts:
+                await page.wait_for_timeout(3000)
+                continue
+            warnings.append(f"Could not click GUEST LOGIN after {max_attempts} attempts: {exc}")
+            return None, None
 
-    await page.wait_for_timeout(2500)
-    try:
-        await page.wait_for_load_state("networkidle", timeout=15000)
-    except Exception:  # noqa: BLE001
-        pass
+        await page.wait_for_timeout(2500)
+        try:
+            await page.wait_for_load_state("networkidle", timeout=15000)
+        except Exception:  # noqa: BLE001
+            pass
 
-    return holder["token"], holder["device_key"]
+        if holder["token"] and holder["device_key"]:
+            return holder["token"], holder["device_key"]
+
+        await page.wait_for_timeout(2000)
+        if holder["token"] and holder["device_key"]:
+            return holder["token"], holder["device_key"]
+
+        log(f"Clicked GUEST LOGIN on attempt {attempt}/{max_attempts} but no session token was captured yet.")
+        if attempt < max_attempts:
+            continue
+
+    warnings.append("Ticket-site guest login did not produce a session token after retries.")
+    return None, None
 
 
 async def check_ticket_availability(page, token, device_key, combos, state):
@@ -495,6 +515,7 @@ async def run_monitor():
 
         ticket_token, device_key = await ticket_guest_login(page)
         if ticket_token and device_key:
+            state["guest_login_fail_streak"] = 0
             pairs = await find_relevant_location_movie_pairs(page, ticket_token, device_key, all_locations)
             await check_dates_per_location(page, web_token, updated_movies, pairs, all_locations, is_first_run)
 
@@ -502,6 +523,14 @@ async def run_monitor():
                 ticket_alerts_by_email = await check_ticket_availability(page, ticket_token, device_key, combos, state)
         else:
             warnings.append("Ticket-site guest login failed - skipped per-location date checks and ticket-drop checks this run.")
+            streak = state.get("guest_login_fail_streak", 0) + 1
+            state["guest_login_fail_streak"] = streak
+            # Every 3rd consecutive failed run (~30 min apart), send one alert so it doesn't go unnoticed.
+            if streak % 3 == 0:
+                system_alerts.append(
+                    f"Ticket-site guest login has now failed {streak} runs in a row. "
+                    "Ticket-drop checks are NOT happening until this is fixed - the site's login flow may have changed."
+                )
 
         state["movies"] = updated_movies
 
@@ -540,6 +569,15 @@ def main():
     for email, messages in ticket_alerts_by_email.items():
         body = "\n".join(messages) + "\n\nBook here: https://ticket.cineplexbd.com/home"
         send_email(subject=f"Tickets just opened - {len(messages)} show(s)", body=body, recipients=[email])
+
+    if system_alerts:
+        owner_email = os.environ.get("RECEIVER_EMAIL", "").strip()
+        if owner_email:
+            send_email(
+                subject="Cineplex Alert bot needs attention",
+                body="\n".join(system_alerts),
+                recipients=[owner_email],
+            )
 
 
 if __name__ == "__main__":
