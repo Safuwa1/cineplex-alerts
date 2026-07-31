@@ -1,23 +1,31 @@
 """
-Cineplex Alert System - v4: per-location date checking (fixes silent misses)
+Cineplex Alert System - v5: per-location checking WITHOUT the ticket site
 --------------------------------------------------------------------------------
-Key fix from v3: /movie/{slug}/detail without a location parameter only
-reflects ONE default branch's schedule. This version checks EVERY branch
-separately for every movie, so a ticket drop at ANY location is caught -
-and the alert names which branch it opened at.
+Why this version exists: ticket.cineplexbd.com now sits behind Cloudflare's
+"Verify you are human" bot-check, so a headless browser can never log in
+there as a guest. This version removes that dependency entirely - it never
+visits ticket.cineplexbd.com or cineplex-ticket-api. Everything now runs
+through cineplex-web-api only (the same one that already worked reliably).
+
+Key idea: cineplex-web-api's /movie/{slug}/detail?location_id=X already
+returns the full list of show dates for that movie AT THAT BRANCH. That's
+enough to answer both questions we care about:
+  - Broadcast: did any branch get a NEW date for any movie? (diff vs state)
+  - Personal watch: has MY picked (location, movie, date) shown up yet?
+    (membership check against that same per-branch date list)
 
 Each run:
   1. Logs into cineplex-web-api (movie browsing).
-  2. Logs into cineplex-ticket-api as a guest (site's own "Guest" option,
-     no real account, no CAPTCHA bypass).
-  3. Uses the ticket API's get-showdate (per location) to find which
-     (location, movie) combinations actually exist - then checks each
-     one's schedule via cineplex-web-api's per-location movie detail.
+  2. Fetches the movie list and the location list.
+  3. For every (movie, location) pair worth checking - every branch for
+     every "running" movie, plus any branch/movie a subscriber personally
+     picked - fetches that branch's current show dates.
   4. Broadcasts: new movies (any category), category changes, and new
      ticket dates for any movie at any branch.
   5. For every (location, movie, date) a friend picked on the signup
-     page, checks - via the same ticket-api session - whether tickets
-     have opened. The moment one has, only that friend gets an email.
+     page, checks whether that date is now in the branch's show-date
+     list. The moment it is, only that friend gets an email (sent once,
+     tracked in state so it isn't repeated).
   6. Refreshes options.json so the signup page's picker stays current.
 """
 
@@ -36,9 +44,6 @@ from playwright.async_api import async_playwright
 HOME_URL = "https://www.cineplexbd.com/"
 API_BASE = "https://cineplex-web-api.cineplexbd.com/api/v1"
 
-TICKET_LOGIN_URL = "https://ticket.cineplexbd.com/login"
-TICKET_API_BASE = "https://cineplex-ticket-api.cineplexbd.com/api/v1"
-
 STATE_FILE = "state.json"
 OPTIONS_FILE = "options.json"
 BD_OFFSET = timedelta(hours=6)  # Bangladesh is UTC+6
@@ -48,7 +53,6 @@ SUBSCRIBERS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTeWzI3wd
 new_movie_alerts = []
 new_date_alerts = []
 category_change_alerts = []
-system_alerts = []
 warnings = []
 
 
@@ -62,7 +66,7 @@ def load_state():
     if os.path.exists(STATE_FILE):
         with open(STATE_FILE, "r", encoding="utf-8") as f:
             return json.load(f)
-    return {"movies": {}, "ticket_alerts_sent": {}, "guest_login_fail_streak": 0}
+    return {"movies": {}, "ticket_alerts_sent": {}}
 
 
 def save_state(state):
@@ -129,6 +133,7 @@ def get_all_recipients(subscribers):
 
 
 def build_watch_combos(subscribers):
+    """(location, movie_id, date) -> which subscriber emails want to know."""
     combos = {}
     today_str = today_bd().isoformat()
     for s in subscribers:
@@ -267,43 +272,48 @@ def track_new_movies_and_categories(flat_movies, state):
     return updated_movies, is_first_run
 
 
-async def find_relevant_location_movie_pairs(page, ticket_token, device_key, all_locations):
-    """Uses the ticket API's get-showdate (cheap: one call per location) to
-    find which (location, movie_id) combinations actually exist right now,
-    so we don't waste calls checking a movie at a branch that never shows
-    it at all."""
+def build_relevant_pairs(updated_movies, all_locations, combos):
+    """Which (location_id, movie_id) pairs are worth checking this run:
+    every branch for every currently-"running" movie, PLUS any branch/movie
+    a subscriber personally picked (even if it's still "upcoming") so a
+    watched movie's ticket-opening gets caught the moment it happens."""
     pairs = set()
-    for loc in all_locations:
-        loc_id = loc.get("id")
-        if loc_id is None:
-            continue
-        try:
-            result = await ticket_api_call(page, ticket_token, device_key, "/get-showdate", {"location": loc_id})
-            data = json.loads(result["body"]).get("data", [])
-            for entry in data:
-                for movie in entry.get("availableMovies", []):
-                    mid = movie.get("movie_id")
-                    if mid:
-                        pairs.add((loc_id, mid))
-        except Exception as exc:  # noqa: BLE001
-            warnings.append(f"Could not fetch showdate for location {loc_id}: {exc}")
+    location_ids = [loc["id"] for loc in all_locations if loc.get("id") is not None]
+
+    for info in updated_movies.values():
+        if info.get("category", "").lower() == "running" and info.get("movie_id"):
+            for loc_id in location_ids:
+                pairs.add((loc_id, info["movie_id"]))
+
+    for (loc_id, movie_id, _date) in combos.keys():
+        pairs.add((loc_id, movie_id))
+
     return pairs
 
 
-async def check_dates_per_location(page, token, updated_movies, location_movie_pairs, all_locations, is_first_run):
-    """The core fix: check each movie's schedule AT EACH BRANCH separately,
-    instead of relying on a single un-scoped call that only reflects one
-    default branch."""
+async def check_dates_per_location(page, token, updated_movies, pairs, all_locations, is_first_run, combos, state):
+    """Checks each movie's schedule AT EACH BRANCH separately (the v4 fix,
+    kept as-is) using only cineplex-web-api. Also cross-checks each
+    subscriber's watched (location, movie, date) against the same
+    per-branch date list, so personal alerts no longer need the
+    Cloudflare-protected ticket site at all."""
     loc_title_by_id = {loc["id"]: loc["title"] for loc in all_locations if loc.get("id") is not None}
 
-    # Build movie_id -> state key + slug + title, from what we just tracked.
     by_movie_id = {}
     for key, info in updated_movies.items():
         if info.get("movie_id"):
             by_movie_id[info["movie_id"]] = {"key": key, "slug": info.get("slug"), "title": info.get("title")}
 
+    # (loc, movie_id) -> list of (date, [emails]) this run needs to check
+    combos_by_pair = {}
+    for (loc_id, movie_id, date), info in combos.items():
+        combos_by_pair.setdefault((loc_id, movie_id), []).append((date, info))
+
+    sent_registry = state.setdefault("ticket_alerts_sent", {})
+    alerts_by_email = {}
+
     checked = 0
-    for loc_id, movie_id in sorted(location_movie_pairs):
+    for loc_id, movie_id in sorted(pairs):
         info = by_movie_id.get(movie_id)
         if not info or not info.get("slug"):
             continue
@@ -326,18 +336,42 @@ async def check_dates_per_location(page, token, updated_movies, location_movie_p
             current_dates = sorted(previous_dates)
 
         checked += 1
-        fresh_dates = sorted(set(current_dates) - previous_dates)
-        # Only alert if we've checked this (movie, location) before - avoids
-        # a flood of "new" dates the very first time we ever look at a combo.
+        current_dates_set = set(current_dates)
+        fresh_dates = sorted(current_dates_set - previous_dates)
+
+        # Broadcast: only alert on genuinely new dates, and never on the
+        # very first time we ever look at a (movie, location) combo.
         if fresh_dates and previous_dates and not is_first_run:
             new_date_alerts.append(
                 f'NEW TICKET DATES for "{title}" at {loc_title}: {", ".join(fresh_dates)}'
             )
             log(f"  -> NEW DATES: {title} @ {loc_title}: {fresh_dates}")
 
+        # Personal watch: does this branch/movie's current date list now
+        # include a date someone specifically signed up to watch?
+        for date, watch_info in combos_by_pair.get((loc_id, movie_id), []):
+            reg_key = f"{loc_id}:{movie_id}:{date}"
+            if sent_registry.get(reg_key):
+                continue
+            if date in current_dates_set:
+                sent_registry[reg_key] = {
+                    "movieTitle": watch_info["movieTitle"],
+                    "locTitle": watch_info["locTitle"],
+                    "date": date,
+                    "found_at": datetime.now(timezone.utc).isoformat(),
+                }
+                message = (
+                    f'TICKETS OPEN: "{watch_info["movieTitle"]}" at {watch_info["locTitle"]} '
+                    f'on {format_date_display(date)}!'
+                )
+                for email in watch_info["emails"]:
+                    alerts_by_email.setdefault(email, []).append(message)
+                log(f"  -> PERSONAL ALERT: {message}")
+
         dates_by_location[loc_key] = current_dates
 
     log(f"Checked {checked} (movie, location) combination(s) for new ticket dates.")
+    return alerts_by_email
 
 
 def build_options(all_locations, flat_movies):
@@ -351,141 +385,6 @@ def build_options(all_locations, flat_movies):
         "locations": all_locations,
         "movies": [{"id": k, "title": v} for k, v in seen.items()],
     }
-
-
-# ------------------------------------------------------ cineplex-ticket-api
-
-async def ticket_api_call(page, token, device_key, path, body=None):
-    return await page.evaluate(
-        """async ({base, path, token, deviceKey, body}) => {
-            const res = await fetch(base + path, {
-                method: 'POST',
-                headers: {
-                    'Authorization': 'Bearer ' + token,
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'appsource': 'web',
-                    'device-key': deviceKey,
-                },
-                body: body ? JSON.stringify(body) : undefined,
-            });
-            const text = await res.text();
-            return {status: res.status, body: text};
-        }""",
-        {"base": TICKET_API_BASE, "path": path, "token": token, "deviceKey": device_key, "body": body},
-    )
-
-
-async def ticket_guest_login(page):
-    holder = {"token": None, "device_key": None}
-
-    def handle_req(request):
-        try:
-            if "cineplex-ticket-api.cineplexbd.com" not in request.url:
-                return
-            dk = request.headers.get("device-key")
-            if dk and not holder["device_key"]:
-                holder["device_key"] = dk
-        except Exception:  # noqa: BLE001
-            pass
-
-    async def handle_resp(response):
-        try:
-            if "/guest-login" in response.url and response.status == 200:
-                data = json.loads(await response.text())
-                if data.get("status") == "success":
-                    holder["token"] = data.get("data", {}).get("token")
-        except Exception:  # noqa: BLE001
-            pass
-
-    page.on("request", handle_req)
-    page.on("response", lambda r: asyncio.create_task(handle_resp(r)))
-
-    max_attempts = 3
-    for attempt in range(1, max_attempts + 1):
-        try:
-            await page.goto(TICKET_LOGIN_URL, wait_until="networkidle", timeout=45000)
-        except Exception:  # noqa: BLE001
-            log(f"Ticket login page networkidle timed out (attempt {attempt}/{max_attempts}) - continuing anyway.")
-        await page.wait_for_timeout(3000)
-
-        try:
-            guest_btn = page.get_by_text("GUEST LOGIN", exact=False).first
-            await guest_btn.wait_for(state="visible", timeout=20000)
-            await guest_btn.click(timeout=8000)
-        except Exception as exc:  # noqa: BLE001
-            log(f"GUEST LOGIN not clickable on attempt {attempt}/{max_attempts}: {exc}")
-            if attempt < max_attempts:
-                await page.wait_for_timeout(3000)
-                continue
-            try:
-                await page.screenshot(path="debug_ticket_login.png", full_page=True)
-                log("Saved debug_ticket_login.png showing the page at final failed attempt.")
-            except Exception:  # noqa: BLE001
-                pass
-            warnings.append(f"Could not click GUEST LOGIN after {max_attempts} attempts: {exc}")
-            return None, None
-
-        await page.wait_for_timeout(2500)
-        try:
-            await page.wait_for_load_state("networkidle", timeout=15000)
-        except Exception:  # noqa: BLE001
-            pass
-
-        if holder["token"] and holder["device_key"]:
-            return holder["token"], holder["device_key"]
-
-        await page.wait_for_timeout(2000)
-        if holder["token"] and holder["device_key"]:
-            return holder["token"], holder["device_key"]
-
-        log(f"Clicked GUEST LOGIN on attempt {attempt}/{max_attempts} but no session token was captured yet.")
-        if attempt < max_attempts:
-            continue
-
-    warnings.append("Ticket-site guest login did not produce a session token after retries.")
-    return None, None
-
-
-async def check_ticket_availability(page, token, device_key, combos, state):
-    sent_registry = state.setdefault("ticket_alerts_sent", {})
-    alerts_by_email = {}
-
-    log(f"Checking ticket availability for {len(combos)} personally-watched combo(s)...")
-
-    for (loc, movie_id, date), info in combos.items():
-        key = f"{loc}:{movie_id}:{date}"
-        if sent_registry.get(key):
-            continue
-
-        try:
-            result = await ticket_api_call(
-                page, token, device_key, "/get-shows",
-                {"location": loc, "movieId": movie_id, "showDate": date},
-            )
-            data = json.loads(result["body"]).get("data", [])
-        except Exception as exc:  # noqa: BLE001
-            warnings.append(f'Could not check "{info["movieTitle"]}" on {date}: {exc}')
-            continue
-
-        has_shows = bool(data) and any(hall.get("showTimes") for hall in data)
-
-        if has_shows:
-            sent_registry[key] = {
-                "movieTitle": info["movieTitle"],
-                "locTitle": info["locTitle"],
-                "date": date,
-                "found_at": datetime.now(timezone.utc).isoformat(),
-            }
-            message = (
-                f'TICKETS OPEN: "{info["movieTitle"]}" at {info["locTitle"]} '
-                f'on {format_date_display(date)}!'
-            )
-            for email in info["emails"]:
-                alerts_by_email.setdefault(email, []).append(message)
-            log(f"  -> OPENED: {message}")
-
-    return alerts_by_email
 
 
 # --------------------------------------------------------------------- main
@@ -508,7 +407,7 @@ async def run_monitor():
 
         web_token = await get_web_api_token(page)
         if not web_token:
-            warnings.append("Could not log into cineplex-web-api - skipped this run's broadcast checks.")
+            warnings.append("Could not log into cineplex-web-api - skipped this run's checks.")
             await browser.close()
             state["last_checked"] = datetime.now(timezone.utc).isoformat()
             save_state(state)
@@ -518,24 +417,10 @@ async def run_monitor():
         all_locations = await fetch_locations(page, web_token)
         updated_movies, is_first_run = track_new_movies_and_categories(flat_movies, state)
 
-        ticket_token, device_key = await ticket_guest_login(page)
-        if ticket_token and device_key:
-            state["guest_login_fail_streak"] = 0
-            pairs = await find_relevant_location_movie_pairs(page, ticket_token, device_key, all_locations)
-            await check_dates_per_location(page, web_token, updated_movies, pairs, all_locations, is_first_run)
-
-            if combos:
-                ticket_alerts_by_email = await check_ticket_availability(page, ticket_token, device_key, combos, state)
-        else:
-            warnings.append("Ticket-site guest login failed - skipped per-location date checks and ticket-drop checks this run.")
-            streak = state.get("guest_login_fail_streak", 0) + 1
-            state["guest_login_fail_streak"] = streak
-            # Every 3rd consecutive failed run (~30 min apart), send one alert so it doesn't go unnoticed.
-            if streak % 3 == 0:
-                system_alerts.append(
-                    f"Ticket-site guest login has now failed {streak} runs in a row. "
-                    "Ticket-drop checks are NOT happening until this is fixed - the site's login flow may have changed."
-                )
+        pairs = build_relevant_pairs(updated_movies, all_locations, combos)
+        ticket_alerts_by_email = await check_dates_per_location(
+            page, web_token, updated_movies, pairs, all_locations, is_first_run, combos, state
+        )
 
         state["movies"] = updated_movies
 
@@ -574,15 +459,6 @@ def main():
     for email, messages in ticket_alerts_by_email.items():
         body = "\n".join(messages) + "\n\nBook here: https://ticket.cineplexbd.com/home"
         send_email(subject=f"Tickets just opened - {len(messages)} show(s)", body=body, recipients=[email])
-
-    if system_alerts:
-        owner_email = os.environ.get("RECEIVER_EMAIL", "").strip()
-        if owner_email:
-            send_email(
-                subject="Cineplex Alert bot needs attention",
-                body="\n".join(system_alerts),
-                recipients=[owner_email],
-            )
 
 
 if __name__ == "__main__":
