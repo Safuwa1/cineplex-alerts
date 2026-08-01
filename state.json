@@ -662,21 +662,51 @@
       "category": "upcoming",
       "slug": "insidious-out-of-the-further",
       "movie_id": 1692,
-      "dates_by_location": {}
+      "dates_by_location": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": [],
+        "8": [],
+        "9": [],
+        "10": []
+      }
     },
     "463": {
       "title": "Resident Evil",
       "category": "upcoming",
       "slug": "resident-evil",
       "movie_id": 1694,
-      "dates_by_location": {}
+      "dates_by_location": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": [],
+        "8": [],
+        "9": [],
+        "10": []
+      }
     },
     "475": {
       "title": "The End of Oak Street",
       "category": "upcoming",
       "slug": "the-end-of-oak-street",
       "movie_id": 1706,
-      "dates_by_location": {}
+      "dates_by_location": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": [],
+        "8": [],
+        "9": [],
+        "10": []
+      }
     },
     "476": {
       "title": "Avengers: Doomsday",
@@ -684,7 +714,15 @@
       "slug": "avengers-doomsday",
       "movie_id": 1707,
       "dates_by_location": {
-        "2": []
+        "2": [],
+        "1": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": [],
+        "8": [],
+        "9": [],
+        "10": []
       }
     },
     "477": {
@@ -692,7 +730,17 @@
       "category": "upcoming",
       "slug": "clayface",
       "movie_id": 1708,
-      "dates_by_location": {}
+      "dates_by_location": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": [],
+        "8": [],
+        "9": [],
+        "10": []
+      }
     },
     "478": {
       "title": "Dune III",
@@ -700,7 +748,15 @@
       "slug": "dune-iii",
       "movie_id": 1709,
       "dates_by_location": {
-        "2": []
+        "2": [],
+        "1": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": [],
+        "8": [],
+        "9": [],
+        "10": []
       }
     },
     "488": {
@@ -708,10 +764,20 @@
       "category": "upcoming",
       "slug": "minions-monsters",
       "movie_id": 1719,
-      "dates_by_location": {}
+      "dates_by_location": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": [],
+        "8": [],
+        "9": [],
+        "10": []
+      }
     }
   },
-  "last_checked": "2026-08-01T00:12:37.436674+00:00",
+  "last_checked": "2026-08-01T04:31:49.403016+00:00",
   "seats": {
     "4:22557": {
       "available": [
