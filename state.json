@@ -705,7 +705,7 @@
       }
     }
   },
-  "last_checked": "2026-08-01T18:58:23.435058+00:00",
+  "last_checked": "2026-08-01T19:02:20.002454+00:00",
   "seats": {
     "4:22557": {
       "available": [
@@ -1593,6 +1593,7 @@
       "date": "2026-08-04",
       "found_at": "2026-07-31T08:08:53.944701+00:00",
       "notified_emails": [
+        "safwaanulhaque@gmail.com",
         "sahimtech070@gmail.com",
         "www.safwaanhaque441@gmail.com"
       ]
