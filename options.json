@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T13:58:50.569629+00:00",
+  "generated_at": "2026-08-01T14:04:13.296824+00:00",
   "locations": [
     {
       "id": 1,
@@ -40,14 +40,6 @@
   ],
   "movies": [
     {
-      "id": 1716,
-      "title": "Spider-Man: Brand New Day (2D)"
-    },
-    {
-      "id": 1688,
-      "title": "Spider-Man: Brand New Day"
-    },
-    {
       "id": 1687,
       "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D"
     },
@@ -66,6 +58,14 @@
     {
       "id": 1717,
       "title": "Shekor"
+    },
+    {
+      "id": 1716,
+      "title": "Spider-Man: Brand New Day (2D)"
+    },
+    {
+      "id": 1688,
+      "title": "Spider-Man: Brand New Day"
     },
     {
       "id": 1711,
