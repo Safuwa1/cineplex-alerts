@@ -18,8 +18,8 @@ Each run:
   1. Logs into cineplex-web-api (movie browsing).
   2. Fetches the movie list and the location list.
   3. For every (movie, location) pair worth checking - every branch for
-     every "running" movie, plus any branch/movie a subscriber personally
-     picked - fetches that branch's current show dates.
+     every movie (running or upcoming), plus any branch/movie a subscriber
+     personally picked - fetches that branch's current show dates.
   4. Broadcasts: new movies (any category), category changes, and new
      ticket dates for any movie at any branch.
   5. For every (location, movie, date) a friend picked on the signup
@@ -274,8 +274,8 @@ def track_new_movies_and_categories(flat_movies, state):
 
 def build_relevant_pairs(updated_movies, all_locations, combos):
     """Which (location_id, movie_id) pairs are worth checking this run:
-    every branch for every movie (running OR upcoming - a date can open
-    before the site's own category label catches up), PLUS any branch/
+    every branch for every movie (running or upcoming - a date can appear
+    before the site's own category label catches up), plus any branch/
     movie a subscriber personally picked."""
     pairs = set()
     location_ids = [loc["id"] for loc in all_locations if loc.get("id") is not None]
@@ -355,25 +355,40 @@ async def check_dates_per_location(page, token, updated_movies, pairs, all_locat
             log(f"  -> NEW DATES: {title} @ {loc_title}: {fresh_dates}")
 
         # Personal watch: does this branch/movie's current date list now
-        # include a date someone specifically signed up to watch?
+        # include a date someone specifically signed up to watch? The
+        # registry tracks WHICH EMAILS were already told about this exact
+        # (location, movie, date) - not just whether the combo was ever
+        # seen - so a friend who signs up later for an already-known date
+        # still gets their own reminder instead of being silently skipped.
         for date, watch_info in combos_by_pair.get((loc_id, movie_id), []):
-            reg_key = f"{loc_id}:{movie_id}:{date}"
-            if sent_registry.get(reg_key):
+            if date not in current_dates_set:
                 continue
-            if date in current_dates_set:
-                sent_registry[reg_key] = {
+            reg_key = f"{loc_id}:{movie_id}:{date}"
+            entry = sent_registry.get(reg_key)
+            already_notified = set(entry.get("notified_emails", [])) if entry else set()
+            new_emails = watch_info["emails"] - already_notified
+            if not new_emails:
+                continue
+
+            if entry is None:
+                entry = {
                     "movieTitle": watch_info["movieTitle"],
                     "locTitle": watch_info["locTitle"],
                     "date": date,
                     "found_at": datetime.now(timezone.utc).isoformat(),
+                    "notified_emails": [],
                 }
-                message = (
-                    f'TICKETS OPEN: "{watch_info["movieTitle"]}" at {watch_info["locTitle"]} '
-                    f'on {format_date_display(date)}!'
-                )
-                for email in watch_info["emails"]:
-                    alerts_by_email.setdefault(email, []).append(message)
-                log(f"  -> PERSONAL ALERT: {message}")
+                sent_registry[reg_key] = entry
+            entry["notified_emails"] = sorted(already_notified | new_emails)
+
+            message = (
+                f'"{watch_info["movieTitle"]}" at {watch_info["locTitle"]} on '
+                f'{format_date_display(date)} is now showing in the official schedule - '
+                f'go check if booking has opened.'
+            )
+            for email in new_emails:
+                alerts_by_email.setdefault(email, []).append(message)
+            log(f"  -> PERSONAL REMINDER ({len(new_emails)} new recipient(s)): {message}")
 
         dates_by_location[loc_key] = current_dates
 
@@ -465,7 +480,7 @@ def main():
 
     for email, messages in ticket_alerts_by_email.items():
         body = "\n".join(messages) + "\n\nBook here: https://ticket.cineplexbd.com/home"
-        send_email(subject=f"Tickets just opened - {len(messages)} show(s)", body=body, recipients=[email])
+        send_email(subject=f"New schedule update - {len(messages)} show(s) to check", body=body, recipients=[email])
 
 
 if __name__ == "__main__":
