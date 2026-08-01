@@ -777,7 +777,7 @@
       }
     }
   },
-  "last_checked": "2026-08-01T14:13:31.093637+00:00",
+  "last_checked": "2026-08-01T14:19:39.604963+00:00",
   "seats": {
     "4:22557": {
       "available": [
@@ -1740,6 +1740,12 @@
       "locTitle": "Sony Square, Mirpur",
       "date": "2026-08-03",
       "found_at": "2026-07-31T20:44:45.721680+00:00"
+    },
+    "4:1716:2026-08-05": {
+      "movieTitle": "Spider-Man: Brand New Day (2D)",
+      "locTitle": "Sony Square, Mirpur",
+      "date": "2026-08-05",
+      "found_at": "2026-08-01T14:19:07.708239+00:00"
     }
   }
 }
