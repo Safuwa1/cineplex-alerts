@@ -274,14 +274,14 @@ def track_new_movies_and_categories(flat_movies, state):
 
 def build_relevant_pairs(updated_movies, all_locations, combos):
     """Which (location_id, movie_id) pairs are worth checking this run:
-    every branch for every currently-"running" movie, PLUS any branch/movie
-    a subscriber personally picked (even if it's still "upcoming") so a
-    watched movie's ticket-opening gets caught the moment it happens."""
+    every branch for every movie (running OR upcoming - a date can open
+    before the site's own category label catches up), PLUS any branch/
+    movie a subscriber personally picked."""
     pairs = set()
     location_ids = [loc["id"] for loc in all_locations if loc.get("id") is not None]
 
     for info in updated_movies.values():
-        if info.get("category", "").lower() == "running" and info.get("movie_id"):
+        if info.get("movie_id"):
             for loc_id in location_ids:
                 pairs.add((loc_id, info["movie_id"]))
 
