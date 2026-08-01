@@ -705,7 +705,7 @@
       }
     }
   },
-  "last_checked": "2026-08-01T18:27:28.230736+00:00",
+  "last_checked": "2026-08-01T18:32:11.990928+00:00",
   "seats": {
     "4:22557": {
       "available": [
@@ -1427,37 +1427,59 @@
       "movieTitle": "Spider-Man: Brand New Day (2D)",
       "locTitle": "Bashundhara City Shopping Mall, Panthapath",
       "date": "2026-08-03",
-      "found_at": "2026-07-31T08:08:37.215647+00:00"
+      "found_at": "2026-07-31T08:08:37.215647+00:00",
+      "notified_emails": [
+        "safrah201@gmail.com",
+        "sahimtech070@gmail.com"
+      ]
     },
     "1:1716:2026-08-04": {
       "movieTitle": "Spider-Man: Brand New Day (2D)",
       "locTitle": "Bashundhara City Shopping Mall, Panthapath",
       "date": "2026-08-04",
-      "found_at": "2026-07-31T08:08:37.221930+00:00"
+      "found_at": "2026-07-31T08:08:37.221930+00:00",
+      "notified_emails": [
+        "safrah201@gmail.com",
+        "safwaanulhaque@gmail.com",
+        "sahimtech070@gmail.com"
+      ]
     },
     "1:1716:2026-08-05": {
       "movieTitle": "Spider-Man: Brand New Day (2D)",
       "locTitle": "Bashundhara City Shopping Mall, Panthapath",
       "date": "2026-08-05",
-      "found_at": "2026-07-31T08:08:37.221983+00:00"
+      "found_at": "2026-07-31T08:08:37.221983+00:00",
+      "notified_emails": [
+        "sahimtech070@gmail.com"
+      ]
     },
     "1:1716:2026-08-06": {
       "movieTitle": "Spider-Man: Brand New Day (2D)",
       "locTitle": "Bashundhara City Shopping Mall, Panthapath",
       "date": "2026-08-06",
-      "found_at": "2026-07-31T08:08:37.222021+00:00"
+      "found_at": "2026-07-31T08:08:37.222021+00:00",
+      "notified_emails": [
+        "sahimtech070@gmail.com"
+      ]
     },
     "2:1711:2026-08-03": {
       "movieTitle": "The Odyssey",
       "locTitle": "Shimanto Shambhar, Dhanmondi 2",
       "date": "2026-08-03",
-      "found_at": "2026-07-31T08:08:40.337536+00:00"
+      "found_at": "2026-07-31T08:08:40.337536+00:00",
+      "notified_emails": [
+        "sahimtech070@gmail.com"
+      ]
     },
     "2:1716:2026-08-02": {
       "movieTitle": "Spider-Man: Brand New Day (2D)",
       "locTitle": "Shimanto Shambhar, Dhanmondi 2",
       "date": "2026-08-02",
-      "found_at": "2026-07-31T08:08:42.713095+00:00"
+      "found_at": "2026-07-31T08:08:42.713095+00:00",
+      "notified_emails": [
+        "safwaanulhaque@gmail.com",
+        "shamshadnasrin21@gmail.com"
+      ]
     },
     "2:1716:2026-08-01": {
       "movieTitle": "Spider-Man: Brand New Day (2D)",
@@ -1469,55 +1491,85 @@
       "movieTitle": "Spider-Man: Brand New Day (2D)",
       "locTitle": "Shimanto Shambhar, Dhanmondi 2",
       "date": "2026-08-03",
-      "found_at": "2026-07-31T08:08:42.713227+00:00"
+      "found_at": "2026-07-31T08:08:42.713227+00:00",
+      "notified_emails": [
+        "shamshadnasrin21@gmail.com"
+      ]
     },
     "2:1716:2026-08-04": {
       "movieTitle": "Spider-Man: Brand New Day (2D)",
       "locTitle": "Shimanto Shambhar, Dhanmondi 2",
       "date": "2026-08-04",
-      "found_at": "2026-07-31T08:08:42.713273+00:00"
+      "found_at": "2026-07-31T08:08:42.713273+00:00",
+      "notified_emails": [
+        "bijoypodder660@gmail.com",
+        "sahimtech070@gmail.com",
+        "shamshadnasrin21@gmail.com"
+      ]
     },
     "3:1688:2026-08-03": {
       "movieTitle": "Spider-Man: Brand New Day",
       "locTitle": "SKS Tower, Mohakhali",
       "date": "2026-08-03",
-      "found_at": "2026-07-31T08:08:44.607320+00:00"
+      "found_at": "2026-07-31T08:08:44.607320+00:00",
+      "notified_emails": [
+        "safrah201@gmail.com"
+      ]
     },
     "3:1688:2026-08-04": {
       "movieTitle": "Spider-Man: Brand New Day",
       "locTitle": "SKS Tower, Mohakhali",
       "date": "2026-08-04",
-      "found_at": "2026-07-31T08:08:44.607398+00:00"
+      "found_at": "2026-07-31T08:08:44.607398+00:00",
+      "notified_emails": [
+        "safrah201@gmail.com"
+      ]
     },
     "3:1705:2026-08-05": {
       "movieTitle": "Evil Dead Burn (18+)",
       "locTitle": "SKS Tower, Mohakhali",
       "date": "2026-08-05",
-      "found_at": "2026-07-31T08:08:45.309268+00:00"
+      "found_at": "2026-07-31T08:08:45.309268+00:00",
+      "notified_emails": [
+        "safwaanulhaque@gmail.com"
+      ]
     },
     "3:1716:2026-08-03": {
       "movieTitle": "Spider-Man: Brand New Day (2D)",
       "locTitle": "SKS Tower, Mohakhali",
       "date": "2026-08-03",
-      "found_at": "2026-07-31T08:08:48.333619+00:00"
+      "found_at": "2026-07-31T08:08:48.333619+00:00",
+      "notified_emails": [
+        "safrah201@gmail.com"
+      ]
     },
     "3:1716:2026-08-04": {
       "movieTitle": "Spider-Man: Brand New Day (2D)",
       "locTitle": "SKS Tower, Mohakhali",
       "date": "2026-08-04",
-      "found_at": "2026-07-31T08:08:48.333697+00:00"
+      "found_at": "2026-07-31T08:08:48.333697+00:00",
+      "notified_emails": [
+        "safrah201@gmail.com",
+        "safwaanulhaque@gmail.com"
+      ]
     },
     "3:1716:2026-08-05": {
       "movieTitle": "Spider-Man: Brand New Day (2D)",
       "locTitle": "SKS Tower, Mohakhali",
       "date": "2026-08-05",
-      "found_at": "2026-07-31T08:08:48.333725+00:00"
+      "found_at": "2026-07-31T08:08:48.333725+00:00",
+      "notified_emails": [
+        "bijoypodder660@gmail.com"
+      ]
     },
     "4:1687:2026-08-05": {
       "movieTitle": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
       "locTitle": "Sony Square, Mirpur",
       "date": "2026-08-05",
-      "found_at": "2026-07-31T08:08:49.525549+00:00"
+      "found_at": "2026-07-31T08:08:49.525549+00:00",
+      "notified_emails": [
+        "www.safwaanhaque441@gmail.com"
+      ]
     },
     "4:1688:2026-08-01": {
       "movieTitle": "Spider-Man: Brand New Day",
@@ -1529,67 +1581,107 @@
       "movieTitle": "Spider-Man: Brand New Day (2D)",
       "locTitle": "Sony Square, Mirpur",
       "date": "2026-08-02",
-      "found_at": "2026-07-31T08:08:53.944620+00:00"
+      "found_at": "2026-07-31T08:08:53.944620+00:00",
+      "notified_emails": [
+        "safwaanulhaque@gmail.com",
+        "www.safwaanhaque2017@gmail.com"
+      ]
     },
     "4:1716:2026-08-04": {
       "movieTitle": "Spider-Man: Brand New Day (2D)",
       "locTitle": "Sony Square, Mirpur",
       "date": "2026-08-04",
-      "found_at": "2026-07-31T08:08:53.944701+00:00"
+      "found_at": "2026-07-31T08:08:53.944701+00:00",
+      "notified_emails": [
+        "sahimtech070@gmail.com",
+        "www.safwaanhaque441@gmail.com"
+      ]
     },
     "4:1716:2026-08-03": {
       "movieTitle": "Spider-Man: Brand New Day (2D)",
       "locTitle": "Sony Square, Mirpur",
       "date": "2026-08-03",
-      "found_at": "2026-07-31T08:08:53.944738+00:00"
+      "found_at": "2026-07-31T08:08:53.944738+00:00",
+      "notified_emails": [
+        "safwaanulhaque@gmail.com"
+      ]
     },
     "5:1712:2026-08-02": {
       "movieTitle": "Moana",
       "locTitle": "Bangladesh Military Museum, Bijoy Shoroni",
       "date": "2026-08-02",
-      "found_at": "2026-07-31T08:08:57.680018+00:00"
+      "found_at": "2026-07-31T08:08:57.680018+00:00",
+      "notified_emails": [
+        "safrah201@gmail.com"
+      ]
     },
     "8:1716:2026-08-06": {
       "movieTitle": "Spider-Man: Brand New Day (2D)",
       "locTitle": "Centrepoint, Uttara",
       "date": "2026-08-06",
-      "found_at": "2026-07-31T08:09:11.442146+00:00"
+      "found_at": "2026-07-31T08:09:11.442146+00:00",
+      "notified_emails": [
+        "nowshin.jahan0107@gmail.com",
+        "www.safwaanhaque441@gmail.com"
+      ]
     },
     "9:1716:2026-08-02": {
       "movieTitle": "Spider-Man: Brand New Day (2D)",
       "locTitle": "Shimanto Tower, Narayanganj",
       "date": "2026-08-02",
-      "found_at": "2026-07-31T08:09:16.999844+00:00"
+      "found_at": "2026-07-31T08:09:16.999844+00:00",
+      "notified_emails": [
+        "haquesafwaan@gmail.com",
+        "radowandhrubo5@gmail.com",
+        "www.safwaanhaque2017@gmail.com",
+        "www.safwaanhaque441@gmail.com"
+      ]
     },
     "9:1716:2026-08-03": {
       "movieTitle": "Spider-Man: Brand New Day (2D)",
       "locTitle": "Shimanto Tower, Narayanganj",
       "date": "2026-08-03",
-      "found_at": "2026-07-31T08:09:16.999924+00:00"
+      "found_at": "2026-07-31T08:09:16.999924+00:00",
+      "notified_emails": [
+        "www.safwaanhaque2017@gmail.com"
+      ]
     },
     "9:1716:2026-08-04": {
       "movieTitle": "Spider-Man: Brand New Day (2D)",
       "locTitle": "Shimanto Tower, Narayanganj",
       "date": "2026-08-04",
-      "found_at": "2026-07-31T08:09:16.999962+00:00"
+      "found_at": "2026-07-31T08:09:16.999962+00:00",
+      "notified_emails": [
+        "www.safwaanhaque2017@gmail.com"
+      ]
     },
     "10:1717:2026-08-02": {
       "movieTitle": "Shekor",
       "locTitle": "Finlay Square, Chattogram",
       "date": "2026-08-02",
-      "found_at": "2026-07-31T08:09:23.378872+00:00"
+      "found_at": "2026-07-31T08:09:23.378872+00:00",
+      "notified_emails": [
+        "safrah201@gmail.com"
+      ]
     },
     "4:1711:2026-08-04": {
       "movieTitle": "The Odyssey",
       "locTitle": "Sony Square, Mirpur",
       "date": "2026-08-04",
-      "found_at": "2026-07-31T15:53:08.449040+00:00"
+      "found_at": "2026-07-31T15:53:08.449040+00:00",
+      "notified_emails": [
+        "safwaanulhaque@gmail.com"
+      ]
     },
     "8:1688:2026-08-03": {
       "movieTitle": "Spider-Man: Brand New Day",
       "locTitle": "Centrepoint, Uttara",
       "date": "2026-08-03",
-      "found_at": "2026-07-31T15:53:20.008500+00:00"
+      "found_at": "2026-07-31T15:53:20.008500+00:00",
+      "notified_emails": [
+        "k.m.tausifsaadman@gmail.com",
+        "nowshin.jahan0107@gmail.com"
+      ]
     },
     "8:1688:2026-07-31": {
       "movieTitle": "Spider-Man: Brand New Day",
@@ -1607,25 +1699,37 @@
       "movieTitle": "Spider-Man: Brand New Day",
       "locTitle": "Centrepoint, Uttara",
       "date": "2026-08-02",
-      "found_at": "2026-07-31T15:53:20.008669+00:00"
+      "found_at": "2026-07-31T15:53:20.008669+00:00",
+      "notified_emails": [
+        "nowshin.jahan0107@gmail.com"
+      ]
     },
     "8:1688:2026-08-04": {
       "movieTitle": "Spider-Man: Brand New Day",
       "locTitle": "Centrepoint, Uttara",
       "date": "2026-08-04",
-      "found_at": "2026-07-31T15:53:20.008683+00:00"
+      "found_at": "2026-07-31T15:53:20.008683+00:00",
+      "notified_emails": [
+        "nowshin.jahan0107@gmail.com"
+      ]
     },
     "8:1688:2026-08-05": {
       "movieTitle": "Spider-Man: Brand New Day",
       "locTitle": "Centrepoint, Uttara",
       "date": "2026-08-05",
-      "found_at": "2026-07-31T15:53:20.008710+00:00"
+      "found_at": "2026-07-31T15:53:20.008710+00:00",
+      "notified_emails": [
+        "nowshin.jahan0107@gmail.com"
+      ]
     },
     "8:1688:2026-08-06": {
       "movieTitle": "Spider-Man: Brand New Day",
       "locTitle": "Centrepoint, Uttara",
       "date": "2026-08-06",
-      "found_at": "2026-07-31T15:53:20.008730+00:00"
+      "found_at": "2026-07-31T15:53:20.008730+00:00",
+      "notified_emails": [
+        "nowshin.jahan0107@gmail.com"
+      ]
     },
     "8:1716:2026-07-31": {
       "movieTitle": "Spider-Man: Brand New Day (2D)",
@@ -1643,37 +1747,57 @@
       "movieTitle": "Spider-Man: Brand New Day (2D)",
       "locTitle": "Centrepoint, Uttara",
       "date": "2026-08-02",
-      "found_at": "2026-07-31T15:53:22.522958+00:00"
+      "found_at": "2026-07-31T15:53:22.522958+00:00",
+      "notified_emails": [
+        "nowshin.jahan0107@gmail.com"
+      ]
     },
     "8:1716:2026-08-03": {
       "movieTitle": "Spider-Man: Brand New Day (2D)",
       "locTitle": "Centrepoint, Uttara",
       "date": "2026-08-03",
-      "found_at": "2026-07-31T15:53:22.522997+00:00"
+      "found_at": "2026-07-31T15:53:22.522997+00:00",
+      "notified_emails": [
+        "nowshin.jahan0107@gmail.com"
+      ]
     },
     "8:1716:2026-08-04": {
       "movieTitle": "Spider-Man: Brand New Day (2D)",
       "locTitle": "Centrepoint, Uttara",
       "date": "2026-08-04",
-      "found_at": "2026-07-31T15:53:22.523028+00:00"
+      "found_at": "2026-07-31T15:53:22.523028+00:00",
+      "notified_emails": [
+        "nowshin.jahan0107@gmail.com",
+        "safwaanulhaque@gmail.com"
+      ]
     },
     "8:1716:2026-08-05": {
       "movieTitle": "Spider-Man: Brand New Day (2D)",
       "locTitle": "Centrepoint, Uttara",
       "date": "2026-08-05",
-      "found_at": "2026-07-31T15:53:22.523049+00:00"
+      "found_at": "2026-07-31T15:53:22.523049+00:00",
+      "notified_emails": [
+        "nowshin.jahan0107@gmail.com"
+      ]
     },
     "4:1717:2026-08-03": {
       "movieTitle": "Shekor",
       "locTitle": "Sony Square, Mirpur",
       "date": "2026-08-03",
-      "found_at": "2026-07-31T20:44:45.721680+00:00"
+      "found_at": "2026-07-31T20:44:45.721680+00:00",
+      "notified_emails": [
+        "safrah201@gmail.com"
+      ]
     },
     "4:1716:2026-08-05": {
       "movieTitle": "Spider-Man: Brand New Day (2D)",
       "locTitle": "Sony Square, Mirpur",
       "date": "2026-08-05",
-      "found_at": "2026-08-01T14:19:07.708239+00:00"
+      "found_at": "2026-08-01T14:19:07.708239+00:00",
+      "notified_emails": [
+        "safrah201@gmail.com",
+        "sahimtech070@gmail.com"
+      ]
     }
   }
 }
