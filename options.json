@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T13:40:56.395846+00:00",
+  "generated_at": "2026-08-02T13:51:03.803040+00:00",
   "locations": [
     {
       "id": 1,
@@ -40,11 +40,6 @@
   ],
   "movies": [
     {
-      "id": 1717,
-      "title": "Shekor",
-      "category": "running"
-    },
-    {
       "id": 1716,
       "title": "Spider-Man: Brand New Day (2D)",
       "category": "running"
@@ -72,6 +67,11 @@
     {
       "id": 1713,
       "title": "Passenger",
+      "category": "running"
+    },
+    {
+      "id": 1717,
+      "title": "Shekor",
       "category": "running"
     },
     {
