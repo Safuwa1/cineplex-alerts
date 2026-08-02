@@ -312,11 +312,22 @@ async def check_dates_per_location(page, token, updated_movies, pairs, all_locat
     sent_registry = state.setdefault("ticket_alerts_sent", {})
     alerts_by_email = {}
 
+    # v6 change: these used to run one at a time (await inside a for-loop),
+    # which meant total run time = (number of movie,location pairs) x
+    # (one network round trip). With ~140+ pairs that alone was easily
+    # 5-14 minutes. CONCURRENCY controls how many of these requests are
+    # in flight at once now. Higher = faster, but too high risks the API
+    # rate-limiting or blocking us - start at 10 and watch the logs/warnings
+    # for repeated "Could not fetch showtimes" errors before raising it.
+    CONCURRENCY = 10
+    sem = asyncio.Semaphore(CONCURRENCY)
     checked = 0
-    for loc_id, movie_id in sorted(pairs):
+
+    async def check_one_pair(loc_id, movie_id):
+        nonlocal checked
         info = by_movie_id.get(movie_id)
         if not info or not info.get("slug"):
-            continue
+            return
         key = info["key"]
         slug = info["slug"]
         title = info["title"]
@@ -326,15 +337,16 @@ async def check_dates_per_location(page, token, updated_movies, pairs, all_locat
         dates_by_location = updated_movies[key]["dates_by_location"]
         previous_dates = set(dates_by_location.get(loc_key, []))
 
-        try:
-            detail_result = await api_call(page, token, f"/movie/{slug}/detail", {"location_id": loc_id})
-            detail_data = json.loads(detail_result["body"])
-            show_times = detail_data.get("data", {}).get("show_time", []) or []
-            current_dates = sorted({s.get("raw_date") for s in show_times if s.get("raw_date")})
-        except Exception as exc:  # noqa: BLE001
-            warnings.append(f'Could not fetch showtimes for "{title}" at {loc_title}: {exc}')
-            current_dates = sorted(previous_dates)
-            show_times = []
+        async with sem:
+            try:
+                detail_result = await api_call(page, token, f"/movie/{slug}/detail", {"location_id": loc_id})
+                detail_data = json.loads(detail_result["body"])
+                show_times = detail_data.get("data", {}).get("show_time", []) or []
+                current_dates = sorted({s.get("raw_date") for s in show_times if s.get("raw_date")})
+            except Exception as exc:  # noqa: BLE001
+                warnings.append(f'Could not fetch showtimes for "{title}" at {loc_title}: {exc}')
+                current_dates = sorted(previous_dates)
+                show_times = []
 
         # DEBUG: for any (movie, location) someone is personally watching,
         # dump the raw show_time entries so we can see what field (if any)
@@ -391,6 +403,8 @@ async def check_dates_per_location(page, token, updated_movies, pairs, all_locat
             log(f"  -> PERSONAL REMINDER ({len(new_emails)} new recipient(s)): {message}")
 
         dates_by_location[loc_key] = current_dates
+
+    await asyncio.gather(*(check_one_pair(loc_id, movie_id) for loc_id, movie_id in sorted(pairs)))
 
     log(f"Checked {checked} (movie, location) combination(s) for new ticket dates.")
     return alerts_by_email
