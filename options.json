@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T11:11:07.258057+00:00",
+  "generated_at": "2026-08-02T11:20:58.685775+00:00",
   "locations": [
     {
       "id": 1,
@@ -40,11 +40,6 @@
   ],
   "movies": [
     {
-      "id": 1705,
-      "title": "Evil Dead Burn (18+)",
-      "category": "running"
-    },
-    {
       "id": 1717,
       "title": "Shekor",
       "category": "running"
@@ -67,6 +62,11 @@
     {
       "id": 1687,
       "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
+      "category": "running"
+    },
+    {
+      "id": 1705,
+      "title": "Evil Dead Burn (18+)",
       "category": "running"
     },
     {
