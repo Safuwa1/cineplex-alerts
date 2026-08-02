@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T09:20:55.366038+00:00",
+  "generated_at": "2026-08-02T09:23:22.806782+00:00",
   "locations": [
     {
       "id": 1,
@@ -41,67 +41,83 @@
   "movies": [
     {
       "id": 1705,
-      "title": "Evil Dead Burn (18+)"
+      "title": "Evil Dead Burn (18+)",
+      "category": "running"
     },
     {
       "id": 1717,
-      "title": "Shekor"
+      "title": "Shekor",
+      "category": "running"
     },
     {
       "id": 1716,
-      "title": "Spider-Man: Brand New Day (2D)"
+      "title": "Spider-Man: Brand New Day (2D)",
+      "category": "running"
     },
     {
       "id": 1688,
-      "title": "Spider-Man: Brand New Day"
+      "title": "Spider-Man: Brand New Day",
+      "category": "running"
     },
     {
       "id": 1711,
-      "title": "The Odyssey"
+      "title": "The Odyssey",
+      "category": "running"
     },
     {
       "id": 1687,
-      "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D"
+      "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
+      "category": "running"
     },
     {
       "id": 1712,
-      "title": "Moana"
+      "title": "Moana",
+      "category": "running"
     },
     {
       "id": 1713,
-      "title": "Passenger"
+      "title": "Passenger",
+      "category": "running"
     },
     {
       "id": 1714,
-      "title": "Time Hoppers"
+      "title": "Time Hoppers",
+      "category": "running"
     },
     {
       "id": 1692,
-      "title": "Insidious: Out of the Further"
+      "title": "Insidious: Out of the Further",
+      "category": "upcoming"
     },
     {
       "id": 1694,
-      "title": "Resident Evil"
+      "title": "Resident Evil",
+      "category": "upcoming"
     },
     {
       "id": 1706,
-      "title": "The End of Oak Street"
+      "title": "The End of Oak Street",
+      "category": "upcoming"
     },
     {
       "id": 1707,
-      "title": "Avengers: Doomsday"
+      "title": "Avengers: Doomsday",
+      "category": "upcoming"
     },
     {
       "id": 1708,
-      "title": "Clayface"
+      "title": "Clayface",
+      "category": "upcoming"
     },
     {
       "id": 1709,
-      "title": "Dune III"
+      "title": "Dune III",
+      "category": "upcoming"
     },
     {
       "id": 1719,
-      "title": "Minions & Monsters"
+      "title": "Minions & Monsters",
+      "category": "upcoming"
     }
   ]
 }
