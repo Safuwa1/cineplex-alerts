@@ -6,185 +6,296 @@
 <title>Star Cineplex Alerts — Get Notified First</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0d0b14;
-    --ticket: #f5efd8;
-    --ticket-edge: #e7dfc2;
-    --ink: #241a12;
-    --ink-muted: #6b5f4f;
-    --gold: #e8b24d;
-    --gold-dim: #a97f34;
-    --red: #b23a2e;
-    --muted: #948aa3;
-    --radius: 22px;
+    --bg1: #0b1020;
+    --bg2: #1a1035;
+    --glass: rgba(255,255,255,0.07);
+    --glass-strong: rgba(255,255,255,0.11);
+    --glass-border: rgba(0,229,255,0.22);
+    --cyan: #00e5ff;
+    --gold: #ffc857;
+    --gold2: #ffb703;
+    --coral: #ff5a7a;
+    --text: #f4f6ff;
+    --text-muted: rgba(244,246,255,0.62);
+    --radius: 20px;
   }
 
   * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; min-height: 100%; background: var(--bg); }
+  html, body { margin: 0; padding: 0; min-height: 100%; }
 
   body {
     font-family: 'Inter', -apple-system, sans-serif;
-    color: var(--muted);
+    color: var(--text-muted);
     display: flex; align-items: center; justify-content: center;
-    min-height: 100vh; padding: 32px 18px;
-    background:
-      radial-gradient(ellipse 900px 500px at 50% -10%, rgba(232,178,77,0.10), transparent 60%),
-      radial-gradient(ellipse 700px 500px at 85% 90%, rgba(178,58,46,0.10), transparent 60%),
-      var(--bg);
+    min-height: 100vh; padding: 44px 18px;
+    position: relative; overflow-x: hidden;
+    background: linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 100%);
   }
 
-  .stage { width: 100%; max-width: 440px; }
+  /* bokeh + film grain backdrop */
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(340px 340px at 12% 18%, rgba(0,229,255,0.16), transparent 60%),
+      radial-gradient(380px 380px at 88% 12%, rgba(255,90,122,0.14), transparent 60%),
+      radial-gradient(420px 420px at 80% 88%, rgba(255,200,87,0.10), transparent 60%);
+    filter: blur(6px);
+  }
+  body::after {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 15px 15px; opacity: 0.5;
+  }
+
+  /* top progress glow */
+  .top-glow {
+    position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 5;
+    background: linear-gradient(90deg, var(--cyan), var(--gold), var(--coral), var(--cyan));
+    background-size: 300% 100%;
+    animation: glowSweep 6s linear infinite;
+    opacity: 0.8;
+  }
+  @keyframes glowSweep { 0% { background-position: 0% 0; } 100% { background-position: 300% 0; } }
+
+  /* floating ambient particles */
+  .particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .particles span {
+    position: absolute; width: 4px; height: 4px; border-radius: 50%;
+    background: var(--cyan); opacity: 0.5;
+    animation: floatUp 14s linear infinite;
+  }
+  .particles span:nth-child(1) { left: 8%; background: var(--cyan); animation-duration: 12s; animation-delay: 0s; }
+  .particles span:nth-child(2) { left: 22%; background: var(--gold); animation-duration: 16s; animation-delay: 2s; }
+  .particles span:nth-child(3) { left: 40%; background: var(--coral); animation-duration: 13s; animation-delay: 4s; }
+  .particles span:nth-child(4) { left: 63%; background: var(--cyan); animation-duration: 18s; animation-delay: 1s; }
+  .particles span:nth-child(5) { left: 78%; background: var(--gold); animation-duration: 15s; animation-delay: 5s; }
+  .particles span:nth-child(6) { left: 91%; background: var(--coral); animation-duration: 17s; animation-delay: 3s; }
+  @keyframes floatUp {
+    0% { bottom: -5%; opacity: 0; transform: translateX(0); }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.3; }
+    100% { bottom: 105%; opacity: 0; transform: translateX(24px); }
+  }
+
+  .stage { width: 100%; max-width: 460px; position: relative; z-index: 1; }
 
   .eyebrow {
-    text-align: center; font-size: 11px; letter-spacing: 0.28em; font-weight: 600;
-    color: var(--gold); text-transform: uppercase; margin-bottom: 14px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    font-size: 11px; letter-spacing: 0.24em; font-weight: 700;
+    color: var(--cyan); text-transform: uppercase; margin-bottom: 16px;
+    opacity: 0; animation: fadeUpPlain 0.6s ease both; animation-delay: 0.05s;
   }
-
-  .marquee { display: flex; justify-content: center; gap: 10px; margin-bottom: 18px; }
-  .marquee span {
-    width: 6px; height: 6px; border-radius: 50%; background: var(--gold-dim);
-    animation: bulb 2.4s ease-in-out infinite;
-  }
-  .marquee span:nth-child(2) { animation-delay: 0.2s; }
-  .marquee span:nth-child(3) { animation-delay: 0.4s; }
-  .marquee span:nth-child(4) { animation-delay: 0.6s; }
-  .marquee span:nth-child(5) { animation-delay: 0.8s; }
-  .marquee span:nth-child(6) { animation-delay: 1.0s; }
-  .marquee span:nth-child(7) { animation-delay: 1.2s; }
-  @keyframes bulb {
-    0%, 100% { background: var(--gold-dim); box-shadow: 0 0 0 rgba(232,178,77,0); }
-    50% { background: var(--gold); box-shadow: 0 0 10px rgba(232,178,77,0.9); }
-  }
+  .eyebrow::before, .eyebrow::after { content: ""; height: 1px; width: 26px; background: rgba(0,229,255,0.4); }
 
   h1 {
-    font-family: 'Bebas Neue', sans-serif; font-weight: 400; text-align: center;
-    color: var(--ticket); font-size: clamp(28px, 6vw, 40px); line-height: 1.05; margin: 0 0 12px;
+    font-family: 'Anton', sans-serif; font-weight: 400; text-align: center;
+    font-size: clamp(34px, 9vw, 50px); line-height: 1.0; margin: 0;
+    text-transform: uppercase; letter-spacing: 0.01em;
+    color: var(--gold);
+    text-shadow: 0 0 18px rgba(255,200,87,0.55), 0 0 40px rgba(255,200,87,0.25);
+    opacity: 0; animation: fadeUpPlain 0.6s ease both; animation-delay: 0.12s;
   }
-  h1 em { font-style: normal; color: var(--gold); }
+  h1 .line2 { display: block; color: #fff; text-shadow: 0 0 16px rgba(255,255,255,0.35); }
+  h1 .accent { color: var(--coral); text-shadow: 0 0 16px rgba(255,90,122,0.5); }
 
   .lede {
-    text-align: center; font-size: 14px; line-height: 1.55; color: var(--muted);
-    max-width: 370px; margin: 0 auto 28px;
+    text-align: center; font-size: 14.5px; line-height: 1.6; color: var(--text-muted);
+    max-width: 380px; margin: 20px auto 30px;
+    opacity: 0; animation: fadeUpPlain 0.6s ease both; animation-delay: 0.2s;
   }
+  .lede strong { color: var(--text); font-weight: 600; }
 
-  .ticket {
-    position: relative; background: var(--ticket); border-radius: var(--radius);
-    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,0,0,0.04);
+  @keyframes fadeUpPlain { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ---------- glass card ---------- */
+  .card {
+    position: relative; border-radius: var(--radius);
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 30px 70px -24px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06);
     overflow: hidden; opacity: 0;
-    animation: fadeUp 0.7s cubic-bezier(.2,.7,.2,1) 0.42s both,
-               floatTicket 6s ease-in-out 1.12s infinite;
-  }
-  .ticket-top { padding: 22px 24px 16px; text-align: center; }
-  .ticket-brand { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.06em; color: var(--ink); }
-  .ticket-brand span { color: var(--red); }
-  .ticket-sub { font-size: 11px; color: var(--ink-muted); margin-top: 2px; letter-spacing: 0.03em; }
-
-  .perf { position: relative; height: 0; border-top: 2px dashed var(--ticket-edge); }
-  .perf::before, .perf::after {
-    content: ""; position: absolute; top: -12px; width: 24px; height: 24px;
-    background: var(--bg); border-radius: 50%;
-    background-image:
-      radial-gradient(ellipse 900px 500px at 50% -400%, rgba(232,178,77,0.10), transparent 60%),
-      radial-gradient(ellipse 700px 500px at 85% 700%, rgba(178,58,46,0.10), transparent 60%),
-      var(--bg);
-  }
-  .perf::before { left: -12px; }
-  .perf::after { right: -12px; }
-  .perf-label {
-    position: absolute; left: 50%; top: -8px; transform: translateX(-50%);
-    background: var(--ticket); padding: 0 10px; font-size: 10px; letter-spacing: 0.2em;
-    color: var(--ink-muted); font-weight: 600;
+    animation: fadeUpPlain 0.7s cubic-bezier(.2,.7,.2,1) 0.28s both;
+    transition: transform 300ms ease, box-shadow 300ms ease;
   }
 
-  .ticket-bottom { padding: 20px 24px 26px; }
+  .card-top { padding: 24px 24px 16px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .card-brand {
+    font-family: 'Anton', sans-serif; font-size: 20px; letter-spacing: 0.03em; color: var(--text);
+    text-transform: uppercase;
+  }
+  .card-brand span { color: var(--gold); }
+  .card-sub {
+    font-size: 10.5px; color: var(--text-muted); margin-top: 4px;
+    letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;
+  }
 
-  .field { margin-bottom: 16px; }
+  .card-body { padding: 22px 24px 26px; }
+
+  .field { margin-bottom: 18px; position: relative; }
   label.field-label {
-    display: block; font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--ink-muted); margin-bottom: 7px;
+    display: block; font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 9px;
   }
-  .field-hint { font-size: 11.5px; color: var(--ink-muted); margin: -4px 0 8px; }
+  .field-hint { font-size: 11.5px; color: var(--text-muted); margin: -5px 0 8px; }
+
+  /* ---------- glass inputs ---------- */
+  .input-wrap { position: relative; }
+  .input-wrap svg.icon {
+    position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
+    width: 16px; height: 16px; stroke: var(--text-muted); pointer-events: none; z-index: 1;
+    transition: stroke 200ms ease;
+  }
 
   select, input[type="email"] {
-    width: 100%; font-family: 'Inter', sans-serif; font-size: 15px; padding: 12px 14px;
-    border-radius: 12px; border: 1.5px solid rgba(36,26,18,0.18); background: #fffdf6;
-    color: var(--ink); outline: none;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    width: 100%; font-family: 'Inter', sans-serif; font-size: 15px; padding: 13px 14px 13px 38px;
+    border-radius: 12px; border: 1.5px solid rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.06); color: var(--text); outline: none; font-weight: 500;
+    transition: border-color 200ms ease, box-shadow 200ms ease, background 200ms ease;
     appearance: none; -webkit-appearance: none;
   }
+  select::placeholder, input::placeholder { color: rgba(244,246,255,0.35); }
   select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%236b5f4f' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%2300e5ff' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat; background-position: right 14px center; padding-right: 34px;
   }
-  select:disabled, input:disabled { opacity: 0.45; cursor: not-allowed; }
-  select:focus, input[type="email"]:focus { border-color: var(--gold); box-shadow: 0 0 0 4px rgba(232,178,77,0.25); }
+  select:disabled, input:disabled {
+    opacity: 1; cursor: wait; color: transparent;
+    background-image:
+      linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.12) 37%, rgba(255,255,255,0.05) 63%);
+    background-size: 400% 100%;
+    animation: shimmerBar 1.4s ease infinite;
+  }
+  @keyframes shimmerBar { 0% { background-position: 100% 0; } 100% { background-position: 0 0; } }
+  select:focus, input[type="email"]:focus {
+    border-color: var(--cyan); background: rgba(0,229,255,0.06);
+    box-shadow: 0 0 0 4px rgba(0,229,255,0.16);
+  }
+  select:focus + svg.icon, .input-wrap:focus-within svg.icon { stroke: var(--cyan); }
 
   @keyframes enablePulse {
-    0% { box-shadow: 0 0 0 0 rgba(232,178,77,0.55); }
-    100% { box-shadow: 0 0 0 8px rgba(232,178,77,0); }
+    0% { box-shadow: 0 0 0 0 rgba(0,229,255,0.55); }
+    100% { box-shadow: 0 0 0 10px rgba(0,229,255,0); }
   }
   select.just-enabled { animation: enablePulse 0.7s ease-out; }
 
-  .check-list {
-    max-height: 168px; overflow-y: auto;
-    border: 1.5px solid rgba(36,26,18,0.14); border-radius: 12px;
-    background: #fffdf6; padding: 4px;
+  /* ---------- movie "poster" cards ---------- */
+  #movieList.check-list {
+    max-height: 300px; overflow-y: auto;
+    border: 1.5px solid rgba(255,255,255,0.12); border-radius: 14px;
+    background: rgba(255,255,255,0.04); padding: 10px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
   }
-  .check-list.disabled { opacity: 0.45; pointer-events: none; }
-  .check-item {
-    display: flex; align-items: center; gap: 9px;
-    padding: 8px 10px; border-radius: 8px; cursor: pointer;
-    font-size: 14px; color: var(--ink);
+  #movieList.check-list.disabled { opacity: 0.5; pointer-events: none; }
+  /* skeleton placeholder cards shown before JS populates the grid */
+  #movieList .skeleton-card {
+    height: 108px; border-radius: 12px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.11) 37%, rgba(255,255,255,0.05) 63%);
+    background-size: 400% 100%; animation: shimmerBar 1.4s ease infinite;
   }
-  .check-item:hover { background: rgba(232,178,77,0.14); }
-  .check-item input { width: 16px; height: 16px; accent-color: var(--red); flex-shrink: 0; }
-  .check-item span { line-height: 1.3; }
 
-  .date-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+  #movieList .check-item {
+    display: flex; flex-direction: column; gap: 0; cursor: pointer;
+    border-radius: 12px; overflow: hidden; position: relative;
+    border: 1.5px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.04);
+    transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
   }
-  .date-grid .check-item { border: 1px solid rgba(36,26,18,0.1); }
+  #movieList .check-item:hover { transform: scale(1.03); border-color: rgba(0,229,255,0.4); }
+  #movieList .check-item:active { transform: scale(0.99); }
+  #movieList .check-item::before {
+    content: ""; display: block; height: 58px; width: 100%;
+    background-repeat: no-repeat; background-position: center; background-size: 26px 26px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' opacity='0.8'%3E%3Crect x='2' y='6' width='20' height='14' rx='2'/%3E%3Cpath d='M6 6V4a1 1 0 0 1 1-1h1'/%3E%3Cpath d='M2 10h20'/%3E%3Cpath d='M2 14h20'/%3E%3C/svg%3E");
+  }
+  #movieList .check-item:nth-child(6n+1)::before { background-color: rgba(0,229,255,0.22); }
+  #movieList .check-item:nth-child(6n+2)::before { background-color: rgba(255,200,87,0.22); }
+  #movieList .check-item:nth-child(6n+3)::before { background-color: rgba(255,90,122,0.22); }
+  #movieList .check-item:nth-child(6n+4)::before { background-color: rgba(120,120,255,0.22); }
+  #movieList .check-item:nth-child(6n+5)::before { background-color: rgba(0,200,150,0.2); }
+  #movieList .check-item:nth-child(6n+6)::before { background-color: rgba(255,150,60,0.2); }
+
+  #movieList .check-item span {
+    font-size: 12.5px; font-weight: 600; color: var(--text); line-height: 1.3;
+    padding: 8px 9px 10px; flex: 1; display: flex; align-items: center;
+  }
+  #movieList .check-item input { position: absolute; top: 8px; right: 8px; width: 17px; height: 17px; accent-color: var(--gold); z-index: 2; }
+  #movieList .check-item:has(input:checked) {
+    border-color: var(--cyan); box-shadow: 0 0 0 2px rgba(0,229,255,0.3), 0 8px 20px -8px rgba(0,229,255,0.4);
+  }
+  #movieList .check-item:has(input:checked)::after {
+    content: ""; position: absolute; top: 8px; left: 8px; width: 18px; height: 18px; border-radius: 50%;
+    background: var(--gold);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2312102a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: center; background-size: 11px 11px;
+  }
+
+  /* ---------- date chips ---------- */
+  #dateList.check-list {
+    border: none; background: none; padding: 0; max-height: none; overflow: visible;
+  }
+  #dateGrid.date-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
+  #dateGrid .check-item {
+    position: relative; display: flex; align-items: center; justify-content: center;
+    padding: 10px 4px; border-radius: 10px; cursor: pointer; text-align: center;
+    font-size: 12px; font-weight: 700; color: var(--text-muted);
+    background: rgba(255,255,255,0.05); border: 1.5px solid rgba(255,255,255,0.12);
+    transition: border-color 180ms ease, background 180ms ease, color 180ms ease, transform 150ms ease;
+  }
+  #dateGrid .check-item:hover { border-color: var(--cyan); color: var(--text); transform: translateY(-1px); }
+  #dateGrid .check-item input { position: absolute; inset: 0; opacity: 0; cursor: pointer; margin: 0; }
+  #dateGrid .check-item:has(input:checked) {
+    background: linear-gradient(135deg, var(--gold), var(--gold2)); border-color: var(--gold);
+    color: #14102b; box-shadow: 0 6px 16px -6px rgba(255,200,87,0.6);
+  }
 
   .catalog-status {
-    font-size: 12.5px; text-align: center; padding: 4px 0 10px;
-    background: linear-gradient(90deg, var(--ink-muted) 40%, var(--gold) 50%, var(--ink-muted) 60%);
-    background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
-    animation: shimmerText 2.2s linear infinite;
+    font-size: 12px; text-align: center; padding: 6px 12px; margin-bottom: 10px;
+    border-radius: 999px; background: rgba(255,255,255,0.05); color: var(--text-muted);
+    display: inline-block; width: 100%;
   }
-  .catalog-status.error {
-    color: var(--red); background: none; -webkit-background-clip: initial; background-clip: initial; animation: none;
-  }
-  @keyframes shimmerText { 0% { background-position: -120% 0; } 100% { background-position: 220% 0; } }
+  .catalog-status.error { color: var(--coral); background: rgba(255,90,122,0.1); }
 
+  /* ---------- CTA button ---------- */
   button#submitBtn {
-    width: 100%; margin-top: 6px; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700;
-    padding: 15px 16px; border-radius: 12px; border: none; cursor: pointer;
-    background: var(--ink); color: var(--ticket); position: relative; overflow: hidden;
-    transition: transform 0.12s ease, background 0.15s ease, opacity 0.15s ease;
+    width: 100%; margin-top: 8px; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 800;
+    padding: 16px 16px; border-radius: 13px; border: none; cursor: pointer;
+    background: linear-gradient(120deg, var(--gold), var(--gold2));
+    color: #14102b; position: relative; overflow: hidden;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    box-shadow: 0 14px 30px -12px rgba(255,183,3,0.55);
+    transition: transform 150ms ease, box-shadow 200ms ease, opacity 200ms ease;
   }
   button#submitBtn::after {
     content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
-    background: linear-gradient(115deg, transparent, rgba(255,255,255,0.22), transparent);
-    transform: skewX(-20deg); transition: left 0.65s ease; pointer-events: none;
+    background: linear-gradient(115deg, transparent, rgba(255,255,255,0.55), transparent);
+    transform: skewX(-20deg);
+    animation: shimmerSweep 3.2s ease-in-out infinite;
   }
-  button#submitBtn:hover:not(:disabled)::after { left: 130%; }
-  button#submitBtn:hover:not(:disabled) { background: #35271a; }
-  button#submitBtn:active:not(:disabled) { transform: scale(0.98); }
-  button#submitBtn:disabled { opacity: 0.45; cursor: not-allowed; }
-  button#submitBtn:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+  @keyframes shimmerSweep {
+    0%, 40% { left: -60%; }
+    60%, 100% { left: 130%; }
+  }
+  button#submitBtn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 18px 36px -12px rgba(255,183,3,0.7); }
+  button#submitBtn:active:not(:disabled) { transform: translateY(0); }
+  button#submitBtn:disabled { opacity: 0.35; cursor: not-allowed; box-shadow: none; }
+  button#submitBtn:disabled::after { display: none; }
+  button#submitBtn:focus-visible { outline: 3px solid var(--cyan); outline-offset: 2px; }
 
-  .fineprint { text-align: center; font-size: 11.5px; color: var(--ink-muted); margin-top: 14px; line-height: 1.5; }
+  .fineprint { text-align: center; font-size: 11.5px; color: var(--text-muted); margin-top: 16px; line-height: 1.5; }
 
-  .success { display: none; text-align: center; padding: 6px 0 2px; }
+  /* ---------- success state ---------- */
+  .success { display: none; text-align: center; padding: 32px 24px 30px; }
   .success.show { display: block; }
-  .ticket-bottom.hide { display: none; }
+  .card-body.hide, .card-top.hide { display: none; }
 
-  .stamp { width: 64px; height: 64px; margin: 4px auto 16px; display: flex; align-items: center; justify-content: center; transform: rotate(-8deg); }
-  .stamp svg { width: 64px; height: 64px; overflow: visible; }
-  .stamp-circle { fill: none; stroke: var(--red); stroke-width: 3; stroke-dasharray: 145; stroke-dashoffset: 145; }
-  .stamp-check { fill: none; stroke: var(--red); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 40; stroke-dashoffset: 40; }
+  .stamp-circle-wrap { width: 64px; height: 64px; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; }
+  .stamp-circle-wrap svg { width: 64px; height: 64px; overflow: visible; }
+  .stamp-circle { fill: none; stroke: var(--cyan); stroke-width: 3; stroke-dasharray: 145; stroke-dashoffset: 145; filter: drop-shadow(0 0 8px rgba(0,229,255,0.6)); }
+  .stamp-check { fill: none; stroke: var(--gold); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 40; stroke-dashoffset: 40; }
   .success.show .stamp-circle { animation: drawCircle 0.5s ease-out forwards; }
   .success.show .stamp-check { animation: drawCheck 0.35s ease-out 0.45s forwards; }
   @keyframes drawCircle { to { stroke-dashoffset: 0; } }
@@ -192,7 +303,8 @@
 
   .confetti { position: relative; width: 0; height: 0; margin: 0 auto; }
   .confetti span { position: absolute; top: 0; left: 0; width: 6px; height: 6px; border-radius: 2px; background: var(--gold); opacity: 0; }
-  .confetti span:nth-child(odd) { background: var(--red); }
+  .confetti span:nth-child(3n+1) { background: var(--coral); }
+  .confetti span:nth-child(3n+2) { background: var(--cyan); }
   .success.show .confetti span { animation: confettiBurst 0.7s ease-out 0.5s both; }
   .confetti span:nth-child(1) { --a: -60deg; } .confetti span:nth-child(2) { --a: -30deg; }
   .confetti span:nth-child(3) { --a: -8deg; }  .confetti span:nth-child(4) { --a: 8deg; }
@@ -200,52 +312,49 @@
   .confetti span:nth-child(7) { --a: 200deg; } .confetti span:nth-child(8) { --a: 160deg; }
   @keyframes confettiBurst {
     0% { opacity: 1; transform: rotate(var(--a)) translateX(0) scale(1); }
-    100% { opacity: 0; transform: rotate(var(--a)) translateX(46px) scale(0.4); }
+    100% { opacity: 0; transform: rotate(var(--a)) translateX(48px) scale(0.4); }
   }
 
-  .success h2 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 26px; color: var(--ink); margin: 0 0 8px; }
-  .success p { font-size: 13.5px; color: var(--ink-muted); max-width: 280px; margin: 0 auto 18px; line-height: 1.5; }
-  .success a { font-size: 12.5px; color: var(--ink-muted); text-decoration: underline; cursor: pointer; }
+  .success h2 { font-family: 'Anton', sans-serif; font-weight: 400; font-size: 27px; color: var(--text); margin: 0 0 8px; text-transform: uppercase; }
+  .success p { font-size: 13.5px; color: var(--text-muted); max-width: 280px; margin: 0 auto 18px; line-height: 1.5; }
+  .success a { font-size: 12px; color: var(--cyan); text-decoration: underline; cursor: pointer; font-weight: 700; }
 
-  .footer-note { text-align: center; font-size: 11.5px; color: var(--muted); margin-top: 24px; }
-
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes floatTicket { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
-  .eyebrow, .marquee, h1, .lede, .footer-note { opacity: 0; animation: fadeUp 0.7s cubic-bezier(.2,.7,.2,1) both; }
-  .eyebrow { animation-delay: 0.05s; } .marquee { animation-delay: 0.15s; }
-  h1 { animation-delay: 0.22s; } .lede { animation-delay: 0.32s; } .footer-note { animation-delay: 0.6s; }
+  .footer-note { text-align: center; font-size: 11px; color: rgba(244,246,255,0.35); margin-top: 26px;
+    opacity: 0; animation: fadeUpPlain 0.6s ease both; animation-delay: 0.5s; }
 
   @media (prefers-reduced-motion: reduce) {
-    .marquee span { animation: none; }
-    .eyebrow, .marquee, h1, .lede, .ticket, .footer-note { animation: none; opacity: 1; }
-    .catalog-status { animation: none; -webkit-background-clip: initial; background-clip: initial; color: var(--ink-muted); }
+    .top-glow, .particles span, .eyebrow, h1, .lede, .card, .footer-note { animation: none; opacity: 1; }
+    select:disabled, input:disabled, #movieList .skeleton-card { animation: none; }
     button#submitBtn::after { display: none; }
     select.just-enabled { animation: none; }
     .stamp-circle, .stamp-check { stroke-dashoffset: 0; animation: none; }
     .confetti span { display: none; }
+    body::before, body::after { display: none; }
+    #movieList .check-item, #dateGrid .check-item, button#submitBtn { transition: none; }
   }
 </style>
 </head>
 <body>
 
+  <div class="top-glow" aria-hidden="true"></div>
+  <div class="particles" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
   <div class="stage">
-    <div class="eyebrow">STAR CINEPLEX · DHAKA</div>
-    <div class="marquee" aria-hidden="true">
-      <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-    </div>
+    <div class="eyebrow">Star Cineplex · Dhaka</div>
 
-    <h1>Get the seat<br>before it's <em>gone</em>.</h1>
-    <p class="lede">Tell us the movie, location, and dates you're waiting on — we'll email you the instant tickets go on sale, plus any new releases or ticket drops.</p>
+    <h1>Get the seat<span class="line2">before it's <span class="accent">gone</span></span></h1>
 
-    <div class="ticket">
-      <div class="ticket-top">
-        <div class="ticket-brand">CINEPLEX <span>ALERT</span></div>
-        <div class="ticket-sub">New releases · Ticket drops · Personal watch</div>
+    <p class="lede">Tell us the <strong>movie</strong>, the <strong>branch</strong>, and the <strong>dates</strong> you're waiting on — we'll email you the moment they show up on the schedule, plus new releases.</p>
+
+    <div class="card">
+      <div class="card-top">
+        <div class="card-brand">Cineplex <span>Alert</span></div>
+        <div class="card-sub">New releases · Schedule drops · Personal watch</div>
       </div>
 
-      <div class="perf"><span class="perf-label">ADMIT ONE</span></div>
-
-      <div class="ticket-bottom" id="formWrap">
+      <div class="card-body" id="formWrap">
         <div id="catalogStatus" class="catalog-status">Loading current movies…</div>
 
         <form id="signupForm"
@@ -254,14 +363,20 @@
               target="hidden_iframe">
 
           <div class="field">
-            <label class="field-label" for="locationSelect">Location</label>
-            <select id="locationSelect" disabled><option value="">Loading…</option></select>
+            <label class="field-label" for="locationSelect">Branch</label>
+            <div class="input-wrap">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              <select id="locationSelect" disabled><option value="">Loading…</option></select>
+            </div>
           </div>
 
           <div class="field">
             <label class="field-label">Movies you're waiting on</label>
             <div class="field-hint">Pick one or more</div>
-            <div class="check-list disabled" id="movieList"></div>
+            <div class="check-list disabled" id="movieList">
+              <div class="skeleton-card"></div><div class="skeleton-card"></div>
+              <div class="skeleton-card"></div><div class="skeleton-card"></div>
+            </div>
           </div>
 
           <div class="field">
@@ -272,18 +387,21 @@
 
           <div class="field">
             <label class="field-label" for="email">Your email</label>
-            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            <div class="input-wrap">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            </div>
           </div>
 
           <input type="hidden" id="showSelectionHidden" name="selection" value="">
 
-          <button type="submit" id="submitBtn" disabled>Watch These Shows</button>
-          <div class="fineprint">Free. We'll email you the moment your picks go on sale, plus new releases &amp; ticket drops.</div>
+          <button type="submit" id="submitBtn" disabled>Notify Me</button>
+          <div class="fineprint">Free. We'll email you the moment your picks show up on the schedule, plus new releases.</div>
         </form>
       </div>
 
       <div class="success" id="successState">
-        <div class="stamp">
+        <div class="stamp-circle-wrap">
           <svg viewBox="0 0 52 52" aria-hidden="true">
             <circle class="stamp-circle" cx="26" cy="26" r="23"></circle>
             <path class="stamp-check" d="M15 27l7 7 15-15"></path>
@@ -294,7 +412,7 @@
           </div>
         </div>
         <h2>You're on the list</h2>
-        <p>Watch your inbox — we'll email you the second your picks go on sale.</p>
+        <p>Watch your inbox — we'll email you the second your picks show up on the schedule.</p>
         <a id="resetLink">Watch another show</a>
       </div>
     </div>
