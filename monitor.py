@@ -228,6 +228,13 @@ async def fetch_movie_list(page, token):
             for m in movies:
                 flat_movies.append((category, m))
     log(f"movie-list: {len(flat_movies)} movie(s) across {len(categories)} categor(y/ies).")
+
+    # DEBUG: dump the FULL raw dict for the first few movies so we can see
+    # every field the API actually sends (poster/image URL, rating, etc.)
+    # instead of guessing field names. Remove this once we know what's there.
+    for _cat, _m in flat_movies[:3]:
+        log(f"  DEBUG raw movie entry: {json.dumps(_m, ensure_ascii=False)}")
+
     return flat_movies
 
 
@@ -415,11 +422,14 @@ def build_options(all_locations, flat_movies):
     for category, m in flat_movies:
         mid = m.get("movie_id")
         if mid and mid not in seen:
-            seen[mid] = m.get("title") or m.get("movie_title") or "Unknown"
+            seen[mid] = {
+                "title": m.get("title") or m.get("movie_title") or "Unknown",
+                "category": category,
+            }
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "locations": all_locations,
-        "movies": [{"id": k, "title": v} for k, v in seen.items()],
+        "movies": [{"id": k, "title": v["title"], "category": v["category"]} for k, v in seen.items()],
     }
 
 
