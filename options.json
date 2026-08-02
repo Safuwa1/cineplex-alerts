@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T16:51:13.197901+00:00",
+  "generated_at": "2026-08-02T16:57:26.793092+00:00",
   "locations": [
     {
       "id": 1,
@@ -42,82 +42,98 @@
     {
       "id": 1687,
       "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
-      "category": "running"
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/177641847596697.webp"
     },
     {
       "id": 1705,
       "title": "Evil Dead Burn (18+)",
-      "category": "running"
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178117030353587.webp"
     },
     {
       "id": 1712,
       "title": "Moana",
-      "category": "running"
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178342199356174.webp"
     },
     {
       "id": 1713,
       "title": "Passenger",
-      "category": "running"
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178360034318727.webp"
     },
     {
       "id": 1717,
       "title": "Shekor",
-      "category": "running"
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178524821967962.webp"
     },
     {
       "id": 1716,
       "title": "Spider-Man: Brand New Day (2D)",
-      "category": "running"
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178515901698542.webp"
     },
     {
       "id": 1688,
       "title": "Spider-Man: Brand New Day",
-      "category": "running"
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178436170254388.webp"
     },
     {
       "id": 1711,
       "title": "The Odyssey",
-      "category": "running"
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178375963885946.webp"
     },
     {
       "id": 1714,
       "title": "Time Hoppers",
-      "category": "running"
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178360004266363.webp"
     },
     {
       "id": 1692,
       "title": "Insidious: Out of the Further",
-      "category": "upcoming"
+      "category": "upcoming",
+      "poster": "https://image.cineplexbd.com/movies/177911031087668.webp"
     },
     {
       "id": 1694,
       "title": "Resident Evil",
-      "category": "upcoming"
+      "category": "upcoming",
+      "poster": "https://image.cineplexbd.com/movies/177911061514926.webp"
     },
     {
       "id": 1706,
       "title": "The End of Oak Street",
-      "category": "upcoming"
+      "category": "upcoming",
+      "poster": "https://image.cineplexbd.com/movies/178117096516958.webp"
     },
     {
       "id": 1707,
       "title": "Avengers: Doomsday",
-      "category": "upcoming"
+      "category": "upcoming",
+      "poster": "https://image.cineplexbd.com/movies/178472022952486.webp"
     },
     {
       "id": 1708,
       "title": "Clayface",
-      "category": "upcoming"
+      "category": "upcoming",
+      "poster": "https://image.cineplexbd.com/movies/178117230199413.webp"
     },
     {
       "id": 1709,
       "title": "Dune III",
-      "category": "upcoming"
+      "category": "upcoming",
+      "poster": "https://image.cineplexbd.com/movies/178117296889918.webp"
     },
     {
       "id": 1719,
       "title": "Minions & Monsters",
-      "category": "upcoming"
+      "category": "upcoming",
+      "poster": "https://image.cineplexbd.com/movies/178542989087649.webp"
     }
   ]
 }
