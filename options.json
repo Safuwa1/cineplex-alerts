@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-03T11:11:07.286931+00:00",
+  "generated_at": "2026-08-03T11:21:07.670138+00:00",
   "locations": [
     {
       "id": 1,
@@ -40,13 +40,6 @@
   ],
   "movies": [
     {
-      "id": 1705,
-      "title": "Evil Dead Burn (18+)",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178117030353587.webp",
-      "watchers": 3
-    },
-    {
       "id": 1717,
       "title": "Shekor",
       "category": "running",
@@ -79,6 +72,13 @@
       "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/177641847596697.webp",
+      "watchers": 3
+    },
+    {
+      "id": 1705,
+      "title": "Evil Dead Burn (18+)",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178117030353587.webp",
       "watchers": 3
     },
     {
