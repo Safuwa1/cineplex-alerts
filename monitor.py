@@ -152,6 +152,21 @@ def build_watch_combos(subscribers):
     return combos
 
 
+def build_watcher_counts(subscribers):
+    """movie_id -> number of distinct subscribers watching it, across any
+    branch/date. Real counts only, from the same Sheet data used for
+    alerts - never fabricated."""
+    watchers_by_movie = {}
+    for s in subscribers:
+        sel = s.get("selection")
+        if not sel:
+            continue
+        movie_ids = {m["id"] for m in sel["movies"] if m.get("id")}
+        for mid in movie_ids:
+            watchers_by_movie.setdefault(mid, set()).add(s["email"])
+    return {mid: len(emails) for mid, emails in watchers_by_movie.items()}
+
+
 def send_email(subject: str, body: str, recipients):
     recipients = sorted(set(recipients))
     if not recipients:
@@ -410,7 +425,7 @@ async def check_dates_per_location(page, token, updated_movies, pairs, all_locat
     return alerts_by_email
 
 
-def build_options(all_locations, flat_movies):
+def build_options(all_locations, flat_movies, watcher_counts):
     seen = {}
     for category, m in flat_movies:
         mid = m.get("movie_id")
@@ -419,12 +434,19 @@ def build_options(all_locations, flat_movies):
                 "title": m.get("title") or m.get("movie_title") or "Unknown",
                 "category": category,
                 "poster": m.get("img"),
+                "watchers": watcher_counts.get(mid, 0),
             }
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "locations": all_locations,
         "movies": [
-            {"id": k, "title": v["title"], "category": v["category"], "poster": v["poster"]}
+            {
+                "id": k,
+                "title": v["title"],
+                "category": v["category"],
+                "poster": v["poster"],
+                "watchers": v["watchers"],
+            }
             for k, v in seen.items()
         ],
     }
@@ -468,7 +490,7 @@ async def run_monitor():
         state["movies"] = updated_movies
 
         try:
-            options = build_options(all_locations, flat_movies)
+            options = build_options(all_locations, flat_movies, build_watcher_counts(subscribers))
             with open(OPTIONS_FILE, "w", encoding="utf-8") as f:
                 json.dump(options, f, indent=2, ensure_ascii=False)
             log(f"options.json: {len(options['locations'])} location(s), {len(options['movies'])} movie(s).")
