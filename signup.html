@@ -235,6 +235,10 @@
   }
   .badge-showing { background: rgba(0,229,255,0.16); color: var(--cyan); }
   .badge-upcoming { background: rgba(255,200,87,0.16); color: var(--gold); }
+  .watcher-count {
+    display: block; font-size: 9.5px; color: var(--text-muted); font-weight: 600;
+    padding: 0 9px 8px; margin-top: -3px;
+  }
   #movieList .check-item input { position: absolute; top: 8px; right: 8px; width: 17px; height: 17px; accent-color: var(--gold); z-index: 2; }
   #movieList .check-item:has(input:checked) {
     border-color: var(--cyan); box-shadow: 0 0 0 2px rgba(0,229,255,0.3), 0 8px 20px -8px rgba(0,229,255,0.4);
@@ -489,7 +493,10 @@
         const poster = m.poster
           ? `<img src="${m.poster}" alt="" loading="lazy" onerror="this.remove()">`
           : '';
-        item.innerHTML = `${poster}<input type="checkbox" value="${m.id}" data-title="${m.title.replace(/"/g,'&quot;')}"><span>${m.title}</span>${badge}`;
+        const watchers = (typeof m.watchers === 'number' && m.watchers > 0)
+          ? `<span class="watcher-count">${m.watchers} watching</span>`
+          : '';
+        item.innerHTML = `${poster}<input type="checkbox" value="${m.id}" data-title="${m.title.replace(/"/g,'&quot;')}"><span>${m.title}</span>${badge}${watchers}`;
         item.querySelector('input').addEventListener('change', updateSubmitState);
         movieList.appendChild(item);
       });
