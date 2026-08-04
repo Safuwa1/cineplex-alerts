@@ -243,6 +243,21 @@ async def fetch_movie_list(page, token):
             for m in movies:
                 flat_movies.append((category, m))
     log(f"movie-list: {len(flat_movies)} movie(s) across {len(categories)} categor(y/ies).")
+
+    # DEBUG: track whether 'movie_id' stays stable across runs for movies
+    # whose watcher counts have looked inconsistent. 'id' is believed to be
+    # the stable per-movie identity; 'movie_id' may instead be tied to a
+    # showtime batch/profile that can change. Compare this line's movie_id
+    # across several runs for the same title/id to confirm or rule this out.
+    watch_titles = ("spider-man", "evil dead burn")
+    for _cat, _m in flat_movies:
+        _title = (_m.get("title") or "").lower()
+        if any(t in _title for t in watch_titles):
+            log(
+                f"  DEBUG identity check: title=\"{_m.get('title')}\" "
+                f"id={_m.get('id')} movie_id={_m.get('movie_id')} category={_cat}"
+            )
+
     return flat_movies
 
 
