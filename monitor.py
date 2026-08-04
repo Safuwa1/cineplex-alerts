@@ -363,12 +363,6 @@ async def check_dates_per_location(page, token, updated_movies, pairs, all_locat
                 current_dates = sorted(previous_dates)
                 show_times = []
 
-        # DEBUG: for any (movie, location) someone is personally watching,
-        # dump the raw show_time entries so we can see what field (if any)
-        # distinguishes "on the schedule" from "tickets actually on sale".
-        if (loc_id, movie_id) in combos_by_pair and show_times:
-            log(f"  DEBUG raw show_time for \"{title}\" @ {loc_title}: {json.dumps(show_times, ensure_ascii=False)[:3000]}")
-
         checked += 1
         current_dates_set = set(current_dates)
         fresh_dates = sorted(current_dates_set - previous_dates)
