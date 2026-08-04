@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T14:11:15.649116+00:00",
+  "generated_at": "2026-08-04T14:21:05.122567+00:00",
   "locations": [
     {
       "id": 1,
@@ -103,6 +103,13 @@
       "watchers": 6
     },
     {
+      "id": 1719,
+      "title": "Minions & Monsters",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178542989087649.webp",
+      "watchers": 1
+    },
+    {
       "id": 1692,
       "title": "Insidious: Out of the Further",
       "category": "upcoming",
@@ -143,13 +150,6 @@
       "category": "upcoming",
       "poster": "https://image.cineplexbd.com/movies/178117296889918.webp",
       "watchers": 2
-    },
-    {
-      "id": 1719,
-      "title": "Minions & Monsters",
-      "category": "upcoming",
-      "poster": "https://image.cineplexbd.com/movies/178542989087649.webp",
-      "watchers": 1
     }
   ]
 }
