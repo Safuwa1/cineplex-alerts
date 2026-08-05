@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T13:01:22.215269+00:00",
+  "generated_at": "2026-08-05T13:10:57.268400+00:00",
   "locations": [
     {
       "id": 1,
@@ -61,13 +61,6 @@
       "watchers": 11
     },
     {
-      "id": 1711,
-      "title": "The Odyssey",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178375963885946.webp",
-      "watchers": 5
-    },
-    {
       "id": 1687,
       "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
       "category": "running",
@@ -94,6 +87,13 @@
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/178360034318727.webp",
       "watchers": 4
+    },
+    {
+      "id": 1711,
+      "title": "The Odyssey",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178375963885946.webp",
+      "watchers": 5
     },
     {
       "id": 1714,
