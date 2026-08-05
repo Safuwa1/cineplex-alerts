@@ -813,7 +813,7 @@
       }
     }
   },
-  "last_checked": "2026-08-05T04:21:02.694006+00:00",
+  "last_checked": "2026-08-05T04:31:20.933884+00:00",
   "seats": {
     "4:22557": {
       "available": [
@@ -2290,6 +2290,15 @@
       "found_at": "2026-08-04T18:03:39.714345+00:00",
       "notified_emails": [
         "nowshin.jahan0107@gmail.com"
+      ]
+    },
+    "4:1719:2026-08-08": {
+      "movieTitle": "Minions & Monsters",
+      "locTitle": "Sony Square, Mirpur",
+      "date": "2026-08-08",
+      "found_at": "2026-08-05T04:31:16.752120+00:00",
+      "notified_emails": [
+        "safwaanulhaque@gmail.com"
       ]
     }
   }
