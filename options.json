@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T08:01:22.435062+00:00",
+  "generated_at": "2026-08-05T08:21:14.743277+00:00",
   "locations": [
     {
       "id": 1,
@@ -40,13 +40,6 @@
   ],
   "movies": [
     {
-      "id": 1687,
-      "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/177641847596697.webp",
-      "watchers": 5
-    },
-    {
       "id": 1705,
       "title": "Evil Dead Burn (18+)",
       "category": "running",
@@ -86,6 +79,13 @@
       "title": "The Odyssey",
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/178375963885946.webp",
+      "watchers": 5
+    },
+    {
+      "id": 1687,
+      "title": "Billie Eilish: Hit Me Hard and Soft - The Tour Live in 3D",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/177641847596697.webp",
       "watchers": 5
     },
     {
