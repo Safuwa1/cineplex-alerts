@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T09:11:06.327628+00:00",
+  "generated_at": "2026-08-05T09:20:59.559633+00:00",
   "locations": [
     {
       "id": 1,
@@ -47,13 +47,6 @@
       "watchers": 5
     },
     {
-      "id": 1713,
-      "title": "Passenger",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178360034318727.webp",
-      "watchers": 4
-    },
-    {
       "id": 1717,
       "title": "Shekor",
       "category": "running",
@@ -94,6 +87,13 @@
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/178342199356174.webp",
       "watchers": 5
+    },
+    {
+      "id": 1713,
+      "title": "Passenger",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178360034318727.webp",
+      "watchers": 4
     },
     {
       "id": 1714,
