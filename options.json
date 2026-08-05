@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T13:41:11.172262+00:00",
+  "generated_at": "2026-08-05T13:51:20.249095+00:00",
   "locations": [
     {
       "id": 1,
@@ -39,13 +39,6 @@
     }
   ],
   "movies": [
-    {
-      "id": 1717,
-      "title": "Shekor",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178524821967962.webp",
-      "watchers": 5
-    },
     {
       "id": 1716,
       "title": "Spider-Man: Brand New Day (2D)",
@@ -87,6 +80,13 @@
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/178360034318727.webp",
       "watchers": 4
+    },
+    {
+      "id": 1717,
+      "title": "Shekor",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178524821967962.webp",
+      "watchers": 5
     },
     {
       "id": 1711,
