@@ -595,23 +595,6 @@
         ]
       }
     },
-    "482": {
-      "title": "Time Hoppers",
-      "category": "running",
-      "slug": "time-hoppers",
-      "movie_id": 1714,
-      "dates_by_location": {
-        "1": [],
-        "2": [],
-        "3": [],
-        "4": [],
-        "5": [],
-        "6": [],
-        "8": [],
-        "9": [],
-        "10": []
-      }
-    },
     "488": {
       "title": "Minions & Monsters",
       "category": "running",
@@ -804,7 +787,7 @@
       }
     }
   },
-  "last_checked": "2026-08-06T04:51:01.769234+00:00",
+  "last_checked": "2026-08-06T05:01:12.960496+00:00",
   "seats": {
     "4:22557": {
       "available": [

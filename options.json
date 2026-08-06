@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-06T04:51:01.717499+00:00",
+  "generated_at": "2026-08-06T05:01:12.909303+00:00",
   "locations": [
     {
       "id": 1,
@@ -94,13 +94,6 @@
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/178375963885946.webp",
       "watchers": 5
-    },
-    {
-      "id": 1714,
-      "title": "Time Hoppers",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178360004266363.webp",
-      "watchers": 6
     },
     {
       "id": 1719,
