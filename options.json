@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-06T09:10:57.436914+00:00",
+  "generated_at": "2026-08-06T09:21:05.066822+00:00",
   "locations": [
     {
       "id": 1,
@@ -45,13 +45,6 @@
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/178117030353587.webp",
       "watchers": 5
-    },
-    {
-      "id": 1713,
-      "title": "Passenger",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178360034318727.webp",
-      "watchers": 4
     },
     {
       "id": 1717,
