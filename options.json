@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-06T13:50:57.170713+00:00",
+  "generated_at": "2026-08-06T14:01:12.563870+00:00",
   "locations": [
     {
       "id": 1,
@@ -40,20 +40,6 @@
   ],
   "movies": [
     {
-      "id": 1716,
-      "title": "Spider-Man: Brand New Day (2D)",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178515901698542.webp",
-      "watchers": 12
-    },
-    {
-      "id": 1688,
-      "title": "Spider-Man: Brand New Day",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178436170254388.webp",
-      "watchers": 11
-    },
-    {
       "id": 1705,
       "title": "Evil Dead Burn (18+)",
       "category": "running",
@@ -73,6 +59,20 @@
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/178342199356174.webp",
       "watchers": 5
+    },
+    {
+      "id": 1716,
+      "title": "Spider-Man: Brand New Day (2D)",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178515901698542.webp",
+      "watchers": 12
+    },
+    {
+      "id": 1688,
+      "title": "Spider-Man: Brand New Day",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178436170254388.webp",
+      "watchers": 11
     },
     {
       "id": 1711,
