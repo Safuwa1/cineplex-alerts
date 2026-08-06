@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-06T07:41:04.836088+00:00",
+  "generated_at": "2026-08-06T07:51:10.669950+00:00",
   "locations": [
     {
       "id": 1,
@@ -54,13 +54,6 @@
       "watchers": 5
     },
     {
-      "id": 1712,
-      "title": "Moana",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178342199356174.webp",
-      "watchers": 5
-    },
-    {
       "id": 1713,
       "title": "Passenger",
       "category": "running",
@@ -101,6 +94,13 @@
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/178542989087649.webp",
       "watchers": 2
+    },
+    {
+      "id": 1712,
+      "title": "Moana",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178342199356174.webp",
+      "watchers": 5
     },
     {
       "id": 1692,
