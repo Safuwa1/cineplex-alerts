@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-08T07:31:04.203169+00:00",
+  "generated_at": "2026-08-08T07:41:07.256807+00:00",
   "locations": [
     {
       "id": 1,
@@ -47,13 +47,6 @@
       "watchers": 5
     },
     {
-      "id": 1719,
-      "title": "Minions & Monsters",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178542989087649.webp",
-      "watchers": 2
-    },
-    {
       "id": 1712,
       "title": "Moana",
       "category": "running",
@@ -80,6 +73,13 @@
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/178375963885946.webp",
       "watchers": 5
+    },
+    {
+      "id": 1719,
+      "title": "Minions & Monsters",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178542989087649.webp",
+      "watchers": 2
     },
     {
       "id": 1692,
