@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-12T12:50:58.731972+00:00",
+  "generated_at": "2026-08-12T13:06:25.618480+00:00",
   "locations": [
     {
       "id": 1,
@@ -40,13 +40,6 @@
   ],
   "movies": [
     {
-      "id": 1705,
-      "title": "Evil Dead Burn (18+)",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178117030353587.webp",
-      "watchers": 5
-    },
-    {
       "id": 1716,
       "title": "Spider-Man: Brand New Day (2D)",
       "category": "running",
@@ -65,6 +58,13 @@
       "title": "The Odyssey",
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/178375963885946.webp",
+      "watchers": 5
+    },
+    {
+      "id": 1705,
+      "title": "Evil Dead Burn (18+)",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178117030353587.webp",
       "watchers": 5
     },
     {
