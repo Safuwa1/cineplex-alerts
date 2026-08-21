@@ -207,23 +207,45 @@ async def api_call(page, token, path, body=None):
 
 async def get_web_api_token(page):
     token_holder = {"token": None}
+    seen_login_attempts = []  # (url, status) - for diagnostics when this fails
 
     async def capture_token(response):
-        if "/api/v1/login" in response.url and response.status == 200:
-            try:
-                data = json.loads(await response.text())
-                if data.get("status") == "success":
-                    token_holder["token"] = data.get("data")
-            except Exception:  # noqa: BLE001
-                pass
+        if "/api/v1/login" in response.url:
+            seen_login_attempts.append((response.url, response.status))
+            if response.status == 200:
+                try:
+                    data = json.loads(await response.text())
+                    if data.get("status") == "success":
+                        token_holder["token"] = data.get("data")
+                except Exception:  # noqa: BLE001
+                    pass
 
     page.on("response", lambda r: asyncio.create_task(capture_token(r)))
 
+    # v7 fix: "networkidle" was timing out on every run (site has ongoing
+    # background chatter - analytics/chat-widget/ads pings - that never
+    # let the network go fully quiet), so we never gave the page's own
+    # guest-login call a fair chance to fire before giving up. Switching
+    # to "domcontentloaded" (always resolves quickly) and then actively
+    # polling for the token for up to 20s, instead of a blind fixed wait
+    # tied to an event that may never happen.
     try:
-        await page.goto(HOME_URL, wait_until="networkidle", timeout=45000)
-    except Exception:  # noqa: BLE001
-        log("Homepage networkidle timed out - continuing anyway.")
-    await page.wait_for_timeout(3000)
+        await page.goto(HOME_URL, wait_until="domcontentloaded", timeout=45000)
+    except Exception as exc:  # noqa: BLE001
+        log(f"Homepage domcontentloaded failed: {exc} - continuing anyway.")
+
+    for _ in range(20):
+        if token_holder["token"]:
+            break
+        await page.wait_for_timeout(1000)
+
+    if not token_holder["token"]:
+        log(f"No token captured. Login attempts observed: {seen_login_attempts}")
+        try:
+            await page.screenshot(path="debug_ticket_login.png", full_page=True)
+            log("Saved debug_ticket_login.png for inspection.")
+        except Exception as exc:  # noqa: BLE001
+            log(f"Could not save debug screenshot: {exc}")
 
     return token_holder["token"]
 
