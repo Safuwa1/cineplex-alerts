@@ -2,7 +2,9 @@ name: Cineplex Ticket Monitor
 
 on:
   workflow_dispatch:
-  
+  schedule:
+    - cron: '0 */3 * * *'  # every 3 hours, UTC (GitHub Actions cron is always UTC)
+
 permissions:
   contents: write
 
