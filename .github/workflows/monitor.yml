@@ -31,6 +31,12 @@ jobs:
       - name: Install headless browser
         run: playwright install --with-deps chromium
 
+      - name: Debug - test plain HTTP request (no browser) from this same IP
+        run: |
+          echo "Testing a plain curl request to cineplexbd.com from this runner's IP:"
+          curl -sS -o /dev/null -w "HTTP status: %{http_code}\nFinal URL: %{url_effective}\nNumber of redirects: %{num_redirects}\n" -IL --max-redirs 8 https://www.cineplexbd.com/ || echo "curl itself failed/errored out"
+        continue-on-error: true
+
       - name: Run monitor script
         env:
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
