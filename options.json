@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-14T07:10:53.228410+00:00",
+  "generated_at": "2026-08-26T05:41:12.522527+00:00",
   "locations": [
     {
       "id": 1,
@@ -40,27 +40,6 @@
   ],
   "movies": [
     {
-      "id": 1705,
-      "title": "Evil Dead Burn (18+)",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178117030353587.webp",
-      "watchers": 5
-    },
-    {
-      "id": 1719,
-      "title": "Minions & Monsters",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178542989087649.webp",
-      "watchers": 2
-    },
-    {
-      "id": 1712,
-      "title": "Moana",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178342199356174.webp",
-      "watchers": 5
-    },
-    {
       "id": 1716,
       "title": "Spider-Man: Brand New Day (2D)",
       "category": "running",
@@ -68,11 +47,18 @@
       "watchers": 12
     },
     {
+      "id": 1705,
+      "title": "Evil Dead Burn (18+)",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178117030353587.webp",
+      "watchers": 5
+    },
+    {
       "id": 1688,
       "title": "Spider-Man: Brand New Day",
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/178436170254388.webp",
-      "watchers": 11
+      "watchers": 12
     },
     {
       "id": 1706,
@@ -89,11 +75,32 @@
       "watchers": 5
     },
     {
+      "id": 1719,
+      "title": "Minions & Monsters",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178542989087649.webp",
+      "watchers": 2
+    },
+    {
       "id": 1692,
       "title": "Insidious: Out of the Further",
-      "category": "upcoming",
+      "category": "running",
       "poster": "https://image.cineplexbd.com/movies/177911031087668.webp",
       "watchers": 3
+    },
+    {
+      "id": 1720,
+      "title": "PAW Patrol: The Dino Movie",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178705869237091.webp",
+      "watchers": 0
+    },
+    {
+      "id": 1712,
+      "title": "Moana",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178342199356174.webp",
+      "watchers": 5
     },
     {
       "id": 1694,
