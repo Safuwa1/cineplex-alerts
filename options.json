@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-26T10:31:13.032319+00:00",
+  "generated_at": "2026-08-26T10:41:00.472830+00:00",
   "locations": [
     {
       "id": 1,
@@ -54,13 +54,6 @@
       "watchers": 5
     },
     {
-      "id": 1688,
-      "title": "Spider-Man: Brand New Day",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178436170254388.webp",
-      "watchers": 12
-    },
-    {
       "id": 1706,
       "title": "The End of Oak Street",
       "category": "running",
@@ -75,18 +68,18 @@
       "watchers": 5
     },
     {
+      "id": 1688,
+      "title": "Spider-Man: Brand New Day",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178436170254388.webp",
+      "watchers": 12
+    },
+    {
       "id": 1692,
       "title": "Insidious: Out of the Further",
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/177911031087668.webp",
       "watchers": 3
-    },
-    {
-      "id": 1720,
-      "title": "PAW Patrol: The Dino Movie",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178705869237091.webp",
-      "watchers": 0
     },
     {
       "id": 1719,
@@ -101,6 +94,13 @@
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/178342199356174.webp",
       "watchers": 5
+    },
+    {
+      "id": 1720,
+      "title": "PAW Patrol: The Dino Movie",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178705869237091.webp",
+      "watchers": 0
     },
     {
       "id": 1694,
