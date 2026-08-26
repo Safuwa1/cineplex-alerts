@@ -915,7 +915,7 @@
       }
     }
   },
-  "last_checked": "2026-08-26T14:21:00.568324+00:00",
+  "last_checked": "2026-08-26T14:31:25.767230+00:00",
   "seats": {
     "4:22557": {
       "available": [
@@ -2581,6 +2581,15 @@
       "found_at": "2026-08-26T05:41:06.891204+00:00",
       "notified_emails": [
         "www.safwaanhaque441@gmail.com"
+      ]
+    },
+    "1:1720:2026-09-01": {
+      "movieTitle": "PAW Patrol: The Dino Movie",
+      "locTitle": "Bashundhara City Shopping Mall, Panthapath",
+      "date": "2026-09-01",
+      "found_at": "2026-08-26T14:31:21.671398+00:00",
+      "notified_emails": [
+        "safwaanulhaque@gmail.com"
       ]
     }
   }
