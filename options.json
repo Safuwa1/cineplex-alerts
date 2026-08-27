@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-27T05:10:51.829900+00:00",
+  "generated_at": "2026-08-27T05:20:52.467508+00:00",
   "locations": [
     {
       "id": 1,
@@ -54,13 +54,6 @@
       "watchers": 5
     },
     {
-      "id": 1719,
-      "title": "Minions & Monsters",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178542989087649.webp",
-      "watchers": 2
-    },
-    {
       "id": 1688,
       "title": "Spider-Man: Brand New Day",
       "category": "running",
@@ -80,6 +73,13 @@
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/178375963885946.webp",
       "watchers": 5
+    },
+    {
+      "id": 1719,
+      "title": "Minions & Monsters",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178542989087649.webp",
+      "watchers": 2
     },
     {
       "id": 1692,
