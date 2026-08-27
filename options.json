@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-27T13:31:02.355246+00:00",
+  "generated_at": "2026-08-27T13:41:25.369730+00:00",
   "locations": [
     {
       "id": 1,
@@ -39,13 +39,6 @@
     }
   ],
   "movies": [
-    {
-      "id": 1705,
-      "title": "Evil Dead Burn (18+)",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178117030353587.webp",
-      "watchers": 5
-    },
     {
       "id": 1716,
       "title": "Spider-Man: Brand New Day (2D)",
@@ -89,6 +82,13 @@
       "watchers": 5
     },
     {
+      "id": 1705,
+      "title": "Evil Dead Burn (18+)",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178117030353587.webp",
+      "watchers": 5
+    },
+    {
       "id": 1719,
       "title": "Minions & Monsters",
       "category": "running",
@@ -129,6 +129,27 @@
       "category": "upcoming",
       "poster": "https://image.cineplexbd.com/movies/178117296889918.webp",
       "watchers": 2
+    },
+    {
+      "id": 1724,
+      "title": "Digger",
+      "category": "upcoming",
+      "poster": "https://image.cineplexbd.com/movies/178783751821697.webp",
+      "watchers": 0
+    },
+    {
+      "id": 1722,
+      "title": "Jumanji: Open World (2D)",
+      "category": "upcoming",
+      "poster": "https://image.cineplexbd.com/movies/178783758991558.webp",
+      "watchers": 0
+    },
+    {
+      "id": 1723,
+      "title": "Avengers Endgame Encore (2D)",
+      "category": "upcoming",
+      "poster": "https://image.cineplexbd.com/movies/178783792334078.webp",
+      "watchers": 0
     }
   ]
 }
