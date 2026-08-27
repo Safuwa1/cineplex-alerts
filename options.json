@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-27T13:41:25.369730+00:00",
+  "generated_at": "2026-08-27T13:50:56.771950+00:00",
   "locations": [
     {
       "id": 1,
@@ -40,13 +40,6 @@
   ],
   "movies": [
     {
-      "id": 1716,
-      "title": "Spider-Man: Brand New Day (2D)",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178515901698542.webp",
-      "watchers": 12
-    },
-    {
       "id": 1692,
       "title": "Insidious: Out of the Further",
       "category": "running",
@@ -59,6 +52,13 @@
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/178705869237091.webp",
       "watchers": 1
+    },
+    {
+      "id": 1716,
+      "title": "Spider-Man: Brand New Day (2D)",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178515901698542.webp",
+      "watchers": 12
     },
     {
       "id": 1688,
@@ -149,6 +149,13 @@
       "title": "Avengers Endgame Encore (2D)",
       "category": "upcoming",
       "poster": "https://image.cineplexbd.com/movies/178783792334078.webp",
+      "watchers": 0
+    },
+    {
+      "id": 1721,
+      "title": "Mutiny",
+      "category": "upcoming",
+      "poster": "https://image.cineplexbd.com/movies/178783811780810.webp",
       "watchers": 0
     }
   ]
