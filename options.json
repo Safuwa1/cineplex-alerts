@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-27T05:01:21.082035+00:00",
+  "generated_at": "2026-08-27T05:10:51.829900+00:00",
   "locations": [
     {
       "id": 1,
@@ -61,13 +61,6 @@
       "watchers": 2
     },
     {
-      "id": 1712,
-      "title": "Moana",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178342199356174.webp",
-      "watchers": 5
-    },
-    {
       "id": 1688,
       "title": "Spider-Man: Brand New Day",
       "category": "running",
@@ -101,6 +94,13 @@
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/178705869237091.webp",
       "watchers": 1
+    },
+    {
+      "id": 1712,
+      "title": "Moana",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178342199356174.webp",
+      "watchers": 5
     },
     {
       "id": 1694,
