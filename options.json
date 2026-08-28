@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-28T13:21:25.001522+00:00",
+  "generated_at": "2026-08-28T13:31:04.162624+00:00",
   "locations": [
     {
       "id": 1,
@@ -54,13 +54,6 @@
       "watchers": 5
     },
     {
-      "id": 1706,
-      "title": "The End of Oak Street",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178117096516958.webp",
-      "watchers": 1
-    },
-    {
       "id": 1716,
       "title": "Spider-Man: Brand New Day (2D)",
       "category": "running",
@@ -80,6 +73,13 @@
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/178436170254388.webp",
       "watchers": 12
+    },
+    {
+      "id": 1706,
+      "title": "The End of Oak Street",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178117096516958.webp",
+      "watchers": 1
     },
     {
       "id": 1711,
