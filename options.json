@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-29T13:11:04.566804+00:00",
+  "generated_at": "2026-08-29T13:20:53.411802+00:00",
   "locations": [
     {
       "id": 1,
@@ -47,25 +47,11 @@
       "watchers": 3
     },
     {
-      "id": 1688,
-      "title": "Spider-Man: Brand New Day",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178436170254388.webp",
-      "watchers": 12
-    },
-    {
       "id": 1705,
       "title": "Evil Dead Burn (18+)",
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/178117030353587.webp",
       "watchers": 5
-    },
-    {
-      "id": 1716,
-      "title": "Spider-Man: Brand New Day (2D)",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178515901698542.webp",
-      "watchers": 12
     },
     {
       "id": 1706,
@@ -75,11 +61,25 @@
       "watchers": 1
     },
     {
+      "id": 1716,
+      "title": "Spider-Man: Brand New Day (2D)",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178515901698542.webp",
+      "watchers": 12
+    },
+    {
       "id": 1720,
       "title": "PAW Patrol: The Dino Movie",
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/178705869237091.webp",
       "watchers": 1
+    },
+    {
+      "id": 1688,
+      "title": "Spider-Man: Brand New Day",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178436170254388.webp",
+      "watchers": 12
     },
     {
       "id": 1711,
