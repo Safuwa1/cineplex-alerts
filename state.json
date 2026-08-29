@@ -53,11 +53,11 @@
         ]
       }
     },
-    "485": {
-      "title": "Spider-Man: Brand New Day (2D)",
+    "489": {
+      "title": "PAW Patrol: The Dino Movie",
       "category": "running",
-      "slug": "spider-man-brand-new-day-2d",
-      "movie_id": 1716,
+      "slug": "paw-patrol-the-dino-movie",
+      "movie_id": 1720,
       "dates_by_location": {
         "1": [
           "2026-08-29",
@@ -106,11 +106,11 @@
         ]
       }
     },
-    "489": {
-      "title": "PAW Patrol: The Dino Movie",
+    "485": {
+      "title": "Spider-Man: Brand New Day (2D)",
       "category": "running",
-      "slug": "paw-patrol-the-dino-movie",
-      "movie_id": 1720,
+      "slug": "spider-man-brand-new-day-2d",
+      "movie_id": 1716,
       "dates_by_location": {
         "1": [
           "2026-08-29",
@@ -614,7 +614,7 @@
       }
     }
   },
-  "last_checked": "2026-08-29T13:40:58.418967+00:00",
+  "last_checked": "2026-08-29T13:51:13.221205+00:00",
   "seats": {
     "4:22557": {
       "available": [
