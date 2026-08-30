@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-30T12:41:02.240523+00:00",
+  "generated_at": "2026-08-30T12:50:54.308751+00:00",
   "locations": [
     {
       "id": 1,
@@ -54,13 +54,6 @@
       "watchers": 12
     },
     {
-      "id": 1711,
-      "title": "The Odyssey",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178375963885946.webp",
-      "watchers": 5
-    },
-    {
       "id": 1705,
       "title": "Evil Dead Burn (18+)",
       "category": "running",
@@ -87,6 +80,13 @@
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/178705869237091.webp",
       "watchers": 1
+    },
+    {
+      "id": 1711,
+      "title": "The Odyssey",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178375963885946.webp",
+      "watchers": 5
     },
     {
       "id": 1719,
