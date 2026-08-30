@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-30T05:10:59.354954+00:00",
+  "generated_at": "2026-08-30T05:20:55.738309+00:00",
   "locations": [
     {
       "id": 1,
@@ -75,13 +75,6 @@
       "watchers": 5
     },
     {
-      "id": 1719,
-      "title": "Minions & Monsters",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178542989087649.webp",
-      "watchers": 2
-    },
-    {
       "id": 1720,
       "title": "PAW Patrol: The Dino Movie",
       "category": "running",
@@ -94,6 +87,13 @@
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/178117096516958.webp",
       "watchers": 1
+    },
+    {
+      "id": 1719,
+      "title": "Minions & Monsters",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178542989087649.webp",
+      "watchers": 2
     },
     {
       "id": 1712,
