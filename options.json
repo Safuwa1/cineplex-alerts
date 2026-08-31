@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T04:56:04.514028+00:00",
+  "generated_at": "2026-08-31T05:01:09.898187+00:00",
   "locations": [
     {
       "id": 1,
@@ -68,13 +68,6 @@
       "watchers": 12
     },
     {
-      "id": 1706,
-      "title": "The End of Oak Street",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178117096516958.webp",
-      "watchers": 1
-    },
-    {
       "id": 1711,
       "title": "The Odyssey",
       "category": "running",
@@ -101,6 +94,13 @@
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/178342199356174.webp",
       "watchers": 5
+    },
+    {
+      "id": 1706,
+      "title": "The End of Oak Street",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178117096516958.webp",
+      "watchers": 1
     },
     {
       "id": 1694,
