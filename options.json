@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T05:01:09.898187+00:00",
+  "generated_at": "2026-08-31T05:10:51.313986+00:00",
   "locations": [
     {
       "id": 1,
@@ -47,13 +47,6 @@
       "watchers": 3
     },
     {
-      "id": 1720,
-      "title": "PAW Patrol: The Dino Movie",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178705869237091.webp",
-      "watchers": 1
-    },
-    {
       "id": 1716,
       "title": "Spider-Man: Brand New Day (2D)",
       "category": "running",
@@ -89,11 +82,11 @@
       "watchers": 2
     },
     {
-      "id": 1712,
-      "title": "Moana",
+      "id": 1720,
+      "title": "PAW Patrol: The Dino Movie",
       "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178342199356174.webp",
-      "watchers": 5
+      "poster": "https://image.cineplexbd.com/movies/178705869237091.webp",
+      "watchers": 1
     },
     {
       "id": 1706,
@@ -101,6 +94,13 @@
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/178117096516958.webp",
       "watchers": 1
+    },
+    {
+      "id": 1712,
+      "title": "Moana",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178342199356174.webp",
+      "watchers": 5
     },
     {
       "id": 1694,
