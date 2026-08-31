@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T07:50:53.249072+00:00",
+  "generated_at": "2026-08-31T08:01:01.748287+00:00",
   "locations": [
     {
       "id": 1,
@@ -68,13 +68,6 @@
       "watchers": 5
     },
     {
-      "id": 1720,
-      "title": "PAW Patrol: The Dino Movie",
-      "category": "running",
-      "poster": "https://image.cineplexbd.com/movies/178705869237091.webp",
-      "watchers": 1
-    },
-    {
       "id": 1716,
       "title": "Spider-Man: Brand New Day (2D)",
       "category": "running",
@@ -86,6 +79,13 @@
       "title": "The End of Oak Street",
       "category": "running",
       "poster": "https://image.cineplexbd.com/movies/178117096516958.webp",
+      "watchers": 1
+    },
+    {
+      "id": 1720,
+      "title": "PAW Patrol: The Dino Movie",
+      "category": "running",
+      "poster": "https://image.cineplexbd.com/movies/178705869237091.webp",
       "watchers": 1
     },
     {
